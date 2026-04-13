@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRAIN//PROMPT</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0a0a;--paper:#f0ede6;
+  --neon:#c8ff00;--neon2:#ff2d6b;--neon3:#00d4ff;
+  --smoke:#e8e4dc;--bw:2px;
+}
+html{font-size:14px;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;cursor:crosshair}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.012) 2px,rgba(0,0,0,.012) 4px)}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:var(–ink);display:flex;align-items:stretch;height:52px;border-bottom:3px solid var(–neon)}
+.logo-block{display:flex;align-items:center;padding:0 20px 0 16px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);background:var(–ink)}
+.logo-txt{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:.08em;color:#fff;display:flex;align-items:center;gap:6px}
+.logo-slash{color:var(–neon);font-size:26px}
+.logo-badge{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:var(–neon);border:1px solid var(–neon);padding:2px 6px;letter-spacing:.1em;background:rgba(200,255,0,.08);margin-left:8px}
+.hdr-center{flex:1;display:flex;align-items:center;padding:0 16px;overflow:hidden}
+.hdr-ticker{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em;white-space:nowrap;animation:ticker 25s linear infinite}
+@keyframes ticker{from{transform:translateX(60%)}to{transform:translateX(-100%)}}
+.hdr-r{display:flex;align-items:stretch}
+.hdr-btn{display:flex;align-items:center;padding:0 14px;font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;color:rgba(255,255,255,.45);cursor:pointer;border:none;background:none;border-left:1px solid rgba(255,255,255,.08);transition:all .15s}
+.hdr-btn:hover{color:var(–neon);background:rgba(200,255,0,.06)}
+
+/* HERO */
+.hero{position:relative;z-index:1;background:var(–ink);padding:28px 24px 22px;border-bottom:3px solid var(–neon);overflow:hidden;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.hero::before{content:‘STRAIN//PROMPT’;position:absolute;bottom:-20px;right:-10px;font-family:‘Bebas Neue’,sans-serif;font-size:90px;color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(–neon);color:var(–ink);font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.15em;padding:3px 10px 2px;margin-bottom:10px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.hero h1{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(30px,5vw,50px);letter-spacing:.04em;line-height:.95;color:#fff;margin-bottom:10px}
+.hero h1 .hi{-webkit-text-stroke:1.5px var(–neon);-webkit-text-fill-color:transparent}
+.hero-sub{font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.6;max-width:380px;font-family:‘Share Tech Mono’,monospace}
+.hero-stats{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.stat{display:flex;align-items:center;border:var(–bw) solid rgba(255,255,255,.13);overflow:hidden}
+.stat-n{font-family:‘Bebas Neue’,sans-serif;font-size:26px;background:var(–neon);color:var(–ink);padding:4px 12px 2px;min-width:68px;text-align:center;line-height:1}
+.stat-l{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.1em;padding:4px 10px;text-transform:uppercase}
+
+/* LAYOUT */
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:1fr 382px;min-height:calc(100vh - 52px - 56px)}
+
+/* LEFT */
+.left{padding:18px 20px;overflow-y:auto;background:var(–paper);border-right:3px solid var(–ink)}
+.top-bar{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:14px;border:var(–bw) solid var(–ink)}
+.ctrl-card{padding:11px 12px;background:var(–smoke)}
+.ctrl-card:first-child{border-right:var(–bw) solid var(–ink)}
+.ctrl-lbl{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.12em;color:var(–ink);margin-bottom:6px}
+.ctrl-lbl::before{content:’// ’;color:var(–neon2);font-size:10px}
+.search-inp{width:100%;padding:7px 10px;border:var(–bw) solid var(–ink);font-family:‘Share Tech Mono’,monospace;font-size:11px;color:var(–ink);background:#fff;outline:none;transition:all .15s}
+.search-inp:focus{border-color:var(–neon2);box-shadow:3px 3px 0 var(–neon2)}
+.search-inp::placeholder{color:#aaa}
+.custom-row{display:flex}
+.custom-inp{flex:1;padding:7px 10px;border:var(–bw) solid var(–ink);border-right:none;font-family:‘Share Tech Mono’,monospace;font-size:11px;color:var(–ink);background:#fff;outline:none;min-width:0}
+.custom-inp:focus{border-color:var(–neon2)}
+.btn-add{padding:7px 12px;background:var(–ink);color:var(–neon);border:var(–bw) solid var(–ink);font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;cursor:pointer;transition:all .13s;flex-shrink:0}
+.btn-add:hover{background:var(–neon2);color:#fff}
+.ctags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.ctag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;font-size:10px;font-weight:600;cursor:pointer;border:1.5px solid var(–ink);background:#fff;color:var(–ink);transition:all .12s;font-family:‘Rajdhani’,sans-serif}
+.ctag:hover{background:var(–neon);border-color:var(–neon)}
+.ctag.on{background:var(–neon2);border-color:var(–neon2);color:#fff}
+.ctag .cx{opacity:.6;font-size:11px}.ctag .cx:hover{opacity:1}
+.tabs{display:flex;gap:0;margin-bottom:12px;border:var(–bw) solid var(–ink);overflow:hidden}
+.tab{flex:1;padding:7px;border:none;background:transparent;font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(0,0,0,.35);cursor:pointer;transition:all .13s;text-align:center;border-right:var(–bw) solid var(–ink)}
+.tab:last-child{border-right:none}
+.tab.on{background:var(–ink);color:var(–neon)}
+.tp{display:none}.tp.on{display:block}
+.cat-block{margin-bottom:14px}
+.cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(–ink)}
+.cat-name{font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em}
+.cat-n{font-family:‘Share Tech Mono’,monospace;font-size:9px;background:var(–ink);color:var(–neon);padding:1px 6px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{padding:3px 10px;background:#fff;border:1.5px solid var(–ink);font-size:11px;font-weight:600;color:var(–ink);cursor:pointer;transition:all .12s;user-select:none;font-family:‘Rajdhani’,sans-serif}
+.chip:hover{background:var(–ink);color:var(–neon);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(–neon)}
+.chip.on{background:var(–ink);color:var(–neon);box-shadow:2px 2px 0 var(–neon)}
+.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(–bw) solid var(–ink)}
+.bcard{padding:8px 10px;cursor:pointer;transition:all .13s;border-right:var(–bw) solid var(–ink);border-bottom:var(–bw) solid var(–ink);background:#fff}
+.bcard:nth-child(3n){border-right:none}
+.bcard:hover{background:var(–neon);transform:translate(-1px,-1px)}
+.bcard.on{background:var(–neon2);color:#fff}
+.bcard.on .bcn,.bcard.on .bcd{color:#fff}
+.bce{font-size:16px;display:block;margin-bottom:2px}
+.bcn{font-family:‘Rajdhani’,sans-serif;font-size:10px;font-weight:700;color:var(–ink)}
+.bcd{font-size:8px;color:#888;font-family:‘Share Tech Mono’,monospace;margin-top:1px}
+
+/* RIGHT */
+.right{background:var(–ink);position:sticky;top:52px;height:calc(100vh - 52px - 56px);overflow-y:auto;display:flex;flex-direction:column}
+.right-inner{padding:13px;display:flex;flex-direction:column;gap:8px;flex:1}
+.sel-header{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.22);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sel-header::before{content:’// ’;color:var(–neon)}
+.sel-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:7px;min-height:34px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start}
+.stag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;background:var(–neon);color:var(–ink);font-size:10px;font-weight:700;font-family:‘Rajdhani’,sans-serif;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);animation:pop .12s ease}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.stag .sx{opacity:.5;cursor:pointer;font-size:12px}.stag .sx:hover{opacity:1}
+.stag.cstag{background:var(–neon3);color:var(–ink)}
+.hint{font-size:10px;color:rgba(255,255,255,.2);font-style:italic;padding:2px;font-family:‘Share Tech Mono’,monospace}
+.sel-n{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.22);text-align:right}
+.sel-n b{color:var(–neon)}
+
+/* PROMPT CARDS */
+.pc{border:1.5px solid rgba(255,255,255,.1);overflow:hidden;transition:border-color .15s}
+.pc:hover{border-color:rgba(255,255,255,.18)}
+.pc-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
+.pc-label-wrap{display:flex;align-items:stretch;flex:1}
+.pc-stripe{width:4px;flex-shrink:0}
+.pc.v1 .pc-stripe{background:var(–neon)}
+.pc.v2 .pc-stripe{background:var(–neon3)}
+.pc.v3 .pc-stripe{background:var(–neon2)}
+.pc.vb .pc-stripe{background:#fbbf24}
+.pc-lbl{font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.1em;padding:6px 8px 5px}
+.pc.v1 .pc-lbl{color:var(–neon)}.pc.v2 .pc-lbl{color:var(–neon3)}.pc.v3 .pc-lbl{color:var(–neon2)}.pc.vb .pc-lbl{color:#fbbf24}
+.pc-head-btns{display:flex;align-items:center;gap:4px;padding:4px 6px}
+.cpbtn{font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.08em;padding:3px 9px;border:1.5px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.45);cursor:pointer;transition:all .13s}
+.pc.v1 .cpbtn:hover{border-color:var(–neon);color:var(–neon)}
+.pc.v2 .cpbtn:hover{border-color:var(–neon3);color:var(–neon3)}
+.pc.v3 .cpbtn:hover{border-color:var(–neon2);color:var(–neon2)}
+.pc.vb .cpbtn:hover{border-color:#fbbf24;color:#fbbf24}
+.cpbtn.ok{opacity:.3;pointer-events:none}
+.fav-btn{background:none;border:none;font-size:13px;cursor:pointer;padding:2px 4px;opacity:.4;transition:opacity .13s;line-height:1}
+.fav-btn:hover{opacity:1}
+.fav-btn.on{opacity:1}
+
+/* PANEL */
+.pc-panel{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:5px}
+.pc-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.pc-rl{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.25);letter-spacing:.06em;text-transform:uppercase;width:26px;flex-shrink:0}
+.color-dots{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+.cdot{position:relative;width:18px;height:18px;border:1.5px solid rgba(255,255,255,.2);cursor:pointer;overflow:hidden;transition:all .13s;flex-shrink:0;clip-path:polygon(3px 0,100% 0,calc(100% - 3px) 100%,0 100%)}
+.cdot:hover{transform:scale(1.12)}
+.cdot.filled{border-color:transparent}
+.cdot.empty{background:repeating-linear-gradient(45deg,#1a1a1a 0,#1a1a1a 3px,#222 3px,#222 6px);border:1px dashed rgba(255,255,255,.15)}
+.cdot input[type=color]{position:absolute;inset:-4px;width:calc(100%+8px);height:calc(100%+8px);opacity:0;cursor:pointer;border:none}
+.cdot .cdot-x{position:absolute;top:-3px;right:-3px;width:11px;height:11px;background:#ff2d6b;color:#fff;font-size:7px;display:none;align-items:center;justify-content:center;cursor:pointer;font-weight:700;z-index:2;line-height:1}
+.cdot.filled .cdot-x{display:flex}
+.cdot .cdot-plus{font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.blend-sel{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);padding:2px 5px;cursor:pointer;outline:none;flex-shrink:0}
+.blend-sel:focus{border-color:var(–neon)}
+.blend-sel option{background:#111;color:#fff}
+.rand-b{font-family:‘Share Tech Mono’,monospace;font-size:8px;font-weight:600;padding:1px 5px;background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.25);white-space:nowrap}
+.set-b{font-family:‘Share Tech Mono’,monospace;font-size:8px;font-weight:600;padding:1px 5px;background:rgba(200,255,0,.1);color:var(–neon);border:1px solid rgba(200,255,0,.25);white-space:nowrap}
+.bg-dots{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
+.bdot{width:18px;height:18px;cursor:pointer;border:1.5px solid rgba(255,255,255,.15);transition:all .12s;flex-shrink:0}
+.bdot:hover{transform:scale(1.1)}
+.bdot.on{border-color:var(–neon);box-shadow:0 0 6px rgba(200,255,0,.4)}
+.bg-cw{position:relative;width:18px;height:18px;overflow:hidden;border:1.5px solid rgba(255,255,255,.15);cursor:pointer;flex-shrink:0;transition:all .12s}
+.bg-cw:hover{transform:scale(1.1)}
+.bg-cw.on{border-color:var(–neon)}
+.bg-cw input[type=color]{position:absolute;inset:-4px;width:calc(100%+8px);height:calc(100%+8px);opacity:0;cursor:pointer;border:none}
+.bg-cp{width:100%;height:100%}
+.lib-btn{padding:2px 6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.45);cursor:pointer;font-size:10px;transition:all .13s;flex-shrink:0}
+.lib-btn:hover{background:rgba(200,255,0,.1);border-color:var(–neon);color:var(–neon)}
+.lib-thumb-wrap{display:flex;align-items:center;gap:2px}
+.lib-thumb{width:20px;height:20px;object-fit:cover;border:1.5px solid var(–neon);cursor:pointer;opacity:.85;transition:opacity .13s}
+.lib-thumb:hover{opacity:1}
+.lib-thumb-x{font-size:10px;color:rgba(255,45,107,.7);cursor:pointer;padding:0 2px;line-height:1}
+.lib-thumb-x:hover{color:var(–neon2)}
+
+/* AI COLOR BTN */
+.ai-color-btn{padding:2px 6px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);color:var(–neon);cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;transition:all .13s;flex-shrink:0}
+.ai-color-btn:hover{background:var(–neon);color:var(–ink)}
+
+.pc-body{padding:8px 10px;font-family:‘Share Tech Mono’,monospace;font-size:8.5px;line-height:1.9;color:rgba(255,255,255,.35);word-break:break-word;white-space:pre-wrap}
+.pc-dash{color:rgba(255,255,255,.15);font-style:italic}
+
+/* PREVIEW SECTION */
+.preview-area{border-top:1px solid rgba(255,255,255,.06);padding:6px 10px;display:none;background:rgba(0,0,0,.2)}
+.preview-area.show{display:block}
+.preview-img-wrap{position:relative;width:100%;aspect-ratio:3/1;background:rgba(255,255,255,.04);overflow:hidden;margin-top:4px;border:1px solid rgba(255,255,255,.08)}
+.preview-img{width:100%;height:100%;object-fit:cover;display:none}
+.preview-img.loaded{display:block}
+.preview-spinner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.2)}
+.preview-spinner.hidden{display:none}
+.preview-lbl{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:.05em}
+.prev-btn{padding:3px 9px;background:transparent;border:1px solid rgba(255,255,255,.15);font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.4);cursor:pointer;transition:all .13s}
+.prev-btn:hover{border-color:var(–neon3);color:var(–neon3)}
+.prev-btn.active{border-color:var(–neon3);color:var(–neon3);background:rgba(0,212,255,.08)}
+
+.leo-link{display:none;align-items:center;justify-content:center;gap:6px;padding:7px;border-top:1px solid rgba(255,255,255,.06);font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.28);text-decoration:none;transition:all .15s}
+.leo-link:hover{background:rgba(200,255,0,.06);color:var(–neon)}
+.leo-link.show{display:flex}
+
+.neg-box{border:1px solid rgba(255,255,255,.08);padding:8px 10px}
+.neg-ttl{font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.18);margin-bottom:3px}
+.neg-body{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.16);line-height:1.7}
+
+/* FEATURE BUTTONS */
+.feat-row{display:grid;grid-template-columns:repeat(5,1fr);border:1.5px solid rgba(255,255,255,.1);overflow:hidden}
+.feat-btn{padding:7px 3px;background:transparent;border:none;border-right:1px solid rgba(255,255,255,.08);font-family:‘Bebas Neue’,sans-serif;font-size:9px;letter-spacing:.05em;color:rgba(255,255,255,.3);cursor:pointer;transition:all .13s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.feat-btn:last-child{border-right:none}
+.feat-btn .fi{font-size:13px;line-height:1}
+.feat-btn:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.75)}
+.feat-btn.neon{color:var(–neon);background:rgba(200,255,0,.07)}
+
+/* MAIN BUTTONS */
+.btn-main{width:100%;padding:13px;background:var(–neon);color:var(–ink);border:none;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:‘Bebas Neue’,sans-serif;font-size:17px;letter-spacing:.12em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);position:relative;overflow:hidden}
+.btn-main::before{content:’’;position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .4s}
+.btn-main:hover::before{transform:translateX(100%)}
+.btn-main:hover{background:var(–neon2);color:#fff;transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(255,45,107,.4)}
+.btn-main.ok{background:rgba(34,197,94,.2);color:#22c55e;border:1px solid rgba(34,197,94,.3);transform:none;box-shadow:none}
+.btn-row{display:flex;gap:0}
+.btn-sub{flex:1;padding:8px;background:transparent;border:1px solid rgba(255,255,255,.1);border-right:none;font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.28);cursor:pointer;transition:all .13s;text-align:center}
+.btn-sub:last-child{border-right:1px solid rgba(255,255,255,.1)}
+.btn-sub:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.7)}
+.btn-sub.danger:hover{border-color:var(–neon2);color:var(–neon2)}
+
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(14px);background:var(–ink);color:var(–neon);border:2px solid var(–neon);padding:9px 20px;font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;z-index:1000;opacity:0;transition:all .22s;pointer-events:none;white-space:nowrap;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* MODALS */
+.moverlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.moverlay.open{display:flex}
+.modal{background:var(–ink);border:2px solid var(–neon);width:min(460px,92vw);max-height:88vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-hd{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-ttl{font-family:‘Bebas Neue’,sans-serif;font-size:15px;letter-spacing:.1em;color:var(–neon)}
+.modal-x{background:none;border:none;font-size:20px;cursor:pointer;color:rgba(255,255,255,.35);transition:color .13s}
+.modal-x:hover{color:#fff}
+.modal-bd{padding:16px;overflow-y:auto;flex:1}
+
+/* HISTORY MODAL */
+.modal-hist{width:min(580px,94vw)}
+.hist-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.hist-tab{flex:1;padding:9px;background:transparent;border:none;font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;transition:all .13s;text-align:center;border-bottom:2px solid transparent}
+.hist-tab.on{color:var(–neon);border-bottom-color:var(–neon)}
+.hist-pane{display:none;padding:10px;overflow-y:auto;max-height:420px}
+.hist-pane.on{display:block}
+.hist-item{padding:9px;border:1px solid rgba(255,255,255,.08);margin-bottom:6px;cursor:pointer;transition:border-color .13s;position:relative}
+.hist-item:hover{border-color:rgba(255,255,255,.2)}
+.hist-item-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.hist-strain{font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.08em;color:var(–neon)}
+.hist-time{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.2)}
+.hist-preview{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.28);line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.hist-actions{display:flex;gap:5px;margin-top:6px}
+.hist-act-btn{padding:2px 8px;background:transparent;border:1px solid rgba(255,255,255,.12);font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.35);cursor:pointer;transition:all .12s}
+.hist-act-btn:hover{border-color:var(–neon);color:var(–neon)}
+.hist-act-btn.del:hover{border-color:var(–neon2);color:var(–neon2)}
+.hist-empty{font-family:‘Share Tech Mono’,monospace;font-size:11px;color:rgba(255,255,255,.18);text-align:center;padding:30px 10px}
+
+/* BATCH MODAL */
+.modal-batch{width:min(520px,92vw)}
+.batch-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.batch-opt-row{display:flex;align-items:center;gap:8px}
+.batch-check{width:16px;height:16px;accent-color:var(–neon);cursor:pointer}
+.batch-lbl{font-family:‘Share Tech Mono’,monospace;font-size:11px;color:rgba(255,255,255,.55);cursor:pointer}
+.batch-progress{padding:10px;border:1px solid rgba(255,255,255,.08);margin-bottom:10px;display:none}
+.batch-progress.show{display:block}
+.batch-bar-bg{background:rgba(255,255,255,.06);height:6px;overflow:hidden;margin:6px 0}
+.batch-bar{background:var(–neon);height:100%;width:0%;transition:width .3s}
+.batch-status{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.35)}
+.batch-result{margin-top:8px;font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–green)}
+
+/* QR MODAL */
+.modal-qr{width:min(400px,90vw)}
+.qr-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px}
+.qr-box{background:#fff;padding:16px;display:inline-block}
+.qr-info{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.35);text-align:center;line-height:1.6}
+.qr-dl-btn{padding:8px 20px;background:var(–neon);color:var(–ink);border:none;font-family:‘Bebas Neue’,sans-serif;font-size:14px;letter-spacing:.1em;cursor:pointer;transition:all .13s}
+.qr-dl-btn:hover{background:var(–neon2);color:#fff}
+
+/* AI COLOR MODAL */
+.modal-aiclr{width:min(480px,92vw)}
+.ai-strain-disp{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:.06em;color:var(–neon);margin-bottom:4px}
+.ai-status{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px;min-height:16px;display:flex;align-items:center;gap:6px}
+.ai-spin{width:12px;height:12px;border:1.5px solid rgba(200,255,0,.3);border-top-color:var(–neon);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-palettes{display:flex;flex-direction:column;gap:8px}
+.ai-palette{border:1.5px solid rgba(255,255,255,.1);overflow:hidden;transition:border-color .13s}
+.ai-palette:hover{border-color:rgba(255,255,255,.2)}
+.ai-swatches{display:flex;height:26px}
+.ai-swatch{flex:1}
+.ai-palette-body{padding:8px 10px}
+.ai-palette-name{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:var(–neon);margin-bottom:2px}
+.ai-palette-vibe{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.3);margin-bottom:6px}
+.ai-palette-btns{display:flex;gap:5px;flex-wrap:wrap}
+.ai-apply-btn{padding:3px 10px;background:transparent;border:1px solid rgba(255,255,255,.15);font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.4);cursor:pointer;transition:all .12s}
+.ai-apply-btn:hover{background:var(–neon);color:var(–ink);border-color:var(–neon)}
+
+/* LIBRARY MODAL */
+.modal-lib{width:min(700px,96vw);max-height:90vh}
+.lib-search-wrap{display:flex;gap:0}
+.lib-search-inp{padding:5px 10px;border:1.5px solid rgba(255,255,255,.2);border-right:none;background:rgba(255,255,255,.06);color:#fff;font-family:‘Share Tech Mono’,monospace;font-size:11px;outline:none;width:200px}
+.lib-search-inp:focus{border-color:var(–neon)}
+.lib-search-inp::placeholder{color:rgba(255,255,255,.22)}
+.lib-search-btn{padding:5px 12px;background:var(–neon);color:var(–ink);border:none;cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.1em;transition:all .13s}
+.lib-search-btn:hover{background:var(–neon2);color:#fff}
+.lib-presets{display:flex;flex-wrap:wrap;gap:4px;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.lib-preset-btn{padding:3px 9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.06em;transition:all .12s}
+.lib-preset-btn:hover{background:rgba(200,255,0,.1);border-color:var(–neon);color:var(–neon)}
+.lib-grid-wrap{flex:1;overflow-y:auto;position:relative;min-height:180px}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:5px;padding:10px}
+.lib-empty{grid-column:1/-1;text-align:center;font-family:‘Share Tech Mono’,monospace;font-size:11px;color:rgba(255,255,255,.18);padding:36px 20px}
+.lib-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,.7);font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;color:var(–neon);gap:10px}
+.lib-spinner{width:14px;height:14px;border:2px solid rgba(200,255,0,.3);border-top-color:var(–neon);border-radius:50%;animation:spin .7s linear infinite}
+.lib-img-card{position:relative;aspect-ratio:3/2;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.lib-img-card:hover{border-color:var(–neon);transform:scale(1.03)}
+.lib-img-card.selected{border-color:var(–neon2);box-shadow:0 0 10px rgba(255,45,107,.4)}
+.lib-img-card img{width:100%;height:100%;object-fit:cover;display:block}
+.lib-img-card .lib-check{position:absolute;top:3px;right:3px;background:var(–neon2);color:#fff;font-size:9px;font-weight:700;padding:1px 4px;opacity:0;transition:opacity .13s;font-family:‘Bebas Neue’,sans-serif}
+.lib-img-card.selected .lib-check{opacity:1}
+.lib-img-card .lib-credit-tag{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:rgba(255,255,255,.45);font-family:‘Share Tech Mono’,monospace;font-size:7px;padding:2px 4px;opacity:0;transition:opacity .13s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lib-img-card:hover .lib-credit-tag{opacity:1}
+.lib-foot{display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.lib-credit{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.18)}
+.lib-credit a{color:rgba(255,255,255,.3);text-decoration:none}
+.lib-credit a:hover{color:var(–neon)}
+.lib-sel-info{font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.07em;color:var(–neon2)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(–ink);border-top:3px solid var(–neon);padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.footer-l{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.22)}
+.footer-l b{color:rgba(255,255,255,.45)}
+.footer-links{display:flex;gap:14px}
+.footer-links a{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.28);text-decoration:none;transition:color .13s}
+.footer-links a:hover{color:var(–neon)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(200,255,0,.3)}::-webkit-scrollbar-track{background:transparent}
+@keyframes glitch{0%,100%{transform:translate(0)}20%{transform:translate(-1px,0)}40%{transform:translate(1px,0)}60%{transform:translate(0,-1px)}80%{transform:translate(0,1px)}}
+.hero h1:hover{animation:glitch .3s ease infinite}
+@media(max-width:800px){
+.layout{grid-template-columns:1fr}
+.right{position:static;height:auto;border-left:none;border-top:3px solid var(–neon)}
+header,footer{padding-left:12px;padding-right:12px}
+.left,.right-inner{padding:12px}
+.top-bar{grid-template-columns:1fr}
+.brand-grid{grid-template-columns:repeat(2,1fr)}
+.hero{flex-direction:column}
+.hero-stats{flex-direction:row}
+.hero::before{display:none}
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="logo-block">
+    <div class="logo-txt">STRAIN<span class="logo-slash">//</span>PROMPT<span class="logo-badge">UVDTF v4.0</span></div>
+  </div>
+  <div class="hdr-center">
+    <div class="hdr-ticker">300 STRAINS · 32 BRAND STYLES · GRAFFITI WILDSTYLE · BLACKLETTER GOTHIC · FUTURISTIC SPEED CUT · AI COLOR SUGGEST · BATCH EXPORT · QR CODE · HISTORY · PREVIEW · 60×20MM BIC J26 ·&nbsp;</div>
+  </div>
+  <div class="hdr-r">
+    <button class="hdr-btn" onclick="openModal('how')">// HOW TO</button>
+    <button class="hdr-btn" onclick="openModal('hist')">// HISTORY</button>
+    <button class="hdr-btn" onclick="shareApp()">// SHARE</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">🌿 UVDTF · BIC J26 · 60×20MM</div>
+    <h1>CANNABIS<br>STRAIN<br><span class="hi">PROMPT</span></h1>
+    <p class="hero-sub">// 品種を選んでAI画像プロンプトを即生成<br>// GRAFFITI · GOTHIC · FUTURISTIC<br>// AI配色 · バッチ · QR · 履歴 · プレビュー</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">300</div><div class="stat-l">STRAINS</div></div>
+    <div class="stat"><div class="stat-n">32</div><div class="stat-l">BRANDS</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">FEATURES</div></div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="left">
+    <div class="top-bar">
+      <div class="ctrl-card">
+        <div class="ctrl-lbl">SEARCH STRAINS</div>
+        <input class="search-inp" placeholder="Kush, Gelato, Runtz..." oninput="filterStrains(this.value)" />
+      </div>
+      <div class="ctrl-card">
+        <div class="ctrl-lbl">CUSTOM TEXT</div>
+        <div class="custom-row">
+          <input class="custom-inp" id="customInp" placeholder="JOJO / EPOCH / 420..." maxlength="40" />
+          <button class="btn-add" onclick="addCustom()">ADD</button>
+        </div>
+        <div class="ctags" id="ctagsEl"></div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" onclick="switchTab('strains',this)">🌿 STRAINS (300)</button>
+      <button class="tab" onclick="switchTab('brands',this)">🏷 BRANDS (32)</button>
+    </div>
+    <div class="tp on" id="tp-strains"><div id="strainsEl"></div></div>
+    <div class="tp" id="tp-brands"><div class="brand-grid" id="brandsEl"></div></div>
+  </div>
+
+  <div class="right">
+    <div class="right-inner">
+      <div class="sel-header">SELECTED</div>
+      <div class="sel-box" id="selBox"><span class="hint">// SELECT STRAIN OR ENTER TEXT</span></div>
+      <div class="sel-n"><b id="selN">0</b> SELECTED</div>
+
+```
+  <!-- V1 -->
+  <div class="pc v1" id="pc0">
+    <div class="pc-head">
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🌀 GRAFFITI WILDSTYLE</span></div>
+      <div class="pc-head-btns">
+        <button class="prev-btn" id="prevBtn0" onclick="togglePreview(0)" title="プレビュー">👁</button>
+        <button class="fav-btn" id="favBtn0" onclick="toggleFav(0)" title="お気に入り">🤍</button>
+        <button class="cpbtn" onclick="copyVar(0)">COPY</button>
+      </div>
+    </div>
+    <div class="pc-panel">
+      <div class="pc-row">
+        <span class="pc-rl">CLR</span>
+        <div class="color-dots" id="dots0"></div>
+        <select class="blend-sel" id="blend0" onchange="updateAll()">
+          <option value="gradient-lr">→ L-R GRAD</option>
+          <option value="gradient-radial">💥 RADIAL</option>
+          <option value="swirl">🌀 SWIRL</option>
+          <option value="scattered">✨ SCATTER</option>
+          <option value="solid">■ SOLID</option>
+        </select>
+        <span class="rand-b" id="badge0">RND</span>
+        <button class="ai-color-btn" onclick="openAiColor(0)" title="AI配色提案">✦ AI</button>
+      </div>
+      <div class="pc-row">
+        <span class="pc-rl">BG</span>
+        <div class="bg-dots" id="bgOpts0"></div>
+        <button class="lib-btn" onclick="openLibModal(0)">📚</button>
+        <span class="lib-thumb-wrap" id="libThumb0"></span>
+      </div>
+    </div>
+    <div class="pc-body" id="pb0"><span class="pc-dash">// SELECT STRAIN TO GENERATE PROMPT</span></div>
+    <div class="preview-area" id="prevArea0">
+      <div class="preview-lbl">// AI PREVIEW (Leonardo AI image generation)</div>
+      <div class="preview-img-wrap">
+        <div class="preview-spinner" id="prevSpinner0">// GENERATING PREVIEW...</div>
+        <img class="preview-img" id="prevImg0" src="" alt="preview" />
+      </div>
+    </div>
+    <a class="leo-link" id="leo0" href="https://leonardo.ai" target="_blank">▶ OPEN LEONARDO AI →</a>
+  </div>
+
+  <!-- V2 -->
+  <div class="pc v2" id="pc1">
+    <div class="pc-head">
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">⛪ BLACKLETTER GOTHIC</span></div>
+      <div class="pc-head-btns">
+        <button class="prev-btn" id="prevBtn1" onclick="togglePreview(1)" title="プレビュー">👁</button>
+        <button class="fav-btn" id="favBtn1" onclick="toggleFav(1)" title="お気に入り">🤍</button>
+        <button class="cpbtn" onclick="copyVar(1)">COPY</button>
+      </div>
+    </div>
+    <div class="pc-panel">
+      <div class="pc-row">
+        <span class="pc-rl">CLR</span>
+        <div class="color-dots" id="dots1"></div>
+        <select class="blend-sel" id="blend1" onchange="updateAll()">
+          <option value="gradient-lr">→ L-R GRAD</option>
+          <option value="gradient-radial">💥 RADIAL</option>
+          <option value="swirl">🌀 SWIRL</option>
+          <option value="scattered">✨ SCATTER</option>
+          <option value="solid">■ SOLID</option>
+        </select>
+        <span class="rand-b" id="badge1">RND</span>
+        <button class="ai-color-btn" onclick="openAiColor(1)" title="AI配色提案">✦ AI</button>
+      </div>
+      <div class="pc-row">
+        <span class="pc-rl">BG</span>
+        <div class="bg-dots" id="bgOpts1"></div>
+        <button class="lib-btn" onclick="openLibModal(1)">📚</button>
+        <span class="lib-thumb-wrap" id="libThumb1"></span>
+      </div>
+    </div>
+    <div class="pc-body" id="pb1"><span class="pc-dash">—</span></div>
+    <div class="preview-area" id="prevArea1">
+      <div class="preview-lbl">// AI PREVIEW</div>
+      <div class="preview-img-wrap">
+        <div class="preview-spinner" id="prevSpinner1">// GENERATING PREVIEW...</div>
+        <img class="preview-img" id="prevImg1" src="" alt="preview" />
+      </div>
+    </div>
+    <a class="leo-link" id="leo1" href="https://leonardo.ai" target="_blank">▶ OPEN LEONARDO AI →</a>
+  </div>
+
+  <!-- V3 -->
+  <div class="pc v3" id="pc2">
+    <div class="pc-head">
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🏎️ FUTURISTIC SPEED CUT</span></div>
+      <div class="pc-head-btns">
+        <button class="prev-btn" id="prevBtn2" onclick="togglePreview(2)" title="プレビュー">👁</button>
+        <button class="fav-btn" id="favBtn2" onclick="toggleFav(2)" title="お気に入り">🤍</button>
+        <button class="cpbtn" onclick="copyVar(2)">COPY</button>
+      </div>
+    </div>
+    <div class="pc-panel">
+      <div class="pc-row">
+        <span class="pc-rl">CLR</span>
+        <div class="color-dots" id="dots2"></div>
+        <select class="blend-sel" id="blend2" onchange="updateAll()">
+          <option value="gradient-lr">→ L-R GRAD</option>
+          <option value="gradient-radial">💥 RADIAL</option>
+          <option value="swirl">🌀 SWIRL</option>
+          <option value="scattered">✨ SCATTER</option>
+          <option value="solid">■ SOLID</option>
+        </select>
+        <span class="rand-b" id="badge2">RND</span>
+        <button class="ai-color-btn" onclick="openAiColor(2)" title="AI配色提案">✦ AI</button>
+      </div>
+      <div class="pc-row">
+        <span class="pc-rl">BG</span>
+        <div class="bg-dots" id="bgOpts2"></div>
+        <button class="lib-btn" onclick="openLibModal(2)">📚</button>
+        <span class="lib-thumb-wrap" id="libThumb2"></span>
+      </div>
+    </div>
+    <div class="pc-body" id="pb2"><span class="pc-dash">—</span></div>
+    <div class="preview-area" id="prevArea2">
+      <div class="preview-lbl">// AI PREVIEW</div>
+      <div class="preview-img-wrap">
+        <div class="preview-spinner" id="prevSpinner2">// GENERATING PREVIEW...</div>
+        <img class="preview-img" id="prevImg2" src="" alt="preview" />
+      </div>
+    </div>
+    <a class="leo-link" id="leo2" href="https://leonardo.ai" target="_blank">▶ OPEN LEONARDO AI →</a>
+  </div>
+
+  <!-- BRAND -->
+  <div class="pc vb" id="brandOut" style="display:none">
+    <div class="pc-head">
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl" id="brandOutLbl">🏷 BRAND STYLE</span></div>
+      <div class="pc-head-btns"><button class="cpbtn" onclick="copyBrand()">COPY</button></div>
+    </div>
+    <div class="pc-body" id="pbB"><span class="pc-dash">—</span></div>
+    <a class="leo-link" id="leoB" href="https://leonardo.ai" target="_blank">▶ OPEN LEONARDO AI →</a>
+  </div>
+
+  <div class="neg-box">
+    <div class="neg-ttl">// NEGATIVE PROMPT</div>
+    <div class="neg-body" id="negEl">—</div>
+  </div>
+
+  <button class="btn-main" id="copyAllBtn" onclick="copyAll()">📋 COPY ALL PROMPTS</button>
+
+  <!-- FEATURE ROW -->
+  <div class="feat-row">
+    <button class="feat-btn" onclick="openModal('hist')"><span class="fi">📜</span>HISTORY</button>
+    <button class="feat-btn" onclick="openBatch()"><span class="fi">📦</span>BATCH</button>
+    <button class="feat-btn" onclick="openQR()"><span class="fi">📱</span>QR CODE</button>
+    <button class="feat-btn" onclick="openAiColor('all')"><span class="fi">🎨</span>AI COLOR</button>
+    <button class="feat-btn" onclick="toggleAllPreviews()"><span class="fi">👁</span>PREVIEW</button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-sub" onclick="shareApp()">// SHARE</button>
+    <button class="btn-sub danger" onclick="clearAll()">// CLEAR</button>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-l">MADE FOR <b>UVDTF CREATORS</b> · 60×20MM · BIC J26</div>
+  <div class="footer-links">
+    <a href="#" onclick="openModal('how');return false">// HOW TO</a>
+    <a href="https://leonardo.ai" target="_blank">// LEONARDO AI</a>
+  </div>
+</footer>
+
+<!-- HOW TO MODAL -->
+
+<div class="moverlay" id="modal-how">
+  <div class="modal">
+    <div class="modal-hd"><span class="modal-ttl">// HOW TO USE</span><button class="modal-x" onclick="closeModal('how')">×</button></div>
+    <div class="modal-bd" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(255,255,255,.45);line-height:1.8">
+      <p style="color:var(--neon);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em;margin-bottom:8px">// BASIC FLOW</p>
+      <p>1. STRAINSリストから品種をタップ（複数OK）</p>
+      <p>2. CLRで色を追加、ブレンドモードを選択</p>
+      <p>3. ✦ AIボタンでAI配色提案を取得</p>
+      <p>4. BGでプリセット背景 or 📚でライブラリ画像</p>
+      <p>5. 👁でプレビュー生成（Pollinations AIを使用）</p>
+      <p>6. COPYでプロンプトをコピー → Leonardo AIへ</p>
+      <p style="margin-top:12px;color:var(--neon);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em">// EXTRA FEATURES</p>
+      <p>📜 HISTORY — 生成・お気に入り履歴を管理</p>
+      <p>📦 BATCH — 複数品種を一括でCSV/TXT出力</p>
+      <p>📱 QR CODE — 現在のプロンプトをQRコード化</p>
+      <p>🎨 AI COLOR — 品種に合う配色をClaudeが提案</p>
+      <p>👁 PREVIEW — Pollinations AIで画像プレビュー</p>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORY MODAL -->
+
+<div class="moverlay" id="modal-hist">
+  <div class="modal modal-hist">
+    <div class="modal-hd"><span class="modal-ttl">// HISTORY & FAVORITES</span><button class="modal-x" onclick="closeModal('hist')">×</button></div>
+    <div class="hist-tabs">
+      <button class="hist-tab on" onclick="switchHistTab('fav',this)">⭐ FAVORITES</button>
+      <button class="hist-tab" onclick="switchHistTab('hist',this)">📜 HISTORY</button>
+    </div>
+    <div class="hist-pane on" id="histPane-fav"></div>
+    <div class="hist-pane" id="histPane-hist"></div>
+  </div>
+</div>
+
+<!-- BATCH MODAL -->
+
+<div class="moverlay" id="modal-batch">
+  <div class="modal modal-batch">
+    <div class="modal-hd"><span class="modal-ttl">// BATCH EXPORT</span><button class="modal-x" onclick="closeModal('batch')">×</button></div>
+    <div class="modal-bd">
+      <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-bottom:12px">選択中の全品種を全スタイルで一括生成してエクスポートします</p>
+      <div class="batch-opts">
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV1" checked><label class="batch-lbl" for="batchV1">🌀 Graffiti Wildstyle</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV2" checked><label class="batch-lbl" for="batchV2">⛪ Blackletter Gothic</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV3" checked><label class="batch-lbl" for="batchV3">🏎️ Futuristic Speed Cut</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchNeg" checked><label class="batch-lbl" for="batchNeg">⛔ Negative Prompt を含める</label></div>
+      </div>
+      <div class="batch-progress" id="batchProgress">
+        <div class="batch-status" id="batchStatus">// GENERATING...</div>
+        <div class="batch-bar-bg"><div class="batch-bar" id="batchBar"></div></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button onclick="runBatch('txt')" style="padding:9px 16px;background:var(--neon);color:var(--ink);border:none;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.1em;cursor:pointer;flex:1">📄 TXT DOWNLOAD</button>
+        <button onclick="runBatch('csv')" style="padding:9px 16px;background:transparent;color:var(--neon);border:2px solid var(--neon);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.1em;cursor:pointer;flex:1">📊 CSV DOWNLOAD</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QR MODAL -->
+
+<div class="moverlay" id="modal-qr">
+  <div class="modal modal-qr">
+    <div class="modal-hd"><span class="modal-ttl">// QR CODE</span><button class="modal-x" onclick="closeModal('qr')">×</button></div>
+    <div class="modal-bd">
+      <div class="qr-wrap">
+        <div class="qr-box" id="qrBox"></div>
+        <div class="qr-info" id="qrInfo">// QR生成中...</div>
+        <button class="qr-dl-btn" onclick="downloadQR()">⬇ QR DOWNLOAD</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI COLOR MODAL -->
+
+<div class="moverlay" id="modal-aiclr">
+  <div class="modal modal-aiclr">
+    <div class="modal-hd"><span class="modal-ttl">// AI COLOR SUGGEST</span><button class="modal-x" onclick="closeModal('aiclr')">×</button></div>
+    <div class="modal-bd">
+      <div class="ai-strain-disp" id="aiStrainDisp">—</div>
+      <div class="ai-status" id="aiStatus"><span class="ai-spin" id="aiSpin" style="display:none"></span><span id="aiStatusTxt">// STYLE を選択してAIに配色を提案してもらいましょう</span></div>
+      <div style="display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap">
+        <button onclick="fetchAiColors(0)" style="padding:4px 12px;background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.3);color:var(--neon);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🌀 WILDSTYLE</button>
+        <button onclick="fetchAiColors(1)" style="padding:4px 12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);color:var(--neon3);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">⛪ GOTHIC</button>
+        <button onclick="fetchAiColors(2)" style="padding:4px 12px;background:rgba(255,45,107,.08);border:1px solid rgba(255,45,107,.25);color:var(--neon2);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🏎️ FUTURISTIC</button>
+        <button onclick="fetchAiColors('all')" style="padding:4px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">⚡ ALL STYLES</button>
+      </div>
+      <div class="ai-palettes" id="aiPalettes"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIBRARY MODAL -->
+
+<div class="moverlay" id="modal-lib">
+  <div class="modal modal-lib">
+    <div class="modal-hd">
+      <span class="modal-ttl" id="libModalTitle">// BG LIBRARY</span>
+      <div style="display:flex;gap:7px;align-items:center">
+        <div class="lib-search-wrap">
+          <input class="lib-search-inp" id="libSearchInp" placeholder="smoke, fire, neon, wall..." />
+          <button class="lib-search-btn" onclick="searchLib()">GO</button>
+        </div>
+        <button class="modal-x" onclick="closeModal('lib')">×</button>
+      </div>
+    </div>
+    <div class="lib-presets">
+      <button class="lib-preset-btn" onclick="searchLib('graffiti wall urban')">🧱 WALL</button>
+      <button class="lib-preset-btn" onclick="searchLib('smoke weed fog')">💨 SMOKE</button>
+      <button class="lib-preset-btn" onclick="searchLib('neon cyberpunk night')">🌆 CYBER</button>
+      <button class="lib-preset-btn" onclick="searchLib('fire flames dark')">🔥 FIRE</button>
+      <button class="lib-preset-btn" onclick="searchLib('galaxy stars space')">🌌 SPACE</button>
+      <button class="lib-preset-btn" onclick="searchLib('dark forest trees')">🌲 FOREST</button>
+      <button class="lib-preset-btn" onclick="searchLib('abstract colorful art')">🎨 ART</button>
+      <button class="lib-preset-btn" onclick="searchLib('black marble texture')">🪨 MARBLE</button>
+      <button class="lib-preset-btn" onclick="searchLib('tie dye psychedelic')">🌀 PSYCH</button>
+      <button class="lib-preset-btn" onclick="searchLib('gold metallic luxury')">✨ GOLD</button>
+    </div>
+    <div class="lib-grid-wrap">
+      <div class="lib-grid" id="libGrid"><div class="lib-empty">// SEARCH OR SELECT PRESET</div></div>
+      <div class="lib-loading" id="libLoading" style="display:none"><span class="lib-spinner"></span>LOADING...</div>
+    </div>
+    <div class="lib-foot">
+      <span class="lib-credit">Photos: <a href="https://unsplash.com" target="_blank">Unsplash</a></span>
+      <span class="lib-sel-info" id="libSelInfo"></span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════
+// DATA
+// ═══════════════════════════════════
+const STRAINS={"🔥 レジェンド系":["OG Kush","Sour Diesel","Blue Dream","White Widow","Purple Haze","Northern Lights","AK-47","Jack Herer","Skunk #1","Chemdawg","Godfather OG","Super Boof","Chocolope","Tangie","Crunch Berries","White Rhino","Motorbreath","Alien OG","Harlequin","GMO Cookies","OG Triploid","London Pound Cake","Slurricane","Animal Mints","Gelato #33","Cheetah Piss","Pinkman Goo","Malawi Gold","Cinderella 99","Thai Stick","Afghani","Colombian Gold","Panama Red","Acapulco Gold","Hash Plant","Headband","Snowcap","The White","Pennywise","Blue Cheese","Zkittlez OG","Medicine Man","Casey Jones","Confidential Cheese","Exodus Cheese"],"🍪 デザート / スイーツ系":["Gelato","Wedding Cake","Runtz","Zkittlez","Sherbet","Ice Cream Cake","Cookies and Cream","Biscotti","Cereal Milk","Girl Scout Cookies","Bacio Gelato","White Runtz","Pink Runtz","Apple Fritter","Wedding Cheesecake","DNA Cake","Lemon Meringue","Now N Laterz","Rainbow Sherbet","Cocolato","Kush Mints","Blueberry Kush","Purple Runtz","Berry Zkittlez","Tangerine Dream","Zoap","Sunset Runtz","Red Runtz","Candy Runtz","Oreoz","Glazed Donut","Vanilla Frosting","Sugar Cookies","Birthday Cake","Pancakes","Gelato 41","Gelato 45","Cake Pop","Funnel Cake","Red Velvet","Creme Brulee","Georgia Pie","Madelato","Candy Gas","Pina Colada","Sticky Buns","Waffle Cone","Churros","Cotton Candy Kush","Peach Rings"],"🍋 フルーツ系":["Lemon Haze","Strawberry Cough","Blueberry","Mango Kush","Pineapple Express","Grape Ape","Cherry Pie","Peach Ringz","Banana OG","Watermelon Zkittlez","Golden Pineapple","Apples and Bananas","Watermelon Gelato","Papaya Kush","Tropicana Cookies Purple","Cherry Pie OG","Apple Mintz","Blue Runtz","Pineapple Kush","Blue Razz Eclair","Trop Cherry","Strawberry Banana","Mango Tango","Passion Fruit","Pink Rozay","Lemon Cherry Gelato","Orange Push Pop","Peach Cobbler","Blackberry Kush","Grape Gasoline","Citrus Farmer","Key Lime Pie","Blueberry Muffin","Raspberry Kush","Melon Gum","Pink Lemonade","Space Lemon Cherry","Guava Jelly","Tropical Punch","Lychee"],"💜 パープル系":["Granddaddy Purple","Purple Kush","Purple Punch","Forbidden Fruit","Black Mamba","Purple Punch OG","Rainbow Beltz","Jealousy Z","Blueberry Kush","Blue Razz Eclair","Purple Sunset","Purple Space Cookies","Grape Diamonds","Mendocino Purps","Deep Purple","Purple Urkle","Purple Afghan Kush","Black Indica","Grape Pie","Lavender Jones","Dark Purple OG","Black Ice","Purple Milk","Grape Stomper","Blackwater","Sirius Black","Purple Trainwreck","Mendocino Skunk","Purple Haze #1","Violet Fog"],"🌿 インディカ強め":["Bubba Kush","Afghan Kush","G13","MK Ultra","Kosher Kush","Crystal Candy","Cake Bomb","Bangers and Mac #1","9 Pound Hammer","Master Kush","Romulan","Sensi Star","Critical Mass","Northern Soul","Death Star","Skywalker OG","Platinum OG","Fire OG","Banana Kush","Pre-98 Bubba Kush","Lamb's Bread","Hindu Kush","Black Domina","Granddaddy Black","Kimbo Kush","Grandma's Girl","Afghani #1","Big Bud","Blue Mystic","Shark Attack"],"⚡ サティバ強め":["Durban Poison","Green Crack","Super Silver Haze","Trainwreck","Amnesia Haze","Galileo Kush","Tangerine Dream","Moby Dick","Strawberry Fields","Ghost Train Haze","Maui Wowie","Hawaiian Snow","Neville's Haze","Kali Mist","Laughing Buddha","Arjan's Haze","Chocolope Haze","Lemon Skunk","Liberty Haze","Power Plant","Diablo Rojo","Sweet Mandarine Zkittlez","Electric Lemonade","Thai Haze","Pure Power Plant","Amnesia","Shining Silver Haze","Lemon Power Haze","Tropicana Haze","Cinderella Pineapple"],"🧪 ハイブリッド新世代":["Gorilla Glue #4","Bruce Banner","Mimosa","Do-Si-Dos","Animal Cookies","Gary Payton","Tropicana Cookies","MAC 1","Permanent Marker","Gushers","Snoop Dogg OG","Jealousy","Punch Pie","GOAT'lato","Pink Gorilla","Emerald Tranquility","Slurricane","London Pound Cake","Animal Mints","Motorbreath","Sundae Driver","Jet Fuel Gelato","Grease Monkey","Purple Gasoline","Grape Gasoline","Glitter Bomb","Zoap","Kroma","Diablo OG","Miracle Alien Cookies","Runtz OG","Apex","Jokerz","Biscotti Mintz","Alien Cookies","Sherb Crasher","Project 4516","Platinum Runtz","Space Runtz","Watermelon Mimosa","Sugar Plum Sunset","Ice Cream Mints","Lemon Pound Cake","Blue Slush","Dosido #22","Jenny Kush","Handlebar","Dulce","Bobby Wild","Kitchen Sink","White Mo","Space Lemon Cherry","Hashburger","Dark Web","Zaphire","Georgia Pie","Madelato","Pure Michigan","Candy Gas","Pina Colada","Creme Brulee","Pink Lemonade","Black Ice","Dark Purple OG","Bluci"]};
+
+const BRANDS=[{id:"cocacola",e:"🥤",n:"Coca-Cola",d:"赤×白 筆記体",p:(n)=>`The text "${n}" designed in the style of the Coca-Cola logo, elegant flowing cursive Spencerian calligraphy script, bold deep red with white highlight stroke, dynamic ribbon-like tail, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, high contrast, no bottles`},{id:"budweiser",e:"🍺",n:"Budweiser",d:"赤×金 ビール",p:(n)=>`The text "${n}" in the style of Budweiser logo, bold classic serif lettering, deep crimson red with metallic gold outline, ornate details, regal vintage brewery aesthetic, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supreme",e:"🟥",n:"Supreme",d:"赤BOX×白字",p:(n)=>`The text "${n}" in the style of Supreme streetwear, bold Futura Heavy italic white text inside a solid bright red rectangle, minimal flat design, stark contrast, horizontal 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"lv",e:"👜",n:"Louis Vuitton",d:"LV モノグラム",p:(n)=>`The text "${n}" in the style of Louis Vuitton, elegant serif in champagne gold on dark chocolate brown, LV monogram texture, refined luxury aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"nike",e:"👟",n:"Nike",d:"ボールド×斜体",p:(n)=>`The text "${n}" in the style of Nike, bold condensed athletic sans-serif, extreme italic lean, pure black on white, minimal high-impact typographic design, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"redbull",e:"🐂",n:"Red Bull",d:"紺×銀×赤",p:(n)=>`The text "${n}" in the style of Red Bull energy branding, bold dynamic lettering, deep navy with silver metallic highlight and red accent, angular sports typeface, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"harley",e:"🦅",n:"Harley-Davidson",d:"バイカーロゴ",p:(n)=>`The text "${n}" in the style of Harley-Davidson, bold vintage American biker lettering, orange and black, shield banner framing, gritty worn texture, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"stussy",e:"🛹",n:"Stüssy",d:"手書きスケーター",p:(n)=>`The text "${n}" in the style of Stüssy, loose handwritten graffiti-influenced script, casual urban handwriting, black ink on white, slightly imperfect, skate culture aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"jackdaniels",e:"🥃",n:"Jack Daniel's",d:"黒ラベルWhiskey",p:(n)=>`The text "${n}" in the style of Jack Daniel's, classic black label with white serif and script, vintage distillery label, filigree border details, high contrast black and white, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"palace",e:"🔺",n:"Palace",d:"レトロスケート",p:(n)=>`The text "${n}" in the style of Palace Skateboards, bold retro italic block lettering, British streetwear attitude, strong weight contrast, black and white, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"offwhite",e:"🏷",n:"Off-White™",d:"クォート×工業系",p:(n)=>`The text "\\"${n}\\"" in the style of Off-White by Virgil Abloh, helvetica bold industrial typography with quotation marks, diagonal stripe accent, stark black on white, construction tape motif, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"monster",e:"⚡",n:"Monster Energy",d:"緑爪痕×ブラック",p:(n)=>`The text "${n}" in the style of Monster Energy, aggressive claw-scratch letterforms in neon green on glossy black, sharp diagonal slashes, metallic green glow effect, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"gucci",e:"🌿",n:"Gucci",d:"GG ゴールド×黒",p:(n)=>`The text "${n}" in the style of Gucci, elegant serif with double-G monogram influence, rich gold on black, refined Italian luxury, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"versace",e:"🏛",n:"Versace",d:"バロック×ゴールド",p:(n)=>`The text "${n}" in the style of Versace, bold baroque serif in bright gold, ornate Greek key border details, luxury Italian aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"bape",e:"🦍",n:"BAPE",d:"カモ柄×アーチ",p:(n)=>`The text "${n}" in the style of A Bathing Ape, bold arched varsity lettering, camouflage pattern texture within letters, vibrant colors, Japanese streetwear aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"thrasher",e:"🔥",n:"Thrasher",d:"炎×オレンジ",p:(n)=>`The text "${n}" in the style of Thrasher Magazine, bold aggressive gothic lettering in orange and red, fire flames integrated into letters, hardcore skate aesthetic, black background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"vans",e:"✔️",n:"Vans",d:"チェッカー×白黒",p:(n)=>`The text "${n}" in the style of Vans, bold clean sans-serif with checkerboard pattern accent, black and white high contrast, skate and surf aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rolex",e:"👑",n:"Rolex",d:"クラウン×グリーン",p:(n)=>`The text "${n}" in the style of Rolex, refined classic serif in gold on deep green or black, subtle crown motif, prestige Swiss watchmaker aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"ferrari",e:"🐎",n:"Ferrari",d:"跳馬×赤",p:(n)=>`The text "${n}" in the style of Ferrari, bold elegant italic in Ferrari red with yellow and black accents, Italian automotive luxury, dynamic composition, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"lamborghini",e:"🐂",n:"Lamborghini",d:"牛×ゴールド",p:(n)=>`The text "${n}" in the style of Lamborghini, angular aggressive bold in gold and black, sharp geometric letterforms, Italian exotic car aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"adidas",e:"3️⃣",n:"Adidas",d:"3ストライプ",p:(n)=>`The text "${n}" in the style of Adidas, clean bold sans-serif in black and white, three parallel stripes accent, minimal modern athletic aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rollingstones",e:"👅",n:"Rolling Stones",d:"リップ×ロック",p:(n)=>`The text "${n}" in the style of The Rolling Stones, bold psychedelic rock lettering, tongue and lips motif influence, vibrant red and black, 1970s rock poster style, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"wutang",e:"🗡️",n:"Wu-Tang Clan",d:"黒×金 Hip-Hop",p:(n)=>`The text "${n}" in the style of Wu-Tang Clan, bold gothic martial arts-inspired lettering in black and gold, East-meets-West aesthetic, powerful rap visual identity, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"hennessy",e:"🥂",n:"Hennessy",d:"金×黒 コニャック",p:(n)=>`The text "${n}" in the style of Hennessy cognac, elegant serif in gold and black, French luxury spirits label, arm-and-axe crest influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"nasa",e:"🚀",n:"NASA",d:"宇宙×青×赤",p:(n)=>`The text "${n}" in the style of NASA, bold retro worm-logo-inspired lettering, deep space blue and red with white, vintage 1970s space age typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"pokemon",e:"⚡",n:"Pokémon",d:"黄×青 ポップ",p:(n)=>`The text "${n}" in the style of Pokémon logo, bold rounded bubbly lettering in bright yellow with blue outline and inner shadow, playful Japanese pop culture, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"dragonball",e:"🐉",n:"Dragon Ball Z",d:"オレンジ×炎",p:(n)=>`The text "${n}" in the style of Dragon Ball Z, bold dramatic lettering with flame and energy aura effects, vibrant orange and yellow with glowing power-up, intense action anime, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"naruto",e:"🍥",n:"Naruto",d:"オレンジ×忍者",p:(n)=>`The text "${n}" in the style of Naruto anime, bold dynamic lettering with ninja chakra energy, orange and black with swirling wind effects, Japanese anime action style, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"champion",e:"🏆",n:"Champion",d:"コレジエート",p:(n)=>`The text "${n}" in the style of Champion athletic apparel, bold classic athletic script, navy blue and gold, vintage American sportswear collegiate feel, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"fender",e:"🎸",n:"Fender",d:"スパゲッティロゴ",p:(n)=>`The text "${n}" in the style of Fender guitar, classic spaghetti-style retro script in black, 1950s American rock and roll aesthetic, vintage instrument brand typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"playboy",e:"🐰",n:"Playboy",d:"バニー×ゴールド",p:(n)=>`The text "${n}" in the style of Playboy magazine, elegant classic serif in gold, sophisticated magazine masthead, bunny silhouette motif influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supremexlv",e:"🔴",n:"Supreme × LV",d:"コラボ 赤×モノグラム",p:(n)=>`The text "${n}" in the style of the Supreme x Louis Vuitton collab, red box with white lettering on LV monogram pattern, luxury streetwear mashup, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`}];
+
+const NEG=`realistic photo, 3D render, blurry, low contrast, watermark, drop shadow on background, complex background, cluttered layout, multiple text elements, illegible letters, distorted characters`;
+
+// ═══════════════════════════════════
+// COLOR SYSTEM
+// ═══════════════════════════════════
+const MAX_C=5;
+const cardColors=[[],[],[]];
+const RAND_POOLS=[['lime green','yellow','orange'],['electric blue','cyan','white'],['hot pink','purple','magenta'],['crimson red','gold','black'],['neon green','dark green','yellow'],['deep purple','violet','pink'],['orange','red','amber'],['sky blue','navy','silver'],['turquoise','teal','white'],['red','yellow','green']];
+const BLEND_PROMPTS={'gradient-lr':(c)=>`smooth left-to-right gradient blending ${c} flowing seamlessly across all letters as one unified color wash`,'gradient-radial':(c)=>`radial burst gradient ${c} exploding outward from center of the letters, colors radiating in all directions`,'swirl':(c)=>`swirling vortex color mix of ${c} spiraling and twisting throughout all the letters`,'scattered':(c)=>`scattered splatter mix of ${c} randomly distributed across all letters like paint splashes`,'solid':(c)=>`solid flat color fill using ${c.split(',')[0].trim()}, clean and uniform`};
+
+function getBlendStr(vi){
+  const colors=cardColors[vi];
+  const blend=document.getElementById('blend'+vi)?.value||'gradient-lr';
+  const colorStr=colors.length>0?colors.join(', '):RAND_POOLS[Math.floor(Math.random()*RAND_POOLS.length)].join(', ');
+  return BLEND_PROMPTS[blend](colorStr);
+}
+
+function buildDots(vi){
+  const el=document.getElementById('dots'+vi);
+  const badge=document.getElementById('badge'+vi);
+  if(!el)return;
+  el.innerHTML='';
+  cardColors[vi].forEach((hex,i)=>{
+    const d=document.createElement('div');d.className='cdot filled';d.style.background=hex;
+    const inp=document.createElement('input');inp.type='color';inp.value=hex;
+    inp.addEventListener('change',function(){cardColors[vi][i]=this.value;buildDots(vi);updateAll();});
+    const x=document.createElement('div');x.className='cdot-x';x.textContent='×';
+    x.addEventListener('click',function(){cardColors[vi].splice(i,1);buildDots(vi);updateAll();});
+    d.appendChild(inp);d.appendChild(x);el.appendChild(d);
+  });
+  if(cardColors[vi].length<MAX_C){
+    const add=document.createElement('div');add.className='cdot empty';
+    const plus=document.createElement('div');plus.className='cdot-plus';plus.textContent='+';
+    const addInp=document.createElement('input');addInp.type='color';addInp.value='#c8ff00';
+    addInp.addEventListener('change',function(){cardColors[vi].push(this.value);buildDots(vi);updateAll();});
+    add.appendChild(plus);add.appendChild(addInp);el.appendChild(add);
+  }
+  if(badge){badge.textContent=cardColors[vi].length===0?'RND':cardColors[vi].length+'CLR';badge.className=cardColors[vi].length===0?'rand-b':'set-b';}
+}
+function initDots(){[0,1,2].forEach(vi=>buildDots(vi));}
+
+// ═══════════════════════════════════
+// BACKGROUND SYSTEM
+// ═══════════════════════════════════
+const BACKGROUNDS=[
+  {id:'transparent',label:'CLEAR',color:'',prompt:'transparent background, isolated design with no background, PNG-ready cutout'},
+  {id:'white',label:'WHT',color:'#ffffff',prompt:'clean white background'},
+  {id:'black',label:'BLK',color:'#111111',prompt:'solid black background'},
+  {id:'gray',label:'GRY',color:'#555555',prompt:'dark grey background'},
+  {id:'smoke',label:'SMK',color:'#c8c8c8',prompt:'thick billowing cannabis smoke cloud background, hazy atmospheric fog'},
+  {id:'wall',label:'WLL',color:'#8b7355',prompt:'rough urban concrete wall texture background, weathered brick and paint'},
+  {id:'cyber',label:'CYB',color:'#0d0221',prompt:'dark cyberpunk neon city background, glowing grid lines and purple-blue neon lights'},
+  {id:'forest',label:'FST',color:'#1a3a1a',prompt:'deep dark forest background, mysterious dark green with light rays'},
+  {id:'fire',label:'FIR',color:'#8b1a00',prompt:'dramatic fire and flames background, blazing orange and red inferno'},
+  {id:'galaxy',label:'GLX',color:'#0a0a2a',prompt:'deep space galaxy background, stars and nebula purple-blue cosmic'}
+];
+const cardBgs=['transparent','transparent','transparent'];
+const cardBgCustom=['#ffffff','#ffffff','#ffffff'];
+const cardBgImages=[null,null,null];
+
+function getBgStr(vi){
+  if(cardBgImages[vi]&&cardBgs[vi]==='lib-image')return cardBgImages[vi].prompt;
+  const bgId=cardBgs[vi];
+  if(bgId==='transparent')return'transparent background, isolated design with no background, PNG-ready cutout';
+  if(bgId==='custom')return`solid ${cardBgCustom[vi]} color background`;
+  const bg=BACKGROUNDS.find(b=>b.id===bgId);
+  return bg?bg.prompt:'transparent background';
+}
+
+function buildBgOpts(vi){
+  const el=document.getElementById('bgOpts'+vi);if(!el)return;
+  el.innerHTML='';
+  BACKGROUNDS.forEach(bg=>{
+    const d=document.createElement('div');
+    d.className='bdot'+(cardBgs[vi]===bg.id?' on':'');
+    d.title=bg.label;
+    d.style.background=bg.id==='transparent'?'repeating-linear-gradient(45deg,#2a2a2a 0,#2a2a2a 3px,#333 3px,#333 6px)':bg.color;
+    d.addEventListener('click',function(){cardBgs[vi]=bg.id;buildBgOpts(vi);updateAll();});
+    el.appendChild(d);
+  });
+  const cw=document.createElement('div');cw.className='bg-cw'+(cardBgs[vi]==='custom'?' on':'');cw.title='CUSTOM';
+  const prev=document.createElement('div');prev.className='bg-cp';prev.style.background=cardBgCustom[vi];
+  const cinp=document.createElement('input');cinp.type='color';cinp.value=cardBgCustom[vi];
+  cinp.addEventListener('change',function(){cardBgCustom[vi]=this.value;cardBgs[vi]='custom';buildBgOpts(vi);updateAll();});
+  cw.appendChild(prev);cw.appendChild(cinp);el.appendChild(cw);
+}
+function initBgOpts(){[0,1,2].forEach(vi=>buildBgOpts(vi));}
+
+// ═══════════════════════════════════
+// STATE
+// ═══════════════════════════════════
+let selected=[],customList=[],activeCustom=null,activeBrand=null;
+window._p=['','',''];window._bp='';
+function getText(){return activeCustom||selected.join(', ');}
+
+// ═══════════════════════════════════
+// PROMPTS
+// ═══════════════════════════════════
+function bV1(n,blend,bg){return`The text "${n}" in authentic hand-painted graffiti wildstyle lettering, complex interlocking angular letterforms with pointed arrow extensions and sharp serifs shooting outward, letters overlapping and connecting each other, ${blend}, deep 3D bevel with dark shadow, thick white inner outline and heavy black outer outline, paint drips and spray splatter texture, urban wall mural aesthetic, ${bg}, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, NOT a digital font, hand-drawn graffiti art`;}
+function bV2(n,blend,bg){return`The text "${n}" in bold ornate blackletter gothic calligraphy style, thick medieval-inspired letterforms with dramatic hairline serifs and decorative flourishes, ${blend} on the letters, aged parchment or distressed texture, thick white stroke outline, heavy black drop shadow, classic tattoo lettering aesthetic, ${bg}, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, high contrast`;}
+function bV3(n,blend,bg){return`The text "${n}" in futuristic racing typography, geometric sans-serif letterforms with sharp diagonal cut-ins and notches sliced into the letters, each letter has angular cutaway sections like speed slashes, ${blend}, thick black outer outline, perfectly horizontal flat baseline with NO upward slant, letters all aligned on the same horizontal level, speed line accent marks extending from left side, ${bg}, sticker design, horizontal 3:1 ratio (60mm x 20mm), UVDTF print ready, vector-clean, NO graffiti, NO drips, NO upward diagonal baseline`;}
+
+function updateAll(){
+  const n=getText();
+  if(!n){
+    document.getElementById('pb0').innerHTML='<span class="pc-dash">// SELECT STRAIN TO GENERATE PROMPT</span>';
+    ['pb1','pb2'].forEach(id=>document.getElementById(id).innerHTML='<span class="pc-dash">—</span>');
+    document.getElementById('negEl').textContent='—';
+    document.getElementById('brandOut').style.display='none';
+    window._p=['','',''];window._bp='';updateSelBox();return;
+  }
+  const p0=bV1(n,getBlendStr(0),getBgStr(0));
+  const p1=bV2(n,getBlendStr(1),getBgStr(1));
+  const p2=bV3(n,getBlendStr(2),getBgStr(2));
+  window._p=[p0,p1,p2];
+  document.getElementById('pb0').textContent=p0;
+  document.getElementById('pb1').textContent=p1;
+  document.getElementById('pb2').textContent=p2;
+  document.getElementById('negEl').textContent=NEG;
+  if(activeBrand){
+    const b=BRANDS.find(x=>x.id===activeBrand);
+    if(b){const bp=b.p(n);window._bp=bp;document.getElementById('brandOutLbl').textContent=b.e+' '+b.n;document.getElementById('pbB').textContent=bp;document.getElementById('brandOut').style.display='block';}
+  }else{document.getElementById('brandOut').style.display='none';window._bp='';}
+  updateSelBox();
+  saveToHistory(n,p0);
+}
+
+// ═══════════════════════════════════
+// COPY
+// ═══════════════════════════════════
+function showLeo(id){const l=document.getElementById(id);if(l)l.classList.add('show');}
+function copyVar(i){
+  const t=window._p[i];if(!t)return;
+  navigator.clipboard.writeText(t+'\n\n[Negative]\n'+NEG);
+  const btns=document.querySelectorAll('.cpbtn');
+  btns[i].textContent='OK ✓';btns[i].classList.add('ok');
+  setTimeout(()=>{btns[i].textContent='COPY';btns[i].classList.remove('ok');},1800);
+  showLeo('leo'+i);
+  showToast('// COPIED → PASTE IN LEONARDO AI');
+}
+function copyBrand(){
+  if(!window._bp)return;
+  navigator.clipboard.writeText(window._bp+'\n\n[Negative]\n'+NEG);
+  const btn=document.querySelector('#brandOut .cpbtn');
+  btn.textContent='OK ✓';btn.classList.add('ok');
+  setTimeout(()=>{btn.textContent='COPY';btn.classList.remove('ok');},1800);
+  showLeo('leoB');
+  showToast('// COPIED → PASTE IN LEONARDO AI');
+}
+function copyAll(){
+  const ps=window._p;if(!ps[0])return;
+  let t=`=== GRAFFITI WILDSTYLE ===\n${ps[0]}\n\n=== BLACKLETTER GOTHIC ===\n${ps[1]}\n\n=== FUTURISTIC SPEED CUT ===\n${ps[2]}`;
+  if(window._bp)t+=`\n\n=== BRAND STYLE ===\n${window._bp}`;
+  t+=`\n\n=== NEGATIVE PROMPT ===\n${NEG}`;
+  navigator.clipboard.writeText(t);
+  ['leo0','leo1','leo2','leoB'].forEach(id=>showLeo(id));
+  const btn=document.getElementById('copyAllBtn');
+  btn.innerHTML='✓ ALL COPIED';btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML='📋 COPY ALL PROMPTS';btn.classList.remove('ok');},2000);
+  showToast('// ALL PROMPTS COPIED');
+}
+
+// ═══════════════════════════════════
+// FEATURE 1: HISTORY & FAVORITES
+// ═══════════════════════════════════
+const MAX_HIST=50;
+function loadHist(){try{return JSON.parse(localStorage.getItem('sp_hist')||'[]');}catch(e){return[];}}
+function loadFavs(){try{return JSON.parse(localStorage.getItem('sp_favs')||'[]');}catch(e){return[];}}
+function saveHist(arr){try{localStorage.setItem('sp_hist',JSON.stringify(arr));}catch(e){}}
+function saveFavs(arr){try{localStorage.setItem('sp_favs',JSON.stringify(arr));}catch(e){}}
+
+function saveToHistory(strain,prompt){
+  if(!strain||!prompt)return;
+  const hist=loadHist();
+  const entry={id:Date.now(),strain,prompt,time:new Date().toLocaleString('ja-JP')};
+  hist.unshift(entry);
+  if(hist.length>MAX_HIST)hist.pop();
+  saveHist(hist);
+}
+
+let favStar=[false,false,false];
+function toggleFav(vi){
+  const t=window._p[vi];if(!t)return;
+  const n=getText();if(!n)return;
+  const styles=['Graffiti Wildstyle','Blackletter Gothic','Futuristic Speed Cut'];
+  const favs=loadFavs();
+  const key=n+'__'+vi;
+  const idx=favs.findIndex(f=>f.key===key);
+  if(idx>=0){
+    favs.splice(idx,1);favStar[vi]=false;
+    document.getElementById('favBtn'+vi).textContent='🤍';
+    showToast('// REMOVED FROM FAVORITES');
+  }else{
+    favs.unshift({key,strain:n,style:styles[vi],prompt:t,time:new Date().toLocaleString('ja-JP')});
+    favStar[vi]=true;
+    document.getElementById('favBtn'+vi).textContent='⭐';
+    showToast('// SAVED TO FAVORITES ⭐');
+  }
+  saveFavs(favs);
+}
+
+function switchHistTab(id,btn){
+  document.querySelectorAll('.hist-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.hist-pane').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('histPane-'+id).classList.add('on');
+  if(id==='fav')renderFavs();else renderHistList();
+}
+
+function renderFavs(){
+  const pane=document.getElementById('histPane-fav');
+  const favs=loadFavs();
+  if(!favs.length){pane.innerHTML='<div class="hist-empty">// NO FAVORITES YET<br>COPYボタン横の🤍をタップして保存</div>';return;}
+  pane.innerHTML='';
+  favs.forEach(f=>{
+    const div=document.createElement('div');div.className='hist-item';
+    div.innerHTML=`<div class="hist-item-head"><span class="hist-strain">⭐ ${f.strain} · ${f.style}</span><span class="hist-time">${f.time}</span></div><div class="hist-preview">${f.prompt}</div><div class="hist-actions"><button class="hist-act-btn" onclick="reloadFromHist('${f.prompt.replace(/'/g,"\\'")}')">▶ USE</button><button class="hist-act-btn" onclick="copyHistItem('${f.prompt.replace(/'/g,"\\'")}')">📋 COPY</button><button class="hist-act-btn del" onclick="deleteFav('${f.key}')">✕ DEL</button></div>`;
+    pane.appendChild(div);
+  });
+}
+function renderHistList(){
+  const pane=document.getElementById('histPane-hist');
+  const hist=loadHist();
+  if(!hist.length){pane.innerHTML='<div class="hist-empty">// NO HISTORY YET</div>';return;}
+  pane.innerHTML='';
+  hist.forEach(h=>{
+    const div=document.createElement('div');div.className='hist-item';
+    div.innerHTML=`<div class="hist-item-head"><span class="hist-strain">${h.strain}</span><span class="hist-time">${h.time}</span></div><div class="hist-preview">${h.prompt}</div><div class="hist-actions"><button class="hist-act-btn" onclick="copyHistItem('${h.prompt.replace(/'/g,"\\'")}')">📋 COPY</button><button class="hist-act-btn del" onclick="deleteHist(${h.id})">✕ DEL</button></div>`;
+    pane.appendChild(div);
+  });
+}
+function copyHistItem(p){navigator.clipboard.writeText(p+'\n\n[Negative]\n'+NEG);showToast('// COPIED');}
+function deleteFav(key){const favs=loadFavs().filter(f=>f.key!==key);saveFavs(favs);renderFavs();}
+function deleteHist(id){const hist=loadHist().filter(h=>h.id!==id);saveHist(hist);renderHistList();}
+function reloadFromHist(p){navigator.clipboard.writeText(p+'\n\n[Negative]\n'+NEG);closeModal('hist');showToast('// COPIED — PASTE IN LEONARDO AI');}
+
+// ═══════════════════════════════════
+// FEATURE 2: BATCH EXPORT
+// ═══════════════════════════════════
+function openBatch(){
+  if(!selected.length&&!activeCustom){showToast('// SELECT STRAINS FIRST');return;}
+  openModal('batch');
+}
+
+function runBatch(fmt){
+  const targets=activeCustom?[activeCustom]:selected;
+  if(!targets.length){showToast('// SELECT STRAINS FIRST');return;}
+  const doV1=document.getElementById('batchV1').checked;
+  const doV2=document.getElementById('batchV2').checked;
+  const doV3=document.getElementById('batchV3').checked;
+  const doNeg=document.getElementById('batchNeg').checked;
+
+  const prog=document.getElementById('batchProgress');
+  const bar=document.getElementById('batchBar');
+  const status=document.getElementById('batchStatus');
+  prog.classList.add('show');
+
+  let lines=[];
+  targets.forEach((name,i)=>{
+    bar.style.width=Math.round((i/targets.length)*100)+'%';
+    status.textContent=`// GENERATING ${i+1}/${targets.length}: ${name}`;
+    if(fmt==='csv'){
+      if(i===0)lines.push('Strain,Style,Prompt');
+      if(doV1)lines.push(`"${name}","Graffiti Wildstyle","${bV1(name,getBlendStr(0),getBgStr(0)).replace(/"/g,'""')}"`);
+      if(doV2)lines.push(`"${name}","Blackletter Gothic","${bV2(name,getBlendStr(1),getBgStr(1)).replace(/"/g,'""')}"`);
+      if(doV3)lines.push(`"${name}","Futuristic Speed Cut","${bV3(name,getBlendStr(2),getBgStr(2)).replace(/"/g,'""')}"`);
+      if(doNeg)lines.push(`"${name}","NEGATIVE","${NEG.replace(/"/g,'""')}"`);
+    }else{
+      lines.push(`${'='.repeat(40)}`);
+      lines.push(`STRAIN: ${name}`);
+      lines.push(`${'='.repeat(40)}`);
+      if(doV1)lines.push(`[GRAFFITI WILDSTYLE]\n${bV1(name,getBlendStr(0),getBgStr(0))}\n`);
+      if(doV2)lines.push(`[BLACKLETTER GOTHIC]\n${bV2(name,getBlendStr(1),getBgStr(1))}\n`);
+      if(doV3)lines.push(`[FUTURISTIC SPEED CUT]\n${bV3(name,getBlendStr(2),getBgStr(2))}\n`);
+      if(doNeg)lines.push(`[NEGATIVE PROMPT]\n${NEG}\n`);
+    }
+  });
+
+  bar.style.width='100%';
+  status.textContent=`// COMPLETE — ${targets.length} STRAINS`;
+
+  const blob=new Blob([lines.join('\n')],{type:fmt==='csv'?'text/csv;charset=utf-8':'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`strain-prompts-${Date.now()}.${fmt}`;a.click();
+  URL.revokeObjectURL(url);
+  setTimeout(()=>{prog.classList.remove('show');bar.style.width='0%';},2000);
+  showToast(`// ${targets.length} STRAINS EXPORTED AS ${fmt.toUpperCase()}`);
+}
+
+// ═══════════════════════════════════
+// FEATURE 3: QR CODE
+// ═══════════════════════════════════
+function openQR(){
+  const n=getText();
+  const p=window._p[0];
+  if(!n||!p){showToast('// GENERATE PROMPT FIRST');return;}
+  openModal('qr');
+  const box=document.getElementById('qrBox');box.innerHTML='';
+  const info=document.getElementById('qrInfo');
+  const shortP=p.substring(0,200)+'...';
+  try{
+    new QRCode(box,{text:shortP,width:180,height:180,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+    info.innerHTML=`// STRAIN: ${n}<br>// QRをスキャンするとプロンプトが表示されます<br>// (先頭200文字)`;
+  }catch(e){
+    box.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:10px;color:#666;padding:20px;text-align:center">QR生成エラー<br>ライブラリ読み込み中...</div>';
+    info.textContent='// QRCode.js loading...';
+  }
+}
+function downloadQR(){
+  const canvas=document.querySelector('#qrBox canvas');
+  if(!canvas){showToast('// QR NOT READY');return;}
+  const a=document.createElement('a');a.download=`strain-qr-${getText()}-${Date.now()}.png`;a.href=canvas.toDataURL('image/png');a.click();
+  showToast('// QR DOWNLOADED');
+}
+
+// ═══════════════════════════════════
+// FEATURE 4: AI COLOR SUGGEST
+// ═══════════════════════════════════
+let aiTargetVi='all';
+function openAiColor(vi){
+  aiTargetVi=vi;
+  const n=getText();
+  document.getElementById('aiStrainDisp').textContent=n||'// SELECT A STRAIN FIRST';
+  document.getElementById('aiStatusTxt').textContent='// STYLEボタンを押してAIに配色を提案してもらいましょう';
+  document.getElementById('aiPalettes').innerHTML='';
+  document.getElementById('aiSpin').style.display='none';
+  openModal('aiclr');
+}
+
+async function fetchAiColors(vi){
+  const n=getText();
+  if(!n){showToast('// SELECT STRAIN FIRST');return;}
+  aiTargetVi=vi;
+  const spin=document.getElementById('aiSpin');
+  const statusTxt=document.getElementById('aiStatusTxt');
+  const palettesEl=document.getElementById('aiPalettes');
+  spin.style.display='inline-block';
+  statusTxt.textContent='// CLAUDE IS ANALYZING THE STRAIN...';
+  palettesEl.innerHTML='';
+
+  const styleNames=['Graffiti Wildstyle','Blackletter Gothic','Futuristic Speed Cut'];
+  const styleName=vi==='all'?'all 3 styles (Graffiti Wildstyle, Blackletter Gothic, Futuristic Speed Cut)':styleNames[vi];
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:`You are a creative color designer for cannabis strain sticker art (UVDTF printing on BIC lighters).
+
+Strain name: "${n}"
+Style: ${styleName}
+
+Suggest 3 color palettes for this strain that match its vibe, flavor profile, and aesthetics. Each palette should have 3-5 hex color codes.
+
+Respond ONLY with valid JSON, no markdown, no explanation:
+{
+  "palettes": [
+    {
+      "name": "PALETTE NAME IN CAPS",
+      "vibe": "one line description of the mood/vibe",
+      "colors": ["#hexcode1","#hexcode2","#hexcode3"]
+    }
+  ]
+}`}]
+      })
+    });
+    const data=await res.json();
+    spin.style.display='none';
+    const txt=data.content.map(c=>c.text||'').join('');
+    const clean=txt.replace(/```json|```/g,'').trim();
+    const parsed=JSON.parse(clean);
+    statusTxt.textContent=`// ${parsed.palettes.length} PALETTES SUGGESTED FOR "${n}"`;
+    parsed.palettes.forEach((pal,pi)=>{
+      const div=document.createElement('div');div.className='ai-palette';
+      const swatchesHtml=pal.colors.map(c=>`<div class="ai-swatch" style="background:${c}" title="${c}"></div>`).join('');
+      const applyTargets=vi==='all'?[0,1,2]:[vi];
+      const btnHtml=applyTargets.map(t=>`<button class="ai-apply-btn" onclick="applyAiPalette(${JSON.stringify(pal.colors)},${t})">${vi==='all'?['🌀','⛪','🏎️'][t]+' STYLE '+(t+1):'APPLY'}</button>`).join('');
+      div.innerHTML=`<div class="ai-swatches">${swatchesHtml}</div><div class="ai-palette-body"><div class="ai-palette-name">${pal.name}</div><div class="ai-palette-vibe">// ${pal.vibe}</div><div class="ai-palette-btns">${btnHtml}</div></div>`;
+      palettesEl.appendChild(div);
+    });
+  }catch(e){
+    spin.style.display='none';
+    statusTxt.textContent='// ERROR — TRY AGAIN';
+    console.error(e);
+  }
+}
+
+function applyAiPalette(colors,vi){
+  cardColors[vi]=colors.slice(0,MAX_C);
+  buildDots(vi);updateAll();
+  showToast(`// AI PALETTE APPLIED TO STYLE ${vi+1}`);
+}
+
+// ═══════════════════════════════════
+// FEATURE 5: PROMPT PREVIEW
+// ═══════════════════════════════════
+const previewState=[false,false,false];
+
+function togglePreview(vi){
+  const n=getText();
+  const p=window._p[vi];
+  if(!p){showToast('// GENERATE PROMPT FIRST');return;}
+  previewState[vi]=!previewState[vi];
+  const area=document.getElementById('prevArea'+vi);
+  const btn=document.getElementById('prevBtn'+vi);
+  if(previewState[vi]){
+    area.classList.add('show');
+    btn.classList.add('active');
+    generatePreview(vi,p);
+  }else{
+    area.classList.remove('show');
+    btn.classList.remove('active');
+  }
+}
+
+function toggleAllPreviews(){
+  const n=getText();
+  if(!n){showToast('// SELECT STRAIN FIRST');return;}
+  [0,1,2].forEach(vi=>{
+    if(!previewState[vi]&&window._p[vi])togglePreview(vi);
+  });
+}
+
+async function generatePreview(vi,prompt){
+  const spinner=document.getElementById('prevSpinner'+vi);
+  const img=document.getElementById('prevImg'+vi);
+  spinner.classList.remove('hidden');
+  img.classList.remove('loaded');
+
+  // Pollinations AI — free, no key needed
+  const encoded=encodeURIComponent(prompt.substring(0,400));
+  const url=`https://image.pollinations.ai/prompt/${encoded}?width=600&height=200&model=flux&nologo=true&seed=${Math.floor(Math.random()*9999)}`;
+
+  img.onload=()=>{spinner.classList.add('hidden');img.classList.add('loaded');};
+  img.onerror=()=>{spinner.textContent='// PREVIEW ERROR — TRY AGAIN';};
+  img.src=url;
+}
+
+// ═══════════════════════════════════
+// LIBRARY
+// ═══════════════════════════════════
+let libTargetVi=0;
+const UNSPLASH_KEY='dOIxckm6IFi0GJFLVMDw_gA1D7F3Mne1Kfhh_ygSl0';
+
+async function searchLib(query){
+  const inp=document.getElementById('libSearchInp');
+  if(query)inp.value=query;
+  const q=inp.value.trim();if(!q)return;
+  const grid=document.getElementById('libGrid');
+  const loading=document.getElementById('libLoading');
+  grid.innerHTML='';loading.style.display='flex';
+  try{
+    const res=await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(q)}&per_page=24&orientation=landscape&client_id=${UNSPLASH_KEY}`);
+    const data=await res.json();
+    loading.style.display='none';
+    if(!data.results||!data.results.length){grid.innerHTML='<div class="lib-empty">// NO RESULTS</div>';return;}
+    data.results.forEach(photo=>{
+      const card=document.createElement('div');card.className='lib-img-card';
+      if(cardBgImages[libTargetVi]&&cardBgImages[libTargetVi].id===photo.id)card.classList.add('selected');
+      const img=document.createElement('img');img.src=photo.urls.small;img.loading='lazy';
+      const check=document.createElement('div');check.className='lib-check';check.textContent='✓ SEL';
+      const credit=document.createElement('div');credit.className='lib-credit-tag';credit.textContent='📷 '+photo.user.name;
+      card.appendChild(img);card.appendChild(check);card.appendChild(credit);
+      card.addEventListener('click',()=>{
+        document.querySelectorAll('.lib-img-card').forEach(c=>c.classList.remove('selected'));
+        card.classList.add('selected');
+        const desc=photo.alt_description||photo.description||q;
+        cardBgImages[libTargetVi]={id:photo.id,thumb:photo.urls.thumb,url:photo.urls.regular,prompt:`${desc} background, photographic texture, high quality`,credit:photo.user.name};
+        cardBgs[libTargetVi]='lib-image';
+        buildBgOpts(libTargetVi);renderLibThumb(libTargetVi);updateAll();
+        document.getElementById('libSelInfo').textContent='// '+photo.user.name;
+        setTimeout(()=>closeModal('lib'),400);
+      });
+      grid.appendChild(card);
+    });
+  }catch(e){loading.style.display='none';grid.innerHTML='<div class="lib-empty">// ERROR LOADING</div>';}
+}
+
+function openLibModal(vi){
+  libTargetVi=vi;
+  document.getElementById('libModalTitle').textContent=`// BG LIBRARY — STYLE ${vi+1}`;
+  document.getElementById('libSelInfo').textContent='';
+  openModal('lib');
+}
+
+function renderLibThumb(vi){
+  const wrap=document.getElementById('libThumb'+vi);if(!wrap)return;
+  wrap.innerHTML='';
+  const img=cardBgImages[vi];if(!img)return;
+  const thumb=document.createElement('img');thumb.src=img.thumb;thumb.className='lib-thumb';thumb.title=img.credit;
+  thumb.addEventListener('click',()=>openLibModal(vi));
+  const x=document.createElement('span');x.className='lib-thumb-x';x.textContent='×';
+  x.addEventListener('click',()=>{cardBgImages[vi]=null;cardBgs[vi]='transparent';renderLibThumb(vi);buildBgOpts(vi);updateAll();});
+  wrap.appendChild(thumb);wrap.appendChild(x);
+}
+
+// ═══════════════════════════════════
+// SEL BOX
+// ═══════════════════════════════════
+function updateSelBox(){
+  const box=document.getElementById('selBox');box.innerHTML='';
+  document.getElementById('selN').textContent=selected.length+(activeCustom?' + CUSTOM':'');
+  const items=[...(activeCustom?[{label:'✏ '+activeCustom,isC:true,val:activeCustom}]:[]),...selected.map(s=>({label:s,isC:false,val:s}))];
+  if(!items.length){box.innerHTML='<span class="hint">// SELECT STRAIN OR ENTER TEXT</span>';return;}
+  items.forEach(item=>{
+    const t=document.createElement('div');t.className='stag'+(item.isC?' cstag':'');
+    const e=item.val.replace(/'/g,"\\'");
+    t.innerHTML=`${item.label}<span class="sx" onclick="${item.isC?`setActiveCustom('${e}')`:`removeStrain('${e}')`}">×</span>`;
+    box.appendChild(t);
+  });
+}
+
+// ═══════════════════════════════════
+// STRAINS & BRANDS
+// ═══════════════════════════════════
+function buildStrains(){
+  const el=document.getElementById('strainsEl');
+  for(const[cat,list]of Object.entries(STRAINS)){
+    const block=document.createElement('div');block.className='cat-block';
+    block.innerHTML=`<div class="cat-head"><span class="cat-name">${cat}</span><span class="cat-n">${list.length}</span></div><div class="chips"></div>`;
+    el.appendChild(block);
+    const chips=block.querySelector('.chips');
+    list.forEach(s=>{const c=document.createElement('div');c.className='chip';c.textContent=s;c.dataset.name=s;c.addEventListener('click',()=>toggleStrain(s,c));chips.appendChild(c);});
+  }
+}
+function toggleStrain(name,el){if(selected.includes(name)){selected=selected.filter(s=>s!==name);el.classList.remove('on');}else{selected.push(name);el.classList.add('on');}updateAll();}
+function removeStrain(name){selected=selected.filter(s=>s!==name);document.querySelectorAll('.chip').forEach(c=>{if(c.dataset.name===name)c.classList.remove('on');});updateAll();}
+function filterStrains(q){const lq=q.toLowerCase();document.querySelectorAll('.chip').forEach(c=>{c.style.display=c.dataset.name.toLowerCase().includes(lq)?'':'none';});document.querySelectorAll('.cat-block').forEach(b=>{b.style.display=[...b.querySelectorAll('.chip')].some(c=>c.style.display!=='none')?'':'none';});}
+
+function buildBrands(){
+  const el=document.getElementById('brandsEl');
+  BRANDS.forEach(b=>{
+    const card=document.createElement('div');card.className='bcard';
+    card.innerHTML=`<span class="bce">${b.e}</span><div class="bcn">${b.n}</div><div class="bcd">${b.d}</div>`;
+    card.addEventListener('click',()=>{if(activeBrand===b.id){activeBrand=null;card.classList.remove('on');}else{document.querySelectorAll('.bcard').forEach(c=>c.classList.remove('on'));activeBrand=b.id;card.classList.add('on');}updateAll();});
+    el.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════
+// CUSTOM TEXT
+// ═══════════════════════════════════
+function addCustom(){const inp=document.getElementById('customInp');const v=inp.value.trim();if(!v)return;if(!customList.includes(v))customList.push(v);setActiveCustom(v);inp.value='';}
+function setActiveCustom(v){activeCustom=activeCustom===v?null:v;renderCtags();updateAll();}
+function removeCustom(v){customList=customList.filter(t=>t!==v);if(activeCustom===v){activeCustom=null;updateAll();}renderCtags();}
+function renderCtags(){
+  const el=document.getElementById('ctagsEl');el.innerHTML='';
+  customList.forEach(v=>{const t=document.createElement('div');t.className='ctag'+(activeCustom===v?' on':'');const ve=v.replace(/'/g,"\\'");t.innerHTML=`<span onclick="setActiveCustom('${ve}')">${v}</span><span class="cx" onclick="removeCustom('${ve}')">×</span>`;el.appendChild(t);});
+}
+
+// ═══════════════════════════════════
+// TABS & CLEAR
+// ═══════════════════════════════════
+function switchTab(id,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));btn.classList.add('on');document.getElementById('tp-'+id).classList.add('on');}
+function clearAll(){
+  selected=[];activeBrand=null;activeCustom=null;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  document.querySelectorAll('.bcard').forEach(c=>c.classList.remove('on'));
+  document.querySelectorAll('.ctag').forEach(c=>c.classList.remove('on'));
+  document.querySelectorAll('.leo-link').forEach(l=>l.classList.remove('show'));
+  document.querySelectorAll('.preview-area').forEach(a=>a.classList.remove('show'));
+  document.querySelectorAll('.prev-btn').forEach(b=>b.classList.remove('active'));
+  previewState.fill(false);favStar.fill(false);
+  [0,1,2].forEach(i=>document.getElementById('favBtn'+i).textContent='🤍');
+  updateAll();showToast('// CLEARED');
+}
+
+// ═══════════════════════════════════
+// UTILS
+// ═══════════════════════════════════
+function openModal(id){
+  document.getElementById('modal-'+id).classList.add('open');
+  if(id==='hist'){renderFavs();}
+}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');}
+function shareApp(){navigator.clipboard.writeText(location.href);showToast('// URL COPIED');}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
+
+// ═══════════════════════════════════
+// INIT
+// ═══════════════════════════════════
+document.addEventListener('DOMContentLoaded',function(){
+  initDots();initBgOpts();buildStrains();buildBrands();
+  document.getElementById('customInp').addEventListener('keydown',e=>{if(e.key==='Enter')addCustom();});
+  document.getElementById('libSearchInp').addEventListener('keydown',e=>{if(e.key==='Enter')searchLib();});
+  document.querySelectorAll('.moverlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+});
+</script>
+
+</body>
+</html>
