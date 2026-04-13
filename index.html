@@ -321,15 +321,47 @@ footer{position:relative;z-index:1;background:var(–ink);border-top:3px solid v
 @keyframes glitch{0%,100%{transform:translate(0)}20%{transform:translate(-1px,0)}40%{transform:translate(1px,0)}60%{transform:translate(0,-1px)}80%{transform:translate(0,1px)}}
 .hero h1:hover{animation:glitch .3s ease infinite}
 @media(max-width:800px){
+/* ── LAYOUT ── */
 .layout{grid-template-columns:1fr}
 .right{position:static;height:auto;border-left:none;border-top:3px solid var(–neon)}
 header,footer{padding-left:12px;padding-right:12px}
 .left,.right-inner{padding:12px}
 .top-bar{grid-template-columns:1fr}
 .brand-grid{grid-template-columns:repeat(2,1fr)}
-.hero{flex-direction:column}
-.hero-stats{flex-direction:row}
+.hero{flex-direction:column;padding:20px 14px 18px}
+.hero-stats{flex-direction:row;gap:6px}
 .hero::before{display:none}
+.hero h1{font-size:36px}
+
+/* ── DARK BACKGROUND FOR LEFT ON MOBILE ── */
+body{background:var(–ink)}
+.left{background:var(–ink);border-right:none}
+.top-bar{border-color:rgba(255,255,255,.15)}
+.ctrl-card{background:rgba(255,255,255,.05);border:none}
+.ctrl-lbl{color:rgba(255,255,255,.5)}
+.search-inp,.custom-inp{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff}
+.search-inp::placeholder,.custom-inp::placeholder{color:rgba(255,255,255,.3)}
+.btn-add{background:var(–neon);color:var(–ink)}
+.tabs{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+.tab{color:rgba(255,255,255,.3);border-right-color:rgba(255,255,255,.08)}
+.tab.on{background:rgba(255,255,255,.1);color:var(–neon)}
+.cat-head{border-bottom-color:rgba(255,255,255,.15)}
+.cat-name{color:rgba(255,255,255,.6)}
+.cat-n{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
+.chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.65)}
+.chip:hover,.chip.on{background:var(–ink);color:var(–neon);border-color:var(–neon)}
+.bcard{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}
+.bcn{color:rgba(255,255,255,.8)}
+.bcd{color:rgba(255,255,255,.35)}
+.bcard:hover{background:rgba(200,255,0,.12)}
+.bcard.on{background:rgba(255,45,107,.15)}
+
+/* ── HEADER MOBILE ── */
+.hdr-center{display:none}
+.hdr-btn{font-size:11px;padding:0 10px}
+
+/* ── FOOTER MOBILE ── */
+footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:flex-start}
 }
 </style>
 
