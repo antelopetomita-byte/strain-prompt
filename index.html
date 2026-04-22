@@ -323,6 +323,17 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
 .upload-btn{padding:2px 6px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);color:var(–neon);cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;transition:all .13s;flex-shrink:0;position:relative;overflow:hidden}
 .upload-btn:hover{background:var(–neon);color:var(–ink)}
 .upload-btn input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0}
+
+.api-banner{background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);padding:6px 12px;display:flex;align-items:center;gap:8px;font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .15s}
+.api-banner:hover{background:rgba(200,255,0,.12);color:var(–neon)}
+.api-banner .api-dot{width:6px;height:6px;border-radius:50%;background:#ff4444;flex-shrink:0}
+.api-banner .api-dot.ok{background:var(–neon)}
+.modal-api{width:min(420px,92vw)}
+.api-inp{width:100%;padding:10px 12px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2);color:#fff;font-family:‘Share Tech Mono’,monospace;font-size:11px;outline:none;letter-spacing:.05em;margin:10px 0}
+.api-inp:focus{border-color:var(–neon)}
+.api-save-btn{width:100%;padding:12px;background:var(–neon);color:var(–ink);border:none;font-family:‘Bebas Neue’,sans-serif;font-size:16px;letter-spacing:.15em;cursor:pointer;transition:all .13s}
+.api-save-btn:hover{background:var(–neon2);color:#fff}
+.api-note{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.3);line-height:1.7;margin-top:10px}
 </style>
 
 </head>
@@ -330,7 +341,7 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
 
 <header>
   <div class="logo-block">
-    <div class="logo-txt">STRAIN<span class="logo-slash">//</span>PROMPT<span class="logo-badge">UVDTF v5.2</span></div>
+    <div class="logo-txt">STRAIN<span class="logo-slash">//</span>PROMPT<span class="logo-badge">UVDTF v5.3</span></div>
   </div>
   <div class="hdr-center">
     <div class="hdr-ticker">300 STRAINS · 62 BRAND STYLES · 🔥 HYPER WILDSTYLE · GRAFFITI WILDSTYLE · STREET BOMB · ACTION SCRIPT · AI COLOR SUGGEST · BATCH EXPORT · QR CODE · HISTORY · PREVIEW · 60×20MM BIC J26 ·&nbsp;</div>
@@ -381,9 +392,16 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
 
   <div class="right">
     <div class="right-inner">
-      <div class="sel-header">SELECTED</div>
-      <div class="sel-box" id="selBox"><span class="hint">// SELECT STRAIN OR ENTER TEXT</span></div>
-      <div class="sel-n"><b id="selN">0</b> SELECTED</div>
+
+```
+  <div class="api-banner" onclick="openModal('api')" id="apiBanner">
+    <div class="api-dot" id="apiDot"></div>
+    <span id="apiLabel">// AI COLOR: APIキーを設定してください</span>
+  </div>
+  <div class="sel-header">SELECTED</div>
+  <div class="sel-box" id="selBox"><span class="hint">// SELECT STRAIN OR ENTER TEXT</span></div>
+  <div class="sel-n"><b id="selN">0</b> SELECTED</div>
+```
 
   <!-- V1 -->
 
@@ -765,6 +783,27 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
   </div>
 </div>
 
+<!-- API KEY MODAL -->
+
+<div class="moverlay" id="modal-api">
+  <div class="modal modal-api">
+    <div class="modal-hd"><span class="modal-ttl">// ANTHROPIC API KEY</span><button class="modal-x" onclick="closeModal('api')">×</button></div>
+    <div class="modal-bd">
+      <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);line-height:1.8;margin-bottom:8px">
+        AI配色機能にはAnthropicのAPIキーが必要です。<br>
+        キーはこのデバイスのlocalStorageにのみ保存され、外部に送信されません。
+      </p>
+      <input class="api-inp" id="apiKeyInp" type="password" placeholder="sk-ant-api03-..." />
+      <button class="api-save-btn" onclick="saveApiKey()">✦ SAVE API KEY</button>
+      <div class="api-note">
+        // APIキーは console.anthropic.com で取得できます<br>
+        // キーはブラウザのローカルストレージに保存されます<br>
+        // CLEARボタンでキーを削除できます<br>
+        <button onclick="clearApiKey()" style="margin-top:8px;padding:4px 12px;background:transparent;border:1px solid rgba(255,45,107,.3);color:var(--neon2);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">✕ CLEAR KEY</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -824,6 +863,39 @@ function handleUpload(e,vi){
     e.target.value='';
   };
   reader.readAsDataURL(file);
+}
+
+
+// ═══════════════════════════════════
+// API KEY MANAGEMENT
+// ═══════════════════════════════════
+function loadApiKey(){return localStorage.getItem('sp_apikey')||'';}
+function saveApiKey(){
+  const val=document.getElementById('apiKeyInp').value.trim();
+  if(!val||!val.startsWith('sk-')){showToast('// INVALID KEY FORMAT');return;}
+  localStorage.setItem('sp_apikey',val);
+  updateApiStatus();
+  closeModal('api');
+  showToast('// API KEY SAVED ✓');
+}
+function clearApiKey(){
+  localStorage.removeItem('sp_apikey');
+  document.getElementById('apiKeyInp').value='';
+  updateApiStatus();
+  showToast('// API KEY CLEARED');
+}
+function updateApiStatus(){
+  const key=loadApiKey();
+  const dot=document.getElementById('apiDot');
+  const label=document.getElementById('apiLabel');
+  if(!dot||!label)return;
+  if(key){
+    dot.className='api-dot ok';
+    label.textContent='// AI COLOR: APIキー設定済み ✓ (変更する)';
+  }else{
+    dot.className='api-dot';
+    label.textContent='// AI COLOR: APIキーを設定してください';
+  }
 }
 
 function initDots(){[0,1,2,3].forEach(vi=>buildDots(vi));}
@@ -1101,9 +1173,11 @@ async function fetchAiColors(vi){
   const styleNames=['Block Throwup','Chrome Wild','Handstyle Tag','Wall Piece'];
   const styleName=vi==='all'?'all 4 styles (Block Throwup, Chrome Wild, Handstyle Tag, Wall Piece)':styleNames[vi];
   try{
+    const apiKey=loadApiKey();
+    if(!apiKey){showToast('// APIキーを設定してください');openModal('api');spin.style.display='none';statusTxt.textContent='// APIキーが必要です';return;}
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
@@ -1317,13 +1391,14 @@ function clearAll(){
 function openModal(id){
   document.getElementById('modal-'+id).classList.add('open');
   if(id==='hist'){renderFavs();}
+  if(id==='api'){const k=loadApiKey();if(k)document.getElementById('apiKeyInp').value=k;}
 }
 function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');}
 function shareApp(){navigator.clipboard.writeText(location.href);showToast('// URL COPIED');}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
 
 document.addEventListener('DOMContentLoaded',function(){
-  initDots();initBgOpts();buildStrains();buildBrands();
+  initDots();initBgOpts();buildStrains();buildBrands();updateApiStatus();
   document.getElementById('customInp').addEventListener('keydown',e=>{if(e.key==='Enter')addCustom();});
   document.getElementById('libSearchInp').addEventListener('keydown',e=>{if(e.key==='Enter')searchLib();});
   document.querySelectorAll('.moverlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
