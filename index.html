@@ -11,125 +11,115 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#0a0a0a;--paper:#f0ede6;
-  --neon:#c8ff00;--neon2:#ff2d6b;--neon3:#00d4ff;
+  --neon:#c8ff00;--neon2:#ff2d6b;--neon3:#00d4ff;--neon4:#ff6b00;
   --smoke:#e8e4dc;--bw:2px;
 }
 html{font-size:14px;scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden;cursor:crosshair}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.012) 2px,rgba(0,0,0,.012) 4px)}
-
-/* HEADER */
-header{position:sticky;top:0;z-index:200;background:var(–ink);display:flex;align-items:stretch;height:52px;border-bottom:3px solid var(–neon)}
-.logo-block{display:flex;align-items:center;padding:0 20px 0 16px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);background:var(–ink)}
-.logo-txt{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:.08em;color:#fff;display:flex;align-items:center;gap:6px}
-.logo-slash{color:var(–neon);font-size:26px}
-.logo-badge{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:var(–neon);border:1px solid var(–neon);padding:2px 6px;letter-spacing:.1em;background:rgba(200,255,0,.08);margin-left:8px}
+header{position:sticky;top:0;z-index:200;background:var(--ink);display:flex;align-items:stretch;height:52px;border-bottom:3px solid var(--neon)}
+.logo-block{display:flex;align-items:center;padding:0 20px 0 16px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);background:var(--ink)}
+.logo-txt{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;color:#fff;display:flex;align-items:center;gap:6px}
+.logo-slash{color:var(--neon);font-size:26px}
+.logo-badge{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--neon);border:1px solid var(--neon);padding:2px 6px;letter-spacing:.1em;background:rgba(200,255,0,.08);margin-left:8px}
 .hdr-center{flex:1;display:flex;align-items:center;padding:0 16px;overflow:hidden}
-.hdr-ticker{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em;white-space:nowrap;animation:ticker 25s linear infinite}
+.hdr-ticker{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em;white-space:nowrap;animation:ticker 25s linear infinite}
 @keyframes ticker{from{transform:translateX(60%)}to{transform:translateX(-100%)}}
 .hdr-r{display:flex;align-items:stretch}
-.hdr-btn{display:flex;align-items:center;padding:0 14px;font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;color:rgba(255,255,255,.45);cursor:pointer;border:none;background:none;border-left:1px solid rgba(255,255,255,.08);transition:all .15s}
-.hdr-btn:hover{color:var(–neon);background:rgba(200,255,0,.06)}
-
-/* HERO */
-.hero{position:relative;z-index:1;background:var(–ink);padding:28px 24px 22px;border-bottom:3px solid var(–neon);overflow:hidden;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
-.hero::before{content:‘STRAIN//PROMPT’;position:absolute;bottom:-20px;right:-10px;font-family:‘Bebas Neue’,sans-serif;font-size:90px;color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap}
-.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(–neon);color:var(–ink);font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.15em;padding:3px 10px 2px;margin-bottom:10px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-.hero h1{font-family:‘Bebas Neue’,sans-serif;font-size:clamp(30px,5vw,50px);letter-spacing:.04em;line-height:.95;color:#fff;margin-bottom:10px}
-.hero h1 .hi{-webkit-text-stroke:1.5px var(–neon);-webkit-text-fill-color:transparent}
-.hero-sub{font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.6;max-width:380px;font-family:‘Share Tech Mono’,monospace}
+.hdr-btn{display:flex;align-items:center;padding:0 14px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em;color:rgba(255,255,255,.45);cursor:pointer;border:none;background:none;border-left:1px solid rgba(255,255,255,.08);transition:all .15s}
+.hdr-btn:hover{color:var(--neon);background:rgba(200,255,0,.06)}
+.hero{position:relative;z-index:1;background:var(--ink);padding:28px 24px 22px;border-bottom:3px solid var(--neon);overflow:hidden;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.hero::before{content:'STRAIN//PROMPT';position:absolute;bottom:-20px;right:-10px;font-family:'Bebas Neue',sans-serif;font-size:90px;color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--neon);color:var(--ink);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.15em;padding:3px 10px 2px;margin-bottom:10px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,50px);letter-spacing:.04em;line-height:.95;color:#fff;margin-bottom:10px}
+.hero h1 .hi{-webkit-text-stroke:1.5px var(--neon);-webkit-text-fill-color:transparent}
+.hero-sub{font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.6;max-width:380px;font-family:'Share Tech Mono',monospace}
 .hero-stats{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
-.stat{display:flex;align-items:center;border:var(–bw) solid rgba(255,255,255,.13);overflow:hidden}
-.stat-n{font-family:‘Bebas Neue’,sans-serif;font-size:26px;background:var(–neon);color:var(–ink);padding:4px 12px 2px;min-width:68px;text-align:center;line-height:1}
-.stat-l{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.1em;padding:4px 10px;text-transform:uppercase}
-
-/* LAYOUT */
+.stat{display:flex;align-items:center;border:var(--bw) solid rgba(255,255,255,.13);overflow:hidden}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:26px;background:var(--neon);color:var(--ink);padding:4px 12px 2px;min-width:68px;text-align:center;line-height:1}
+.stat-l{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.1em;padding:4px 10px;text-transform:uppercase}
 .layout{position:relative;z-index:1;display:grid;grid-template-columns:1fr 382px;min-height:calc(100vh - 52px - 56px)}
-
-/* LEFT */
-.left{padding:18px 20px;overflow-y:auto;background:var(–paper);border-right:3px solid var(–ink)}
-.top-bar{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:14px;border:var(–bw) solid var(–ink)}
-.ctrl-card{padding:11px 12px;background:var(–smoke)}
-.ctrl-card:first-child{border-right:var(–bw) solid var(–ink)}
-.ctrl-lbl{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.12em;color:var(–ink);margin-bottom:6px}
-.ctrl-lbl::before{content:’// ’;color:var(–neon2);font-size:10px}
-.search-inp{width:100%;padding:7px 10px;border:var(–bw) solid var(–ink);font-family:‘Share Tech Mono’,monospace;font-size:11px;color:var(–ink);background:#fff;outline:none;transition:all .15s}
-.search-inp:focus{border-color:var(–neon2);box-shadow:3px 3px 0 var(–neon2)}
+.left{padding:18px 20px;overflow-y:auto;background:var(--paper);border-right:3px solid var(--ink)}
+.top-bar{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:14px;border:var(--bw) solid var(--ink)}
+.ctrl-card{padding:11px 12px;background:var(--smoke)}
+.ctrl-card:first-child{border-right:var(--bw) solid var(--ink)}
+.ctrl-lbl{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.12em;color:var(--ink);margin-bottom:6px}
+.ctrl-lbl::before{content:'// ';color:var(--neon2);font-size:10px}
+.search-inp{width:100%;padding:7px 10px;border:var(--bw) solid var(--ink);font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--ink);background:#fff;outline:none;transition:all .15s}
+.search-inp:focus{border-color:var(--neon2);box-shadow:3px 3px 0 var(--neon2)}
 .search-inp::placeholder{color:#aaa}
 .custom-row{display:flex}
-.custom-inp{flex:1;padding:7px 10px;border:var(–bw) solid var(–ink);border-right:none;font-family:‘Share Tech Mono’,monospace;font-size:11px;color:var(–ink);background:#fff;outline:none;min-width:0}
-.custom-inp:focus{border-color:var(–neon2)}
-.btn-add{padding:7px 12px;background:var(–ink);color:var(–neon);border:var(–bw) solid var(–ink);font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;cursor:pointer;transition:all .13s;flex-shrink:0}
-.btn-add:hover{background:var(–neon2);color:#fff}
+.custom-inp{flex:1;padding:7px 10px;border:var(--bw) solid var(--ink);border-right:none;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--ink);background:#fff;outline:none;min-width:0}
+.custom-inp:focus{border-color:var(--neon2)}
+.btn-add{padding:7px 12px;background:var(--ink);color:var(--neon);border:var(--bw) solid var(--ink);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em;cursor:pointer;transition:all .13s;flex-shrink:0}
+.btn-add:hover{background:var(--neon2);color:#fff}
 .ctags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-.ctag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;font-size:10px;font-weight:600;cursor:pointer;border:1.5px solid var(–ink);background:#fff;color:var(–ink);transition:all .12s;font-family:‘Rajdhani’,sans-serif}
-.ctag:hover{background:var(–neon);border-color:var(–neon)}
-.ctag.on{background:var(–neon2);border-color:var(–neon2);color:#fff}
+.ctag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;font-size:10px;font-weight:600;cursor:pointer;border:1.5px solid var(--ink);background:#fff;color:var(--ink);transition:all .12s;font-family:'Rajdhani',sans-serif}
+.ctag:hover{background:var(--neon);border-color:var(--neon)}
+.ctag.on{background:var(--neon2);border-color:var(--neon2);color:#fff}
 .ctag .cx{opacity:.6;font-size:11px}.ctag .cx:hover{opacity:1}
-.tabs{display:flex;gap:0;margin-bottom:12px;border:var(–bw) solid var(–ink);overflow:hidden}
-.tab{flex:1;padding:7px;border:none;background:transparent;font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(0,0,0,.35);cursor:pointer;transition:all .13s;text-align:center;border-right:var(–bw) solid var(–ink)}
+.tabs{display:flex;gap:0;margin-bottom:12px;border:var(--bw) solid var(--ink);overflow:hidden}
+.tab{flex:1;padding:7px;border:none;background:transparent;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(0,0,0,.35);cursor:pointer;transition:all .13s;text-align:center;border-right:var(--bw) solid var(--ink)}
 .tab:last-child{border-right:none}
-.tab.on{background:var(–ink);color:var(–neon)}
+.tab.on{background:var(--ink);color:var(--neon)}
 .tp{display:none}.tp.on{display:block}
 .cat-block{margin-bottom:14px}
-.cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(–ink)}
-.cat-name{font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em}
-.cat-n{font-family:‘Share Tech Mono’,monospace;font-size:9px;background:var(–ink);color:var(–neon);padding:1px 6px}
+.cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(--ink)}
+.cat-name{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em}
+.cat-n{font-family:'Share Tech Mono',monospace;font-size:9px;background:var(--ink);color:var(--neon);padding:1px 6px}
 .chips{display:flex;flex-wrap:wrap;gap:4px}
-.chip{padding:3px 10px;background:#fff;border:1.5px solid var(–ink);font-size:11px;font-weight:600;color:var(–ink);cursor:pointer;transition:all .12s;user-select:none;font-family:‘Rajdhani’,sans-serif}
-.chip:hover{background:var(–ink);color:var(–neon);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(–neon)}
-.chip.on{background:var(–ink);color:var(–neon);box-shadow:2px 2px 0 var(–neon)}
-.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(–bw) solid var(–ink)}
-.bcard{padding:8px 10px;cursor:pointer;transition:all .13s;border-right:var(–bw) solid var(–ink);border-bottom:var(–bw) solid var(–ink);background:#fff}
+.chip{padding:3px 10px;background:#fff;border:1.5px solid var(--ink);font-size:11px;font-weight:600;color:var(--ink);cursor:pointer;transition:all .12s;user-select:none;font-family:'Rajdhani',sans-serif}
+.chip:hover{background:var(--ink);color:var(--neon);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--neon)}
+.chip.on{background:var(--ink);color:var(--neon);box-shadow:2px 2px 0 var(--neon)}
+.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(--bw) solid var(--ink)}
+.bcard{padding:8px 10px;cursor:pointer;transition:all .13s;border-right:var(--bw) solid var(--ink);border-bottom:var(--bw) solid var(--ink);background:#fff}
 .bcard:nth-child(3n){border-right:none}
-.bcard:hover{background:var(–neon);transform:translate(-1px,-1px)}
-.bcard.on{background:var(–neon2);color:#fff}
+.bcard:hover{background:var(--neon);transform:translate(-1px,-1px)}
+.bcard.on{background:var(--neon2);color:#fff}
 .bcard.on .bcn,.bcard.on .bcd{color:#fff}
 .bce{font-size:16px;display:block;margin-bottom:2px}
-.bcn{font-family:‘Rajdhani’,sans-serif;font-size:10px;font-weight:700;color:var(–ink)}
-.bcd{font-size:8px;color:#888;font-family:‘Share Tech Mono’,monospace;margin-top:1px}
-
-/* RIGHT */
-.right{background:var(–ink);position:sticky;top:52px;height:calc(100vh - 52px - 56px);overflow-y:auto;display:flex;flex-direction:column}
+.bcn{font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;color:var(--ink)}
+.bcd{font-size:8px;color:#888;font-family:'Share Tech Mono',monospace;margin-top:1px}
+.right{background:var(--ink);position:sticky;top:52px;height:calc(100vh - 52px - 56px);overflow-y:auto;display:flex;flex-direction:column}
 .right-inner{padding:13px;display:flex;flex-direction:column;gap:8px;flex:1}
-.sel-header{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.22);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.08)}
-.sel-header::before{content:’// ’;color:var(–neon)}
+.sel-header{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.22);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sel-header::before{content:'// ';color:var(--neon)}
 .sel-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:7px;min-height:34px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start}
-.stag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;background:var(–neon);color:var(–ink);font-size:10px;font-weight:700;font-family:‘Rajdhani’,sans-serif;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);animation:pop .12s ease}
+.stag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;background:var(--neon);color:var(--ink);font-size:10px;font-weight:700;font-family:'Rajdhani',sans-serif;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);animation:pop .12s ease}
 @keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
 .stag .sx{opacity:.5;cursor:pointer;font-size:12px}.stag .sx:hover{opacity:1}
-.stag.cstag{background:var(–neon3);color:var(–ink)}
-.hint{font-size:10px;color:rgba(255,255,255,.2);font-style:italic;padding:2px;font-family:‘Share Tech Mono’,monospace}
-.sel-n{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.22);text-align:right}
-.sel-n b{color:var(–neon)}
-
-/* PROMPT CARDS */
+.stag.cstag{background:var(--neon3);color:var(--ink)}
+.hint{font-size:10px;color:rgba(255,255,255,.2);font-style:italic;padding:2px;font-family:'Share Tech Mono',monospace}
+.sel-n{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.22);text-align:right}
+.sel-n b{color:var(--neon)}
 .pc{border:1.5px solid rgba(255,255,255,.1);overflow:hidden;transition:border-color .15s}
 .pc:hover{border-color:rgba(255,255,255,.18)}
 .pc-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
 .pc-label-wrap{display:flex;align-items:stretch;flex:1}
 .pc-stripe{width:4px;flex-shrink:0}
-.pc.v1 .pc-stripe{background:var(–neon)}
-.pc.v2 .pc-stripe{background:var(–neon3)}
-.pc.v3 .pc-stripe{background:var(–neon2)}
+.pc.v1 .pc-stripe{background:var(--neon)}
+.pc.v2 .pc-stripe{background:var(--neon3)}
+.pc.v3 .pc-stripe{background:var(--neon2)}
 .pc.vb .pc-stripe{background:#fbbf24}
-.pc-lbl{font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.1em;padding:6px 8px 5px}
-.pc.v1 .pc-lbl{color:var(–neon)}.pc.v2 .pc-lbl{color:var(–neon3)}.pc.v3 .pc-lbl{color:var(–neon2)}.pc.vb .pc-lbl{color:#fbbf24}
+.pc.vh .pc-stripe{background:var(--neon4)}
+.pc-lbl{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.1em;padding:6px 8px 5px}
+.pc.v1 .pc-lbl{color:var(--neon)}.pc.v2 .pc-lbl{color:var(--neon3)}.pc.v3 .pc-lbl{color:var(--neon2)}.pc.vb .pc-lbl{color:#fbbf24}.pc.vh .pc-lbl{color:var(--neon4)}
+.pc.vh{border-color:rgba(255,107,0,.25)}
+.pc.vh:hover{border-color:rgba(255,107,0,.45)}
 .pc-head-btns{display:flex;align-items:center;gap:4px;padding:4px 6px}
-.cpbtn{font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.08em;padding:3px 9px;border:1.5px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.45);cursor:pointer;transition:all .13s}
-.pc.v1 .cpbtn:hover{border-color:var(–neon);color:var(–neon)}
-.pc.v2 .cpbtn:hover{border-color:var(–neon3);color:var(–neon3)}
-.pc.v3 .cpbtn:hover{border-color:var(–neon2);color:var(–neon2)}
+.cpbtn{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.08em;padding:3px 9px;border:1.5px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.45);cursor:pointer;transition:all .13s}
+.pc.v1 .cpbtn:hover{border-color:var(--neon);color:var(--neon)}
+.pc.v2 .cpbtn:hover{border-color:var(--neon3);color:var(--neon3)}
+.pc.v3 .cpbtn:hover{border-color:var(--neon2);color:var(--neon2)}
 .pc.vb .cpbtn:hover{border-color:#fbbf24;color:#fbbf24}
+.pc.vh .cpbtn:hover{border-color:var(--neon4);color:var(--neon4)}
 .cpbtn.ok{opacity:.3;pointer-events:none}
 .fav-btn{background:none;border:none;font-size:13px;cursor:pointer;padding:2px 4px;opacity:.4;transition:opacity .13s;line-height:1}
 .fav-btn:hover{opacity:1}
 .fav-btn.on{opacity:1}
-
-/* PANEL */
 .pc-panel{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:5px}
 .pc-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
-.pc-rl{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.25);letter-spacing:.06em;text-transform:uppercase;width:26px;flex-shrink:0}
+.pc-rl{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.25);letter-spacing:.06em;text-transform:uppercase;width:26px;flex-shrink:0}
 .color-dots{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
 .cdot{position:relative;width:18px;height:18px;border:1.5px solid rgba(255,255,255,.2);cursor:pointer;overflow:hidden;transition:all .13s;flex-shrink:0;clip-path:polygon(3px 0,100% 0,calc(100% - 3px) 100%,0 100%)}
 .cdot:hover{transform:scale(1.12)}
@@ -139,134 +129,111 @@ header{position:sticky;top:0;z-index:200;background:var(–ink);display:flex;ali
 .cdot .cdot-x{position:absolute;top:-3px;right:-3px;width:11px;height:11px;background:#ff2d6b;color:#fff;font-size:7px;display:none;align-items:center;justify-content:center;cursor:pointer;font-weight:700;z-index:2;line-height:1}
 .cdot.filled .cdot-x{display:flex}
 .cdot .cdot-plus{font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.blend-sel{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);padding:2px 5px;cursor:pointer;outline:none;flex-shrink:0}
-.blend-sel:focus{border-color:var(–neon)}
+.blend-sel{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);padding:2px 5px;cursor:pointer;outline:none;flex-shrink:0}
+.blend-sel:focus{border-color:var(--neon)}
 .blend-sel option{background:#111;color:#fff}
-.rand-b{font-family:‘Share Tech Mono’,monospace;font-size:8px;font-weight:600;padding:1px 5px;background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.25);white-space:nowrap}
-.set-b{font-family:‘Share Tech Mono’,monospace;font-size:8px;font-weight:600;padding:1px 5px;background:rgba(200,255,0,.1);color:var(–neon);border:1px solid rgba(200,255,0,.25);white-space:nowrap}
+.rand-b{font-family:'Share Tech Mono',monospace;font-size:8px;font-weight:600;padding:1px 5px;background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.25);white-space:nowrap}
+.set-b{font-family:'Share Tech Mono',monospace;font-size:8px;font-weight:600;padding:1px 5px;background:rgba(200,255,0,.1);color:var(--neon);border:1px solid rgba(200,255,0,.25);white-space:nowrap}
 .bg-dots{display:flex;gap:3px;align-items:center;flex-wrap:wrap}
 .bdot{width:18px;height:18px;cursor:pointer;border:1.5px solid rgba(255,255,255,.15);transition:all .12s;flex-shrink:0}
 .bdot:hover{transform:scale(1.1)}
-.bdot.on{border-color:var(–neon);box-shadow:0 0 6px rgba(200,255,0,.4)}
+.bdot.on{border-color:var(--neon);box-shadow:0 0 6px rgba(200,255,0,.4)}
 .bg-cw{position:relative;width:18px;height:18px;overflow:hidden;border:1.5px solid rgba(255,255,255,.15);cursor:pointer;flex-shrink:0;transition:all .12s}
 .bg-cw:hover{transform:scale(1.1)}
-.bg-cw.on{border-color:var(–neon)}
+.bg-cw.on{border-color:var(--neon)}
 .bg-cw input[type=color]{position:absolute;inset:-4px;width:calc(100%+8px);height:calc(100%+8px);opacity:0;cursor:pointer;border:none}
 .bg-cp{width:100%;height:100%}
 .lib-btn{padding:2px 6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.45);cursor:pointer;font-size:10px;transition:all .13s;flex-shrink:0}
-.lib-btn:hover{background:rgba(200,255,0,.1);border-color:var(–neon);color:var(–neon)}
+.lib-btn:hover{background:rgba(200,255,0,.1);border-color:var(--neon);color:var(--neon)}
 .lib-thumb-wrap{display:flex;align-items:center;gap:2px}
-.lib-thumb{width:20px;height:20px;object-fit:cover;border:1.5px solid var(–neon);cursor:pointer;opacity:.85;transition:opacity .13s}
+.lib-thumb{width:20px;height:20px;object-fit:cover;border:1.5px solid var(--neon);cursor:pointer;opacity:.85;transition:opacity .13s}
 .lib-thumb:hover{opacity:1}
 .lib-thumb-x{font-size:10px;color:rgba(255,45,107,.7);cursor:pointer;padding:0 2px;line-height:1}
-.lib-thumb-x:hover{color:var(–neon2)}
-
-/* AI COLOR BTN */
-.ai-color-btn{padding:2px 6px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);color:var(–neon);cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;transition:all .13s;flex-shrink:0}
-.ai-color-btn:hover{background:var(–neon);color:var(–ink)}
-
-.pc-body{padding:8px 10px;font-family:‘Share Tech Mono’,monospace;font-size:8.5px;line-height:1.9;color:rgba(255,255,255,.35);word-break:break-word;white-space:pre-wrap}
+.lib-thumb-x:hover{color:var(--neon2)}
+.ai-color-btn{padding:2px 6px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);color:var(--neon);cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.06em;transition:all .13s;flex-shrink:0}
+.ai-color-btn:hover{background:var(--neon);color:var(--ink)}
+.pc-body{padding:8px 10px;font-family:'Share Tech Mono',monospace;font-size:8.5px;line-height:1.9;color:rgba(255,255,255,.35);word-break:break-word;white-space:pre-wrap}
 .pc-dash{color:rgba(255,255,255,.15);font-style:italic}
-
-/* PREVIEW SECTION */
 .preview-area{border-top:1px solid rgba(255,255,255,.06);padding:6px 10px;display:none;background:rgba(0,0,0,.2)}
 .preview-area.show{display:block}
 .preview-img-wrap{position:relative;width:100%;aspect-ratio:3/1;background:rgba(255,255,255,.04);overflow:hidden;margin-top:4px;border:1px solid rgba(255,255,255,.08)}
 .preview-img{width:100%;height:100%;object-fit:cover;display:none}
 .preview-img.loaded{display:block}
-.preview-spinner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.2)}
+.preview-spinner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.2)}
 .preview-spinner.hidden{display:none}
-.preview-lbl{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:.05em}
-.prev-btn{padding:3px 9px;background:transparent;border:1px solid rgba(255,255,255,.15);font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.4);cursor:pointer;transition:all .13s}
-.prev-btn:hover{border-color:var(–neon3);color:var(–neon3)}
-.prev-btn.active{border-color:var(–neon3);color:var(–neon3);background:rgba(0,212,255,.08)}
-
-.leo-link{display:none;align-items:center;justify-content:center;gap:6px;padding:7px;border-top:1px solid rgba(255,255,255,.06);font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.28);text-decoration:none;transition:all .15s}
-.leo-link:hover{background:rgba(200,255,0,.06);color:var(–neon)}
+.preview-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);letter-spacing:.05em}
+.prev-btn{padding:3px 9px;background:transparent;border:1px solid rgba(255,255,255,.15);font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.4);cursor:pointer;transition:all .13s}
+.prev-btn:hover{border-color:var(--neon3);color:var(--neon3)}
+.prev-btn.active{border-color:var(--neon3);color:var(--neon3);background:rgba(0,212,255,.08)}
+.leo-link{display:none;align-items:center;justify-content:center;gap:6px;padding:7px;border-top:1px solid rgba(255,255,255,.06);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.28);text-decoration:none;transition:all .15s}
+.leo-link:hover{background:rgba(200,255,0,.06);color:var(--neon)}
 .leo-link.show{display:flex}
-
 .neg-box{border:1px solid rgba(255,255,255,.08);padding:8px 10px}
-.neg-ttl{font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.18);margin-bottom:3px}
-.neg-body{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.16);line-height:1.7}
-
-/* FEATURE BUTTONS */
+.neg-ttl{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.18);margin-bottom:3px}
+.neg-body{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.16);line-height:1.7}
 .feat-row{display:grid;grid-template-columns:repeat(5,1fr);border:1.5px solid rgba(255,255,255,.1);overflow:hidden}
-.feat-btn{padding:7px 3px;background:transparent;border:none;border-right:1px solid rgba(255,255,255,.08);font-family:‘Bebas Neue’,sans-serif;font-size:9px;letter-spacing:.05em;color:rgba(255,255,255,.3);cursor:pointer;transition:all .13s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.feat-btn{padding:7px 3px;background:transparent;border:none;border-right:1px solid rgba(255,255,255,.08);font-family:'Bebas Neue',sans-serif;font-size:9px;letter-spacing:.05em;color:rgba(255,255,255,.3);cursor:pointer;transition:all .13s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
 .feat-btn:last-child{border-right:none}
 .feat-btn .fi{font-size:13px;line-height:1}
 .feat-btn:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.75)}
-.feat-btn.neon{color:var(–neon);background:rgba(200,255,0,.07)}
-
-/* MAIN BUTTONS */
-.btn-main{width:100%;padding:13px;background:var(–neon);color:var(–ink);border:none;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:‘Bebas Neue’,sans-serif;font-size:17px;letter-spacing:.12em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);position:relative;overflow:hidden}
-.btn-main::before{content:’’;position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .4s}
+.feat-btn.neon{color:var(--neon);background:rgba(200,255,0,.07)}
+.btn-main{width:100%;padding:13px;background:var(--neon);color:var(--ink);border:none;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.12em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);position:relative;overflow:hidden}
+.btn-main::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .4s}
 .btn-main:hover::before{transform:translateX(100%)}
-.btn-main:hover{background:var(–neon2);color:#fff;transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(255,45,107,.4)}
+.btn-main:hover{background:var(--neon2);color:#fff;transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(255,45,107,.4)}
 .btn-main.ok{background:rgba(34,197,94,.2);color:#22c55e;border:1px solid rgba(34,197,94,.3);transform:none;box-shadow:none}
 .btn-row{display:flex;gap:0}
-.btn-sub{flex:1;padding:8px;background:transparent;border:1px solid rgba(255,255,255,.1);border-right:none;font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.28);cursor:pointer;transition:all .13s;text-align:center}
+.btn-sub{flex:1;padding:8px;background:transparent;border:1px solid rgba(255,255,255,.1);border-right:none;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.28);cursor:pointer;transition:all .13s;text-align:center}
 .btn-sub:last-child{border-right:1px solid rgba(255,255,255,.1)}
 .btn-sub:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.7)}
-.btn-sub.danger:hover{border-color:var(–neon2);color:var(–neon2)}
-
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(14px);background:var(–ink);color:var(–neon);border:2px solid var(–neon);padding:9px 20px;font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;z-index:1000;opacity:0;transition:all .22s;pointer-events:none;white-space:nowrap;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.btn-sub.danger:hover{border-color:var(--neon2);color:var(--neon2)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(14px);background:var(--ink);color:var(--neon);border:2px solid var(--neon);padding:9px 20px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em;z-index:1000;opacity:0;transition:all .22s;pointer-events:none;white-space:nowrap;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* MODALS */
 .moverlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
 .moverlay.open{display:flex}
-.modal{background:var(–ink);border:2px solid var(–neon);width:min(460px,92vw);max-height:88vh;overflow:hidden;display:flex;flex-direction:column}
+.modal{background:var(--ink);border:2px solid var(--neon);width:min(460px,92vw);max-height:88vh;overflow:hidden;display:flex;flex-direction:column}
 .modal-hd{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.modal-ttl{font-family:‘Bebas Neue’,sans-serif;font-size:15px;letter-spacing:.1em;color:var(–neon)}
+.modal-ttl{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.1em;color:var(--neon)}
 .modal-x{background:none;border:none;font-size:20px;cursor:pointer;color:rgba(255,255,255,.35);transition:color .13s}
 .modal-x:hover{color:#fff}
 .modal-bd{padding:16px;overflow-y:auto;flex:1}
-
-/* HISTORY MODAL */
 .modal-hist{width:min(580px,94vw)}
 .hist-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
-.hist-tab{flex:1;padding:9px;background:transparent;border:none;font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;transition:all .13s;text-align:center;border-bottom:2px solid transparent}
-.hist-tab.on{color:var(–neon);border-bottom-color:var(–neon)}
+.hist-tab{flex:1;padding:9px;background:transparent;border:none;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;transition:all .13s;text-align:center;border-bottom:2px solid transparent}
+.hist-tab.on{color:var(--neon);border-bottom-color:var(--neon)}
 .hist-pane{display:none;padding:10px;overflow-y:auto;max-height:420px}
 .hist-pane.on{display:block}
 .hist-item{padding:9px;border:1px solid rgba(255,255,255,.08);margin-bottom:6px;cursor:pointer;transition:border-color .13s;position:relative}
 .hist-item:hover{border-color:rgba(255,255,255,.2)}
 .hist-item-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
-.hist-strain{font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.08em;color:var(–neon)}
-.hist-time{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.2)}
-.hist-preview{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.28);line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.hist-strain{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.08em;color:var(--neon)}
+.hist-time{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.2)}
+.hist-preview{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.28);line-height:1.6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .hist-actions{display:flex;gap:5px;margin-top:6px}
-.hist-act-btn{padding:2px 8px;background:transparent;border:1px solid rgba(255,255,255,.12);font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.35);cursor:pointer;transition:all .12s}
-.hist-act-btn:hover{border-color:var(–neon);color:var(–neon)}
-.hist-act-btn.del:hover{border-color:var(–neon2);color:var(–neon2)}
-.hist-empty{font-family:‘Share Tech Mono’,monospace;font-size:11px;color:rgba(255,255,255,.18);text-align:center;padding:30px 10px}
-
-/* BATCH MODAL */
+.hist-act-btn{padding:2px 8px;background:transparent;border:1px solid rgba(255,255,255,.12);font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.35);cursor:pointer;transition:all .12s}
+.hist-act-btn:hover{border-color:var(--neon);color:var(--neon)}
+.hist-act-btn.del:hover{border-color:var(--neon2);color:var(--neon2)}
+.hist-empty{font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(255,255,255,.18);text-align:center;padding:30px 10px}
 .modal-batch{width:min(520px,92vw)}
 .batch-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
 .batch-opt-row{display:flex;align-items:center;gap:8px}
-.batch-check{width:16px;height:16px;accent-color:var(–neon);cursor:pointer}
-.batch-lbl{font-family:‘Share Tech Mono’,monospace;font-size:11px;color:rgba(255,255,255,.55);cursor:pointer}
+.batch-check{width:16px;height:16px;accent-color:var(--neon);cursor:pointer}
+.batch-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(255,255,255,.55);cursor:pointer}
 .batch-progress{padding:10px;border:1px solid rgba(255,255,255,.08);margin-bottom:10px;display:none}
 .batch-progress.show{display:block}
 .batch-bar-bg{background:rgba(255,255,255,.06);height:6px;overflow:hidden;margin:6px 0}
-.batch-bar{background:var(–neon);height:100%;width:0%;transition:width .3s}
-.batch-status{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.35)}
-.batch-result{margin-top:8px;font-family:‘Share Tech Mono’,monospace;font-size:9px;color:var(–green)}
-
-/* QR MODAL */
+.batch-bar{background:var(--neon);height:100%;width:0%;transition:width .3s}
+.batch-status{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.35)}
 .modal-qr{width:min(400px,90vw)}
 .qr-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px}
 .qr-box{background:#fff;padding:16px;display:inline-block}
-.qr-info{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.35);text-align:center;line-height:1.6}
-.qr-dl-btn{padding:8px 20px;background:var(–neon);color:var(–ink);border:none;font-family:‘Bebas Neue’,sans-serif;font-size:14px;letter-spacing:.1em;cursor:pointer;transition:all .13s}
-.qr-dl-btn:hover{background:var(–neon2);color:#fff}
-
-/* AI COLOR MODAL */
+.qr-info{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);text-align:center;line-height:1.6}
+.qr-dl-btn{padding:8px 20px;background:var(--neon);color:var(--ink);border:none;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.1em;cursor:pointer;transition:all .13s}
+.qr-dl-btn:hover{background:var(--neon2);color:#fff}
 .modal-aiclr{width:min(480px,92vw)}
-.ai-strain-disp{font-family:‘Bebas Neue’,sans-serif;font-size:22px;letter-spacing:.06em;color:var(–neon);margin-bottom:4px}
-.ai-status{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px;min-height:16px;display:flex;align-items:center;gap:6px}
-.ai-spin{width:12px;height:12px;border:1.5px solid rgba(200,255,0,.3);border-top-color:var(–neon);border-radius:50%;animation:spin .7s linear infinite}
+.ai-strain-disp{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--neon);margin-bottom:4px}
+.ai-status{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:12px;min-height:16px;display:flex;align-items:center;gap:6px}
+.ai-spin{width:12px;height:12px;border:1.5px solid rgba(200,255,0,.3);border-top-color:var(--neon);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ai-palettes{display:flex;flex-direction:column;gap:8px}
 .ai-palette{border:1.5px solid rgba(255,255,255,.1);overflow:hidden;transition:border-color .13s}
@@ -274,56 +241,51 @@ header{position:sticky;top:0;z-index:200;background:var(–ink);display:flex;ali
 .ai-swatches{display:flex;height:26px}
 .ai-swatch{flex:1}
 .ai-palette-body{padding:8px 10px}
-.ai-palette-name{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:var(–neon);margin-bottom:2px}
-.ai-palette-vibe{font-family:‘Share Tech Mono’,monospace;font-size:9px;color:rgba(255,255,255,.3);margin-bottom:6px}
+.ai-palette-name{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.08em;color:var(--neon);margin-bottom:2px}
+.ai-palette-vibe{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);margin-bottom:6px}
 .ai-palette-btns{display:flex;gap:5px;flex-wrap:wrap}
-.ai-apply-btn{padding:3px 10px;background:transparent;border:1px solid rgba(255,255,255,.15);font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.4);cursor:pointer;transition:all .12s}
-.ai-apply-btn:hover{background:var(–neon);color:var(–ink);border-color:var(–neon)}
-
-/* LIBRARY MODAL */
+.ai-apply-btn{padding:3px 10px;background:transparent;border:1px solid rgba(255,255,255,.15);font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.4);cursor:pointer;transition:all .12s}
+.ai-apply-btn:hover{background:var(--neon);color:var(--ink);border-color:var(--neon)}
 .modal-lib{width:min(700px,96vw);max-height:90vh}
 .lib-search-wrap{display:flex;gap:0}
-.lib-search-inp{padding:5px 10px;border:1.5px solid rgba(255,255,255,.2);border-right:none;background:rgba(255,255,255,.06);color:#fff;font-family:‘Share Tech Mono’,monospace;font-size:11px;outline:none;width:200px}
-.lib-search-inp:focus{border-color:var(–neon)}
+.lib-search-inp{padding:5px 10px;border:1.5px solid rgba(255,255,255,.2);border-right:none;background:rgba(255,255,255,.06);color:#fff;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none;width:200px}
+.lib-search-inp:focus{border-color:var(--neon)}
 .lib-search-inp::placeholder{color:rgba(255,255,255,.22)}
-.lib-search-btn{padding:5px 12px;background:var(–neon);color:var(–ink);border:none;cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.1em;transition:all .13s}
-.lib-search-btn:hover{background:var(–neon2);color:#fff}
+.lib-search-btn{padding:5px 12px;background:var(--neon);color:var(--ink);border:none;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.1em;transition:all .13s}
+.lib-search-btn:hover{background:var(--neon2);color:#fff}
 .lib-presets{display:flex;flex-wrap:wrap;gap:4px;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
-.lib-preset-btn{padding:3px 9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.06em;transition:all .12s}
-.lib-preset-btn:hover{background:rgba(200,255,0,.1);border-color:var(–neon);color:var(–neon)}
+.lib-preset-btn{padding:3px 9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.06em;transition:all .12s}
+.lib-preset-btn:hover{background:rgba(200,255,0,.1);border-color:var(--neon);color:var(--neon)}
 .lib-grid-wrap{flex:1;overflow-y:auto;position:relative;min-height:180px}
 .lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:5px;padding:10px}
-.lib-empty{grid-column:1/-1;text-align:center;font-family:‘Share Tech Mono’,monospace;font-size:11px;color:rgba(255,255,255,.18);padding:36px 20px}
-.lib-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,.7);font-family:‘Bebas Neue’,sans-serif;font-size:13px;letter-spacing:.1em;color:var(–neon);gap:10px}
-.lib-spinner{width:14px;height:14px;border:2px solid rgba(200,255,0,.3);border-top-color:var(–neon);border-radius:50%;animation:spin .7s linear infinite}
+.lib-empty{grid-column:1/-1;text-align:center;font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(255,255,255,.18);padding:36px 20px}
+.lib-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,.7);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em;color:var(--neon);gap:10px}
+.lib-spinner{width:14px;height:14px;border:2px solid rgba(200,255,0,.3);border-top-color:var(--neon);border-radius:50%;animation:spin .7s linear infinite}
 .lib-img-card{position:relative;aspect-ratio:3/2;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .15s}
-.lib-img-card:hover{border-color:var(–neon);transform:scale(1.03)}
-.lib-img-card.selected{border-color:var(–neon2);box-shadow:0 0 10px rgba(255,45,107,.4)}
+.lib-img-card:hover{border-color:var(--neon);transform:scale(1.03)}
+.lib-img-card.selected{border-color:var(--neon2);box-shadow:0 0 10px rgba(255,45,107,.4)}
 .lib-img-card img{width:100%;height:100%;object-fit:cover;display:block}
-.lib-img-card .lib-check{position:absolute;top:3px;right:3px;background:var(–neon2);color:#fff;font-size:9px;font-weight:700;padding:1px 4px;opacity:0;transition:opacity .13s;font-family:‘Bebas Neue’,sans-serif}
+.lib-img-card .lib-check{position:absolute;top:3px;right:3px;background:var(--neon2);color:#fff;font-size:9px;font-weight:700;padding:1px 4px;opacity:0;transition:opacity .13s;font-family:'Bebas Neue',sans-serif}
 .lib-img-card.selected .lib-check{opacity:1}
-.lib-img-card .lib-credit-tag{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:rgba(255,255,255,.45);font-family:‘Share Tech Mono’,monospace;font-size:7px;padding:2px 4px;opacity:0;transition:opacity .13s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lib-img-card .lib-credit-tag{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:rgba(255,255,255,.45);font-family:'Share Tech Mono',monospace;font-size:7px;padding:2px 4px;opacity:0;transition:opacity .13s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lib-img-card:hover .lib-credit-tag{opacity:1}
 .lib-foot{display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0}
-.lib-credit{font-family:‘Share Tech Mono’,monospace;font-size:8px;color:rgba(255,255,255,.18)}
+.lib-credit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.18)}
 .lib-credit a{color:rgba(255,255,255,.3);text-decoration:none}
-.lib-credit a:hover{color:var(–neon)}
-.lib-sel-info{font-family:‘Bebas Neue’,sans-serif;font-size:11px;letter-spacing:.07em;color:var(–neon2)}
-
-/* FOOTER */
-footer{position:relative;z-index:1;background:var(–ink);border-top:3px solid var(–neon);padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:56px}
-.footer-l{font-family:‘Share Tech Mono’,monospace;font-size:10px;color:rgba(255,255,255,.22)}
+.lib-credit a:hover{color:var(--neon)}
+.lib-sel-info{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.07em;color:var(--neon2)}
+footer{position:relative;z-index:1;background:var(--ink);border-top:3px solid var(--neon);padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.footer-l{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.22)}
 .footer-l b{color:rgba(255,255,255,.45)}
 .footer-links{display:flex;gap:14px}
-.footer-links a{font-family:‘Bebas Neue’,sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.28);text-decoration:none;transition:color .13s}
-.footer-links a:hover{color:var(–neon)}
+.footer-links a{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.28);text-decoration:none;transition:color .13s}
+.footer-links a:hover{color:var(--neon)}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(200,255,0,.3)}::-webkit-scrollbar-track{background:transparent}
 @keyframes glitch{0%,100%{transform:translate(0)}20%{transform:translate(-1px,0)}40%{transform:translate(1px,0)}60%{transform:translate(0,-1px)}80%{transform:translate(0,1px)}}
 .hero h1:hover{animation:glitch .3s ease infinite}
 @media(max-width:800px){
-/* ── LAYOUT ── */
 .layout{grid-template-columns:1fr}
-.right{position:static;height:auto;border-left:none;border-top:3px solid var(–neon)}
+.right{position:static;height:auto;border-left:none;border-top:3px solid var(--neon)}
 header,footer{padding-left:12px;padding-right:12px}
 .left,.right-inner{padding:12px}
 .top-bar{grid-template-columns:1fr}
@@ -332,37 +294,35 @@ header,footer{padding-left:12px;padding-right:12px}
 .hero-stats{flex-direction:row;gap:6px}
 .hero::before{display:none}
 .hero h1{font-size:36px}
-
-/* ── DARK BACKGROUND FOR LEFT ON MOBILE ── */
-body{background:var(–ink)}
-.left{background:var(–ink);border-right:none}
+body{background:var(--ink)}
+.left{background:var(--ink);border-right:none}
 .top-bar{border-color:rgba(255,255,255,.15)}
 .ctrl-card{background:rgba(255,255,255,.05);border:none}
 .ctrl-lbl{color:rgba(255,255,255,.5)}
 .search-inp,.custom-inp{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff}
 .search-inp::placeholder,.custom-inp::placeholder{color:rgba(255,255,255,.3)}
-.btn-add{background:var(–neon);color:var(–ink)}
+.btn-add{background:var(--neon);color:var(--ink)}
 .tabs{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
 .tab{color:rgba(255,255,255,.3);border-right-color:rgba(255,255,255,.08)}
-.tab.on{background:rgba(255,255,255,.1);color:var(–neon)}
+.tab.on{background:rgba(255,255,255,.1);color:var(--neon)}
 .cat-head{border-bottom-color:rgba(255,255,255,.15)}
 .cat-name{color:rgba(255,255,255,.6)}
 .cat-n{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
 .chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.65)}
-.chip:hover,.chip.on{background:var(–ink);color:var(–neon);border-color:var(–neon)}
+.chip:hover,.chip.on{background:var(--ink);color:var(--neon);border-color:var(--neon)}
 .bcard{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}
 .bcn{color:rgba(255,255,255,.8)}
 .bcd{color:rgba(255,255,255,.35)}
 .bcard:hover{background:rgba(200,255,0,.12)}
 .bcard.on{background:rgba(255,45,107,.15)}
-
-/* ── HEADER MOBILE ── */
 .hdr-center{display:none}
 .hdr-btn{font-size:11px;padding:0 10px}
-
-/* ── FOOTER MOBILE ── */
 footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:flex-start}
 }
+
+.upload-btn{padding:2px 6px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);color:var(–neon);cursor:pointer;font-family:‘Bebas Neue’,sans-serif;font-size:10px;letter-spacing:.06em;transition:all .13s;flex-shrink:0;position:relative;overflow:hidden}
+.upload-btn:hover{background:var(–neon);color:var(–ink)}
+.upload-btn input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0}
 </style>
 
 </head>
@@ -370,10 +330,10 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
 
 <header>
   <div class="logo-block">
-    <div class="logo-txt">STRAIN<span class="logo-slash">//</span>PROMPT<span class="logo-badge">UVDTF v4.0</span></div>
+    <div class="logo-txt">STRAIN<span class="logo-slash">//</span>PROMPT<span class="logo-badge">UVDTF v5.2</span></div>
   </div>
   <div class="hdr-center">
-    <div class="hdr-ticker">300 STRAINS · 32 BRAND STYLES · GRAFFITI WILDSTYLE · BLACKLETTER GOTHIC · FUTURISTIC SPEED CUT · AI COLOR SUGGEST · BATCH EXPORT · QR CODE · HISTORY · PREVIEW · 60×20MM BIC J26 ·&nbsp;</div>
+    <div class="hdr-ticker">300 STRAINS · 62 BRAND STYLES · 🔥 HYPER WILDSTYLE · GRAFFITI WILDSTYLE · STREET BOMB · ACTION SCRIPT · AI COLOR SUGGEST · BATCH EXPORT · QR CODE · HISTORY · PREVIEW · 60×20MM BIC J26 ·&nbsp;</div>
   </div>
   <div class="hdr-r">
     <button class="hdr-btn" onclick="openModal('how')">// HOW TO</button>
@@ -386,12 +346,12 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
   <div>
     <div class="hero-tag">🌿 UVDTF · BIC J26 · 60×20MM</div>
     <h1>CANNABIS<br>STRAIN<br><span class="hi">PROMPT</span></h1>
-    <p class="hero-sub">// 品種を選んでAI画像プロンプトを即生成<br>// GRAFFITI · GOTHIC · FUTURISTIC<br>// AI配色 · バッチ · QR · 履歴 · プレビュー</p>
+    <p class="hero-sub">// 品種を選んでAI画像プロンプトを即生成<br>// 🫧 THROWUP · 🪞 CHROME · ✍️ HANDSTYLE · 🔥 WALL PIECE<br>// AI配色 · バッチ · QR · 履歴 · プレビュー</p>
   </div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-n">300</div><div class="stat-l">STRAINS</div></div>
-    <div class="stat"><div class="stat-n">32</div><div class="stat-l">BRANDS</div></div>
-    <div class="stat"><div class="stat-n">5</div><div class="stat-l">FEATURES</div></div>
+    <div class="stat"><div class="stat-n">62</div><div class="stat-l">BRANDS</div></div>
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">FEATURES</div></div>
   </div>
 </div>
 
@@ -413,7 +373,7 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
     </div>
     <div class="tabs">
       <button class="tab on" onclick="switchTab('strains',this)">🌿 STRAINS (300)</button>
-      <button class="tab" onclick="switchTab('brands',this)">🏷 BRANDS (32)</button>
+      <button class="tab" onclick="switchTab('brands',this)">🏷 BRANDS (62)</button>
     </div>
     <div class="tp on" id="tp-strains"><div id="strainsEl"></div></div>
     <div class="tp" id="tp-brands"><div class="brand-grid" id="brandsEl"></div></div>
@@ -425,11 +385,11 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
       <div class="sel-box" id="selBox"><span class="hint">// SELECT STRAIN OR ENTER TEXT</span></div>
       <div class="sel-n"><b id="selN">0</b> SELECTED</div>
 
-```
   <!-- V1 -->
+
   <div class="pc v1" id="pc0">
     <div class="pc-head">
-      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🌀 GRAFFITI WILDSTYLE</span></div>
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🫧 BLOCK THROWUP</span></div>
       <div class="pc-head-btns">
         <button class="prev-btn" id="prevBtn0" onclick="togglePreview(0)" title="プレビュー">👁</button>
         <button class="fav-btn" id="favBtn0" onclick="toggleFav(0)" title="お気に入り">🤍</button>
@@ -446,6 +406,12 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
           <option value="swirl">🌀 SWIRL</option>
           <option value="scattered">✨ SCATTER</option>
           <option value="solid">■ SOLID</option>
+          <option value="diagonal">↗ DIAGONAL</option>
+          <option value="chrome">🪞 CHROME</option>
+          <option value="fire">🔥 FIRE FADE</option>
+          <option value="neon-glow">✨ NEON GLOW</option>
+          <option value="camo">🟩 CAMO</option>
+          <option value="galaxy">🌌 GALAXY</option>
         </select>
         <span class="rand-b" id="badge0">RND</span>
         <button class="ai-color-btn" onclick="openAiColor(0)" title="AI配色提案">✦ AI</button>
@@ -454,6 +420,7 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
         <span class="pc-rl">BG</span>
         <div class="bg-dots" id="bgOpts0"></div>
         <button class="lib-btn" onclick="openLibModal(0)">📚</button>
+        <label class="upload-btn" title="写真から選ぶ">📷<input type="file" accept="image/*" onchange="handleUpload(event,0)"></label>
         <span class="lib-thumb-wrap" id="libThumb0"></span>
       </div>
     </div>
@@ -469,9 +436,10 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
   </div>
 
   <!-- V2 -->
+
   <div class="pc v2" id="pc1">
     <div class="pc-head">
-      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">⛪ BLACKLETTER GOTHIC</span></div>
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🪞 CHROME WILD</span></div>
       <div class="pc-head-btns">
         <button class="prev-btn" id="prevBtn1" onclick="togglePreview(1)" title="プレビュー">👁</button>
         <button class="fav-btn" id="favBtn1" onclick="toggleFav(1)" title="お気に入り">🤍</button>
@@ -488,6 +456,12 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
           <option value="swirl">🌀 SWIRL</option>
           <option value="scattered">✨ SCATTER</option>
           <option value="solid">■ SOLID</option>
+          <option value="diagonal">↗ DIAGONAL</option>
+          <option value="chrome">🪞 CHROME</option>
+          <option value="fire">🔥 FIRE FADE</option>
+          <option value="neon-glow">✨ NEON GLOW</option>
+          <option value="camo">🟩 CAMO</option>
+          <option value="galaxy">🌌 GALAXY</option>
         </select>
         <span class="rand-b" id="badge1">RND</span>
         <button class="ai-color-btn" onclick="openAiColor(1)" title="AI配色提案">✦ AI</button>
@@ -496,6 +470,7 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
         <span class="pc-rl">BG</span>
         <div class="bg-dots" id="bgOpts1"></div>
         <button class="lib-btn" onclick="openLibModal(1)">📚</button>
+        <label class="upload-btn" title="写真から選ぶ">📷<input type="file" accept="image/*" onchange="handleUpload(event,1)"></label>
         <span class="lib-thumb-wrap" id="libThumb1"></span>
       </div>
     </div>
@@ -511,9 +486,10 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
   </div>
 
   <!-- V3 -->
+
   <div class="pc v3" id="pc2">
     <div class="pc-head">
-      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🏎️ FUTURISTIC SPEED CUT</span></div>
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">✍️ HANDSTYLE TAG</span></div>
       <div class="pc-head-btns">
         <button class="prev-btn" id="prevBtn2" onclick="togglePreview(2)" title="プレビュー">👁</button>
         <button class="fav-btn" id="favBtn2" onclick="toggleFav(2)" title="お気に入り">🤍</button>
@@ -530,6 +506,12 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
           <option value="swirl">🌀 SWIRL</option>
           <option value="scattered">✨ SCATTER</option>
           <option value="solid">■ SOLID</option>
+          <option value="diagonal">↗ DIAGONAL</option>
+          <option value="chrome">🪞 CHROME</option>
+          <option value="fire">🔥 FIRE FADE</option>
+          <option value="neon-glow">✨ NEON GLOW</option>
+          <option value="camo">🟩 CAMO</option>
+          <option value="galaxy">🌌 GALAXY</option>
         </select>
         <span class="rand-b" id="badge2">RND</span>
         <button class="ai-color-btn" onclick="openAiColor(2)" title="AI配色提案">✦ AI</button>
@@ -538,6 +520,7 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
         <span class="pc-rl">BG</span>
         <div class="bg-dots" id="bgOpts2"></div>
         <button class="lib-btn" onclick="openLibModal(2)">📚</button>
+        <label class="upload-btn" title="写真から選ぶ">📷<input type="file" accept="image/*" onchange="handleUpload(event,2)"></label>
         <span class="lib-thumb-wrap" id="libThumb2"></span>
       </div>
     </div>
@@ -552,7 +535,58 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
     <a class="leo-link" id="leo2" href="https://leonardo.ai" target="_blank">▶ OPEN LEONARDO AI →</a>
   </div>
 
+  <!-- V4 HYPER WILDSTYLE ★ NEW -->
+
+  <div class="pc vh" id="pc3">
+    <div class="pc-head">
+      <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl">🔥 WALL PIECE</span></div>
+      <div class="pc-head-btns">
+        <button class="prev-btn" id="prevBtn3" onclick="togglePreview(3)" title="プレビュー">👁</button>
+        <button class="fav-btn" id="favBtn3" onclick="toggleFav(3)" title="お気に入り">🤍</button>
+        <button class="cpbtn" onclick="copyVar(3)">COPY</button>
+      </div>
+    </div>
+    <div class="pc-panel">
+      <div class="pc-row">
+        <span class="pc-rl">CLR</span>
+        <div class="color-dots" id="dots3"></div>
+        <select class="blend-sel" id="blend3" onchange="updateAll()">
+          <option value="gradient-lr">→ L-R GRAD</option>
+          <option value="gradient-radial">💥 RADIAL</option>
+          <option value="swirl">🌀 SWIRL</option>
+          <option value="scattered">✨ SCATTER</option>
+          <option value="solid">■ SOLID</option>
+          <option value="diagonal">↗ DIAGONAL</option>
+          <option value="chrome">🪞 CHROME</option>
+          <option value="fire">🔥 FIRE FADE</option>
+          <option value="neon-glow">✨ NEON GLOW</option>
+          <option value="camo">🟩 CAMO</option>
+          <option value="galaxy">🌌 GALAXY</option>
+        </select>
+        <span class="rand-b" id="badge3">RND</span>
+        <button class="ai-color-btn" onclick="openAiColor(3)" title="AI配色提案">✦ AI</button>
+      </div>
+      <div class="pc-row">
+        <span class="pc-rl">BG</span>
+        <div class="bg-dots" id="bgOpts3"></div>
+        <button class="lib-btn" onclick="openLibModal(3)">📚</button>
+        <label class="upload-btn" title="写真から選ぶ">📷<input type="file" accept="image/*" onchange="handleUpload(event,3)"></label>
+        <span class="lib-thumb-wrap" id="libThumb3"></span>
+      </div>
+    </div>
+    <div class="pc-body" id="pb3"><span class="pc-dash">—</span></div>
+    <div class="preview-area" id="prevArea3">
+      <div class="preview-lbl">// AI PREVIEW</div>
+      <div class="preview-img-wrap">
+        <div class="preview-spinner" id="prevSpinner3">// GENERATING PREVIEW...</div>
+        <img class="preview-img" id="prevImg3" src="" alt="preview" />
+      </div>
+    </div>
+    <a class="leo-link" id="leo3" href="https://leonardo.ai" target="_blank">▶ OPEN LEONARDO AI →</a>
+  </div>
+
   <!-- BRAND -->
+
   <div class="pc vb" id="brandOut" style="display:none">
     <div class="pc-head">
       <div class="pc-label-wrap"><div class="pc-stripe"></div><span class="pc-lbl" id="brandOutLbl">🏷 BRAND STYLE</span></div>
@@ -567,9 +601,8 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
     <div class="neg-body" id="negEl">—</div>
   </div>
 
-  <button class="btn-main" id="copyAllBtn" onclick="copyAll()">📋 COPY ALL PROMPTS</button>
+<button class="btn-main" id="copyAllBtn" onclick="copyAll()">📋 COPY ALL PROMPTS</button>
 
-  <!-- FEATURE ROW -->
   <div class="feat-row">
     <button class="feat-btn" onclick="openModal('hist')"><span class="fi">📜</span>HISTORY</button>
     <button class="feat-btn" onclick="openBatch()"><span class="fi">📦</span>BATCH</button>
@@ -583,8 +616,6 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
     <button class="btn-sub danger" onclick="clearAll()">// CLEAR</button>
   </div>
 </div>
-```
-
   </div>
 </div>
 
@@ -609,6 +640,9 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
       <p>4. BGでプリセット背景 or 📚でライブラリ画像</p>
       <p>5. 👁でプレビュー生成（Pollinations AIを使用）</p>
       <p>6. COPYでプロンプトをコピー → Leonardo AIへ</p>
+      <p style="margin-top:12px;color:var(--neon4);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em">// 4 DISTINCT GRAFFITI STYLES</p>
+      <p>🫧 THROWUP · 🪞 CHROME · ✍️ HANDSTYLE · 🔥 WALL PIECE</p>
+      <p>4種類の全く異なるグラフィティスタイルを一度に生成</p>
       <p style="margin-top:12px;color:var(--neon);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.1em">// EXTRA FEATURES</p>
       <p>📜 HISTORY — 生成・お気に入り履歴を管理</p>
       <p>📦 BATCH — 複数品種を一括でCSV/TXT出力</p>
@@ -641,9 +675,10 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
     <div class="modal-bd">
       <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-bottom:12px">選択中の全品種を全スタイルで一括生成してエクスポートします</p>
       <div class="batch-opts">
-        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV1" checked><label class="batch-lbl" for="batchV1">🌀 Graffiti Wildstyle</label></div>
-        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV2" checked><label class="batch-lbl" for="batchV2">⛪ Blackletter Gothic</label></div>
-        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV3" checked><label class="batch-lbl" for="batchV3">🏎️ Futuristic Speed Cut</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV1" checked><label class="batch-lbl" for="batchV1">🫧 Block Throwup</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV2" checked><label class="batch-lbl" for="batchV2">🪞 Chrome Wild</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV3" checked><label class="batch-lbl" for="batchV3">✍️ Handstyle Tag</label></div>
+        <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchV4" checked><label class="batch-lbl" for="batchV4">🔥 Wall Piece</label></div>
         <div class="batch-opt-row"><input type="checkbox" class="batch-check" id="batchNeg" checked><label class="batch-lbl" for="batchNeg">⛔ Negative Prompt を含める</label></div>
       </div>
       <div class="batch-progress" id="batchProgress">
@@ -682,9 +717,10 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
       <div class="ai-strain-disp" id="aiStrainDisp">—</div>
       <div class="ai-status" id="aiStatus"><span class="ai-spin" id="aiSpin" style="display:none"></span><span id="aiStatusTxt">// STYLE を選択してAIに配色を提案してもらいましょう</span></div>
       <div style="display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap">
-        <button onclick="fetchAiColors(0)" style="padding:4px 12px;background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.3);color:var(--neon);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🌀 WILDSTYLE</button>
-        <button onclick="fetchAiColors(1)" style="padding:4px 12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);color:var(--neon3);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">⛪ GOTHIC</button>
-        <button onclick="fetchAiColors(2)" style="padding:4px 12px;background:rgba(255,45,107,.08);border:1px solid rgba(255,45,107,.25);color:var(--neon2);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🏎️ FUTURISTIC</button>
+        <button onclick="fetchAiColors(0)" style="padding:4px 12px;background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.3);color:var(--neon);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🫧 THROWUP</button>
+        <button onclick="fetchAiColors(1)" style="padding:4px 12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);color:var(--neon3);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🪞 CHROME</button>
+        <button onclick="fetchAiColors(2)" style="padding:4px 12px;background:rgba(255,45,107,.08);border:1px solid rgba(255,45,107,.25);color:var(--neon2);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">✍️ HANDSTYLE</button>
+        <button onclick="fetchAiColors(3)" style="padding:4px 12px;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);color:var(--neon4);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">🔥 WALL PIECE</button>
         <button onclick="fetchAiColors('all')" style="padding:4px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.08em;cursor:pointer">⚡ ALL STYLES</button>
       </div>
       <div class="ai-palettes" id="aiPalettes"></div>
@@ -732,22 +768,16 @@ footer{height:auto;padding:10px 14px;flex-direction:column;gap:4px;align-items:f
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════
-// DATA
-// ═══════════════════════════════════
 const STRAINS={"🔥 レジェンド系":["OG Kush","Sour Diesel","Blue Dream","White Widow","Purple Haze","Northern Lights","AK-47","Jack Herer","Skunk #1","Chemdawg","Godfather OG","Super Boof","Chocolope","Tangie","Crunch Berries","White Rhino","Motorbreath","Alien OG","Harlequin","GMO Cookies","OG Triploid","London Pound Cake","Slurricane","Animal Mints","Gelato #33","Cheetah Piss","Pinkman Goo","Malawi Gold","Cinderella 99","Thai Stick","Afghani","Colombian Gold","Panama Red","Acapulco Gold","Hash Plant","Headband","Snowcap","The White","Pennywise","Blue Cheese","Zkittlez OG","Medicine Man","Casey Jones","Confidential Cheese","Exodus Cheese"],"🍪 デザート / スイーツ系":["Gelato","Wedding Cake","Runtz","Zkittlez","Sherbet","Ice Cream Cake","Cookies and Cream","Biscotti","Cereal Milk","Girl Scout Cookies","Bacio Gelato","White Runtz","Pink Runtz","Apple Fritter","Wedding Cheesecake","DNA Cake","Lemon Meringue","Now N Laterz","Rainbow Sherbet","Cocolato","Kush Mints","Blueberry Kush","Purple Runtz","Berry Zkittlez","Tangerine Dream","Zoap","Sunset Runtz","Red Runtz","Candy Runtz","Oreoz","Glazed Donut","Vanilla Frosting","Sugar Cookies","Birthday Cake","Pancakes","Gelato 41","Gelato 45","Cake Pop","Funnel Cake","Red Velvet","Creme Brulee","Georgia Pie","Madelato","Candy Gas","Pina Colada","Sticky Buns","Waffle Cone","Churros","Cotton Candy Kush","Peach Rings"],"🍋 フルーツ系":["Lemon Haze","Strawberry Cough","Blueberry","Mango Kush","Pineapple Express","Grape Ape","Cherry Pie","Peach Ringz","Banana OG","Watermelon Zkittlez","Golden Pineapple","Apples and Bananas","Watermelon Gelato","Papaya Kush","Tropicana Cookies Purple","Cherry Pie OG","Apple Mintz","Blue Runtz","Pineapple Kush","Blue Razz Eclair","Trop Cherry","Strawberry Banana","Mango Tango","Passion Fruit","Pink Rozay","Lemon Cherry Gelato","Orange Push Pop","Peach Cobbler","Blackberry Kush","Grape Gasoline","Citrus Farmer","Key Lime Pie","Blueberry Muffin","Raspberry Kush","Melon Gum","Pink Lemonade","Space Lemon Cherry","Guava Jelly","Tropical Punch","Lychee"],"💜 パープル系":["Granddaddy Purple","Purple Kush","Purple Punch","Forbidden Fruit","Black Mamba","Purple Punch OG","Rainbow Beltz","Jealousy Z","Blueberry Kush","Blue Razz Eclair","Purple Sunset","Purple Space Cookies","Grape Diamonds","Mendocino Purps","Deep Purple","Purple Urkle","Purple Afghan Kush","Black Indica","Grape Pie","Lavender Jones","Dark Purple OG","Black Ice","Purple Milk","Grape Stomper","Blackwater","Sirius Black","Purple Trainwreck","Mendocino Skunk","Purple Haze #1","Violet Fog"],"🌿 インディカ強め":["Bubba Kush","Afghan Kush","G13","MK Ultra","Kosher Kush","Crystal Candy","Cake Bomb","Bangers and Mac #1","9 Pound Hammer","Master Kush","Romulan","Sensi Star","Critical Mass","Northern Soul","Death Star","Skywalker OG","Platinum OG","Fire OG","Banana Kush","Pre-98 Bubba Kush","Lamb's Bread","Hindu Kush","Black Domina","Granddaddy Black","Kimbo Kush","Grandma's Girl","Afghani #1","Big Bud","Blue Mystic","Shark Attack"],"⚡ サティバ強め":["Durban Poison","Green Crack","Super Silver Haze","Trainwreck","Amnesia Haze","Galileo Kush","Tangerine Dream","Moby Dick","Strawberry Fields","Ghost Train Haze","Maui Wowie","Hawaiian Snow","Neville's Haze","Kali Mist","Laughing Buddha","Arjan's Haze","Chocolope Haze","Lemon Skunk","Liberty Haze","Power Plant","Diablo Rojo","Sweet Mandarine Zkittlez","Electric Lemonade","Thai Haze","Pure Power Plant","Amnesia","Shining Silver Haze","Lemon Power Haze","Tropicana Haze","Cinderella Pineapple"],"🧪 ハイブリッド新世代":["Gorilla Glue #4","Bruce Banner","Mimosa","Do-Si-Dos","Animal Cookies","Gary Payton","Tropicana Cookies","MAC 1","Permanent Marker","Gushers","Snoop Dogg OG","Jealousy","Punch Pie","GOAT'lato","Pink Gorilla","Emerald Tranquility","Slurricane","London Pound Cake","Animal Mints","Motorbreath","Sundae Driver","Jet Fuel Gelato","Grease Monkey","Purple Gasoline","Grape Gasoline","Glitter Bomb","Zoap","Kroma","Diablo OG","Miracle Alien Cookies","Runtz OG","Apex","Jokerz","Biscotti Mintz","Alien Cookies","Sherb Crasher","Project 4516","Platinum Runtz","Space Runtz","Watermelon Mimosa","Sugar Plum Sunset","Ice Cream Mints","Lemon Pound Cake","Blue Slush","Dosido #22","Jenny Kush","Handlebar","Dulce","Bobby Wild","Kitchen Sink","White Mo","Space Lemon Cherry","Hashburger","Dark Web","Zaphire","Georgia Pie","Madelato","Pure Michigan","Candy Gas","Pina Colada","Creme Brulee","Pink Lemonade","Black Ice","Dark Purple OG","Bluci"]};
 
-const BRANDS=[{id:"cocacola",e:"🥤",n:"Coca-Cola",d:"赤×白 筆記体",p:(n)=>`The text "${n}" designed in the style of the Coca-Cola logo, elegant flowing cursive Spencerian calligraphy script, bold deep red with white highlight stroke, dynamic ribbon-like tail, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, high contrast, no bottles`},{id:"budweiser",e:"🍺",n:"Budweiser",d:"赤×金 ビール",p:(n)=>`The text "${n}" in the style of Budweiser logo, bold classic serif lettering, deep crimson red with metallic gold outline, ornate details, regal vintage brewery aesthetic, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supreme",e:"🟥",n:"Supreme",d:"赤BOX×白字",p:(n)=>`The text "${n}" in the style of Supreme streetwear, bold Futura Heavy italic white text inside a solid bright red rectangle, minimal flat design, stark contrast, horizontal 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"lv",e:"👜",n:"Louis Vuitton",d:"LV モノグラム",p:(n)=>`The text "${n}" in the style of Louis Vuitton, elegant serif in champagne gold on dark chocolate brown, LV monogram texture, refined luxury aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"nike",e:"👟",n:"Nike",d:"ボールド×斜体",p:(n)=>`The text "${n}" in the style of Nike, bold condensed athletic sans-serif, extreme italic lean, pure black on white, minimal high-impact typographic design, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"redbull",e:"🐂",n:"Red Bull",d:"紺×銀×赤",p:(n)=>`The text "${n}" in the style of Red Bull energy branding, bold dynamic lettering, deep navy with silver metallic highlight and red accent, angular sports typeface, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"harley",e:"🦅",n:"Harley-Davidson",d:"バイカーロゴ",p:(n)=>`The text "${n}" in the style of Harley-Davidson, bold vintage American biker lettering, orange and black, shield banner framing, gritty worn texture, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"stussy",e:"🛹",n:"Stüssy",d:"手書きスケーター",p:(n)=>`The text "${n}" in the style of Stüssy, loose handwritten graffiti-influenced script, casual urban handwriting, black ink on white, slightly imperfect, skate culture aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"jackdaniels",e:"🥃",n:"Jack Daniel's",d:"黒ラベルWhiskey",p:(n)=>`The text "${n}" in the style of Jack Daniel's, classic black label with white serif and script, vintage distillery label, filigree border details, high contrast black and white, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"palace",e:"🔺",n:"Palace",d:"レトロスケート",p:(n)=>`The text "${n}" in the style of Palace Skateboards, bold retro italic block lettering, British streetwear attitude, strong weight contrast, black and white, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"offwhite",e:"🏷",n:"Off-White™",d:"クォート×工業系",p:(n)=>`The text "\\"${n}\\"" in the style of Off-White by Virgil Abloh, helvetica bold industrial typography with quotation marks, diagonal stripe accent, stark black on white, construction tape motif, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"monster",e:"⚡",n:"Monster Energy",d:"緑爪痕×ブラック",p:(n)=>`The text "${n}" in the style of Monster Energy, aggressive claw-scratch letterforms in neon green on glossy black, sharp diagonal slashes, metallic green glow effect, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"gucci",e:"🌿",n:"Gucci",d:"GG ゴールド×黒",p:(n)=>`The text "${n}" in the style of Gucci, elegant serif with double-G monogram influence, rich gold on black, refined Italian luxury, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"versace",e:"🏛",n:"Versace",d:"バロック×ゴールド",p:(n)=>`The text "${n}" in the style of Versace, bold baroque serif in bright gold, ornate Greek key border details, luxury Italian aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"bape",e:"🦍",n:"BAPE",d:"カモ柄×アーチ",p:(n)=>`The text "${n}" in the style of A Bathing Ape, bold arched varsity lettering, camouflage pattern texture within letters, vibrant colors, Japanese streetwear aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"thrasher",e:"🔥",n:"Thrasher",d:"炎×オレンジ",p:(n)=>`The text "${n}" in the style of Thrasher Magazine, bold aggressive gothic lettering in orange and red, fire flames integrated into letters, hardcore skate aesthetic, black background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"vans",e:"✔️",n:"Vans",d:"チェッカー×白黒",p:(n)=>`The text "${n}" in the style of Vans, bold clean sans-serif with checkerboard pattern accent, black and white high contrast, skate and surf aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rolex",e:"👑",n:"Rolex",d:"クラウン×グリーン",p:(n)=>`The text "${n}" in the style of Rolex, refined classic serif in gold on deep green or black, subtle crown motif, prestige Swiss watchmaker aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"ferrari",e:"🐎",n:"Ferrari",d:"跳馬×赤",p:(n)=>`The text "${n}" in the style of Ferrari, bold elegant italic in Ferrari red with yellow and black accents, Italian automotive luxury, dynamic composition, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"lamborghini",e:"🐂",n:"Lamborghini",d:"牛×ゴールド",p:(n)=>`The text "${n}" in the style of Lamborghini, angular aggressive bold in gold and black, sharp geometric letterforms, Italian exotic car aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"adidas",e:"3️⃣",n:"Adidas",d:"3ストライプ",p:(n)=>`The text "${n}" in the style of Adidas, clean bold sans-serif in black and white, three parallel stripes accent, minimal modern athletic aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rollingstones",e:"👅",n:"Rolling Stones",d:"リップ×ロック",p:(n)=>`The text "${n}" in the style of The Rolling Stones, bold psychedelic rock lettering, tongue and lips motif influence, vibrant red and black, 1970s rock poster style, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"wutang",e:"🗡️",n:"Wu-Tang Clan",d:"黒×金 Hip-Hop",p:(n)=>`The text "${n}" in the style of Wu-Tang Clan, bold gothic martial arts-inspired lettering in black and gold, East-meets-West aesthetic, powerful rap visual identity, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"hennessy",e:"🥂",n:"Hennessy",d:"金×黒 コニャック",p:(n)=>`The text "${n}" in the style of Hennessy cognac, elegant serif in gold and black, French luxury spirits label, arm-and-axe crest influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"nasa",e:"🚀",n:"NASA",d:"宇宙×青×赤",p:(n)=>`The text "${n}" in the style of NASA, bold retro worm-logo-inspired lettering, deep space blue and red with white, vintage 1970s space age typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"pokemon",e:"⚡",n:"Pokémon",d:"黄×青 ポップ",p:(n)=>`The text "${n}" in the style of Pokémon logo, bold rounded bubbly lettering in bright yellow with blue outline and inner shadow, playful Japanese pop culture, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"dragonball",e:"🐉",n:"Dragon Ball Z",d:"オレンジ×炎",p:(n)=>`The text "${n}" in the style of Dragon Ball Z, bold dramatic lettering with flame and energy aura effects, vibrant orange and yellow with glowing power-up, intense action anime, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"naruto",e:"🍥",n:"Naruto",d:"オレンジ×忍者",p:(n)=>`The text "${n}" in the style of Naruto anime, bold dynamic lettering with ninja chakra energy, orange and black with swirling wind effects, Japanese anime action style, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"champion",e:"🏆",n:"Champion",d:"コレジエート",p:(n)=>`The text "${n}" in the style of Champion athletic apparel, bold classic athletic script, navy blue and gold, vintage American sportswear collegiate feel, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"fender",e:"🎸",n:"Fender",d:"スパゲッティロゴ",p:(n)=>`The text "${n}" in the style of Fender guitar, classic spaghetti-style retro script in black, 1950s American rock and roll aesthetic, vintage instrument brand typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"playboy",e:"🐰",n:"Playboy",d:"バニー×ゴールド",p:(n)=>`The text "${n}" in the style of Playboy magazine, elegant classic serif in gold, sophisticated magazine masthead, bunny silhouette motif influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supremexlv",e:"🔴",n:"Supreme × LV",d:"コラボ 赤×モノグラム",p:(n)=>`The text "${n}" in the style of the Supreme x Louis Vuitton collab, red box with white lettering on LV monogram pattern, luxury streetwear mashup, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`}];
+const BRANDS=[{id:"cocacola",e:"🥤",n:"Coca-Cola",d:"赤×白 筆記体",p:(n)=>`The text "${n}" designed in the style of the Coca-Cola logo, elegant flowing cursive Spencerian calligraphy script, bold deep red with white highlight stroke, dynamic ribbon-like tail, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, high contrast, no bottles`},{id:"budweiser",e:"🍺",n:"Budweiser",d:"赤×金 ビール",p:(n)=>`The text "${n}" in the style of Budweiser logo, bold classic serif lettering, deep crimson red with metallic gold outline, ornate details, regal vintage brewery aesthetic, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supreme",e:"🟥",n:"Supreme",d:"赤BOX×白字",p:(n)=>`The text "${n}" in the style of Supreme streetwear, bold Futura Heavy italic white text inside a solid bright red rectangle, minimal flat design, stark contrast, horizontal 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"lv",e:"👜",n:"Louis Vuitton",d:"LV モノグラム",p:(n)=>`The text "${n}" in the style of Louis Vuitton, elegant serif in champagne gold on dark chocolate brown, LV monogram texture, refined luxury aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"nike",e:"👟",n:"Nike",d:"ボールド×斜体",p:(n)=>`The text "${n}" in the style of Nike, bold condensed athletic sans-serif, extreme italic lean, pure black on white, minimal high-impact typographic design, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"redbull",e:"🐂",n:"Red Bull",d:"紺×銀×赤",p:(n)=>`The text "${n}" in the style of Red Bull energy branding, bold dynamic lettering, deep navy with silver metallic highlight and red accent, angular sports typeface, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"harley",e:"🦅",n:"Harley-Davidson",d:"バイカーロゴ",p:(n)=>`The text "${n}" in the style of Harley-Davidson, bold vintage American biker lettering, orange and black, shield banner framing, gritty worn texture, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"stussy",e:"🛹",n:"Stüssy",d:"手書きスケーター",p:(n)=>`The text "${n}" in the style of Stüssy, loose handwritten graffiti-influenced script, casual urban handwriting, black ink on white, slightly imperfect, skate culture aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"jackdaniels",e:"🥃",n:"Jack Daniel's",d:"黒ラベルWhiskey",p:(n)=>`The text "${n}" in the style of Jack Daniel's, classic black label with white serif and script, vintage distillery label, filigree border details, high contrast black and white, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"palace",e:"🔺",n:"Palace",d:"レトロスケート",p:(n)=>`The text "${n}" in the style of Palace Skateboards, bold retro italic block lettering, British streetwear attitude, strong weight contrast, black and white, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"offwhite",e:"🏷",n:"Off-White™",d:"クォート×工業系",p:(n)=>`The text "\\"${n}\\"" in the style of Off-White by Virgil Abloh, helvetica bold industrial typography with quotation marks, diagonal stripe accent, stark black on white, construction tape motif, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"monster",e:"⚡",n:"Monster Energy",d:"緑爪痕×ブラック",p:(n)=>`The text "${n}" in the style of Monster Energy, aggressive claw-scratch letterforms in neon green on glossy black, sharp diagonal slashes, metallic green glow effect, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"gucci",e:"🌿",n:"Gucci",d:"GG ゴールド×黒",p:(n)=>`The text "${n}" in the style of Gucci, elegant serif with double-G monogram influence, rich gold on black, refined Italian luxury, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"versace",e:"🏛",n:"Versace",d:"バロック×ゴールド",p:(n)=>`The text "${n}" in the style of Versace, bold baroque serif in bright gold, ornate Greek key border details, luxury Italian aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"bape",e:"🦍",n:"BAPE",d:"カモ柄×アーチ",p:(n)=>`The text "${n}" in the style of A Bathing Ape, bold arched varsity lettering, camouflage pattern texture within letters, vibrant colors, Japanese streetwear aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"thrasher",e:"🔥",n:"Thrasher",d:"炎×オレンジ",p:(n)=>`The text "${n}" in the style of Thrasher Magazine, bold aggressive gothic lettering in orange and red, fire flames integrated into letters, hardcore skate aesthetic, black background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"vans",e:"✔️",n:"Vans",d:"チェッカー×白黒",p:(n)=>`The text "${n}" in the style of Vans, bold clean sans-serif with checkerboard pattern accent, black and white high contrast, skate and surf aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rolex",e:"👑",n:"Rolex",d:"クラウン×グリーン",p:(n)=>`The text "${n}" in the style of Rolex, refined classic serif in gold on deep green or black, subtle crown motif, prestige Swiss watchmaker aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"ferrari",e:"🐎",n:"Ferrari",d:"跳馬×赤",p:(n)=>`The text "${n}" in the style of Ferrari, bold elegant italic in Ferrari red with yellow and black accents, Italian automotive luxury, dynamic composition, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"lamborghini",e:"🐂",n:"Lamborghini",d:"牛×ゴールド",p:(n)=>`The text "${n}" in the style of Lamborghini, angular aggressive bold in gold and black, sharp geometric letterforms, Italian exotic car aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"adidas",e:"3️⃣",n:"Adidas",d:"3ストライプ",p:(n)=>`The text "${n}" in the style of Adidas, clean bold sans-serif in black and white, three parallel stripes accent, minimal modern athletic aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rollingstones",e:"👅",n:"Rolling Stones",d:"リップ×ロック",p:(n)=>`The text "${n}" in the style of The Rolling Stones, bold psychedelic rock lettering, tongue and lips motif influence, vibrant red and black, 1970s rock poster style, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"wutang",e:"🗡️",n:"Wu-Tang Clan",d:"黒×金 Hip-Hop",p:(n)=>`The text "${n}" in the style of Wu-Tang Clan, bold gothic martial arts-inspired lettering in black and gold, East-meets-West aesthetic, powerful rap visual identity, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"hennessy",e:"🥂",n:"Hennessy",d:"金×黒 コニャック",p:(n)=>`The text "${n}" in the style of Hennessy cognac, elegant serif in gold and black, French luxury spirits label, arm-and-axe crest influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"nasa",e:"🚀",n:"NASA",d:"宇宙×青×赤",p:(n)=>`The text "${n}" in the style of NASA, bold retro worm-logo-inspired lettering, deep space blue and red with white, vintage 1970s space age typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"pokemon",e:"⚡",n:"Pokémon",d:"黄×青 ポップ",p:(n)=>`The text "${n}" in the style of Pokémon logo, bold rounded bubbly lettering in bright yellow with blue outline and inner shadow, playful Japanese pop culture, white background, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"dragonball",e:"🐉",n:"Dragon Ball Z",d:"オレンジ×炎",p:(n)=>`The text "${n}" in the style of Dragon Ball Z, bold dramatic lettering with flame and energy aura effects, vibrant orange and yellow with glowing power-up, intense action anime, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"naruto",e:"🍥",n:"Naruto",d:"オレンジ×忍者",p:(n)=>`The text "${n}" in the style of Naruto anime, bold dynamic lettering with ninja chakra energy, orange and black with swirling wind effects, Japanese anime action style, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"champion",e:"🏆",n:"Champion",d:"コレジエート",p:(n)=>`The text "${n}" in the style of Champion athletic apparel, bold classic athletic script, navy blue and gold, vintage American sportswear collegiate feel, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"fender",e:"🎸",n:"Fender",d:"スパゲッティロゴ",p:(n)=>`The text "${n}" in the style of Fender guitar, classic spaghetti-style retro script in black, 1950s American rock and roll aesthetic, vintage instrument brand typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"playboy",e:"🐰",n:"Playboy",d:"バニー×ゴールド",p:(n)=>`The text "${n}" in the style of Playboy magazine, elegant classic serif in gold, sophisticated magazine masthead, bunny silhouette motif influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supremexlv",e:"🔴",n:"Supreme × LV",d:"コラボ 赤×モノグラム",p:(n)=>`The text "${n}" in the style of the Supreme x Louis Vuitton collab, red box with white lettering on LV monogram pattern, luxury streetwear mashup, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"balenciaga",e:"👟",n:"Balenciaga",d:"ゴシック×ラグジュアリー",p:(n)=>`The text "${n}" in the style of Balenciaga fashion house, ultra-bold condensed gothic sans-serif, stark black on white or white on black, brutalist luxury fashion typography, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"dior",e:"🌸",n:"Dior",d:"エレガント×金",p:(n)=>`The text "${n}" in the style of Christian Dior, refined elegant serif in gold, French haute couture typography, thin letterforms with classical proportions, luxury fashion house aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"starbucks",e:"☕",n:"Starbucks",d:"緑×白 コーヒー",p:(n)=>`The text "${n}" in the style of Starbucks, circular badge design with deep green and white, serif lettering with coffee shop warmth, twin-tailed siren motif influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"mcdonalds",e:"🍟",n:"McDonald's",d:"黄×赤 ファスト",p:(n)=>`The text "${n}" in the style of McDonald's, bold rounded sans-serif in bright red with golden yellow accent, fun fast food energy, friendly retro Americana, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"apple",e:"🍎",n:"Apple",d:"ミニマル×シルバー",p:(n)=>`The text "${n}" in the style of Apple Inc, ultra-clean minimal sans-serif in brushed silver or black, premium tech aesthetic, San Francisco font influence, whitespace-driven luxury design, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"jordan",e:"🏀",n:"Air Jordan",d:"ジャンプマン×赤黒",p:(n)=>`The text "${n}" in the style of Air Jordan / Jordan Brand, bold athletic block lettering, classic red and black colorway, basketball heritage and sneaker culture, Jumpman silhouette influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"supreme2",e:"📦",n:"KITH",d:"ミニマル×ニューヨーク",p:(n)=>`The text "${n}" in the style of KITH streetwear, clean minimal sans-serif in muted tones, New York luxury streetwear aesthetic, understated cool, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"travis",e:"🌵",n:"Travis Scott",d:"カクタス×ブラウン",p:(n)=>`The text "${n}" in the style of Travis Scott Cactus Jack branding, distressed vintage western lettering, earthy brown and burnt orange tones, psychedelic country-trap aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"vlone",e:"🅥",n:"VLONE",d:"オレンジ×黒",p:(n)=>`The text "${n}" in the style of VLONE streetwear, bold sharp block letters in bright orange on black, Harlem trap culture aesthetic, stark high-contrast design, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"acdc",e:"⚡",n:"AC/DC",d:"稲妻×ロック",p:(n)=>`The text "${n}" in the style of AC/DC rock band, bold lightning bolt-influenced lettering, high voltage yellow and black, classic hard rock typography with electric energy, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"metallica",e:"🤘",n:"Metallica",d:"メタル×稲妻体",p:(n)=>`The text "${n}" in the style of Metallica, aggressive jagged lightning bolt letterforms, electric blue and silver on black, thrash metal aesthetic, sharp angular cuts into letters, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"playstation",e:"🎮",n:"PlayStation",d:"青×白 ゲーム",p:(n)=>`The text "${n}" in the style of PlayStation, clean bold sans-serif in deep blue and white, gaming culture aesthetic, modern tech meets entertainment, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"minecraft",e:"⛏️",n:"Minecraft",d:"ピクセル×緑",p:(n)=>`The text "${n}" in the style of Minecraft, blocky pixel-art inspired letterforms, earthy green and brown with stone grey, 8-bit video game aesthetic, square chunky letters, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"tesla",e:"⚡",n:"Tesla",d:"赤×未来的",p:(n)=>`The text "${n}" in the style of Tesla Motors, sleek modern serif in metallic red and silver, electric vehicle futurism, clean premium automotive aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"offwhite2",e:"🔶",n:"Trapstar",d:"赤×黒 ロンドン",p:(n)=>`The text "${n}" in the style of Trapstar London, bold gothic-influenced lettering in red and black, UK street culture, gritty urban energy, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"rhude",e:"🦅",n:"Rhude",d:"ヴィンテージ×高級",p:(n)=>`The text "${n}" in the style of Rhude clothing, bold vintage American typography, warm aged tones of cream and burgundy, California luxury streetwear, retro-premium aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"sp5der",e:"🕷️",n:"Sp5der",d:"蜘蛛×ピンク",p:(n)=>`The text "${n}" in the style of Sp5der streetwear by Young Thug, bold web-like lettering in hot pink and white, spiderweb motif integration, Atlanta trap fashion energy, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"corteiz",e:"🌍",n:"Corteiz",d:"アルクォーター×緑",p:(n)=>`The text "${n}" in the style of Corteiz CRTZ streetwear, bold Alcatraz-inspired lettering in forest green and white, underground London street culture, guerrilla marketing aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"assc",e:"🖤",n:"ASSC",d:"ブラック×アンチソーシャル",p:(n)=>`The text "${n}" in the style of Anti Social Social Club, bold clean sans-serif in black and pink, ironic millennial streetwear aesthetic, simple stark typography with emotional undertone, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"fearofgod",e:"🙏",n:"Fear of God",d:"ミニマル×宗教的",p:(n)=>`The text "${n}" in the style of Fear of God by Jerry Lorenzo, elongated minimalist serif typography, muted earth tones of beige and black, luxury American streetwear with spiritual aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"ysl",e:"💛",n:"YSL",d:"ゴールド×フレンチ",p:(n)=>`The text "${n}" in the style of Yves Saint Laurent YSL, bold interlocking serif monogram in gold on black, French haute couture elegance, classic luxury fashion house, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"prada",e:"🔺",n:"Prada",d:"ナイロン×ブラック",p:(n)=>`The text "${n}" in the style of Prada, refined minimal serif in black and white, Italian luxury fashion with cold modernist edge, clean geometric letterforms, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"burberry",e:"🟫",n:"Burberry",d:"チェック×ベージュ",p:(n)=>`The text "${n}" in the style of Burberry, classic British serif lettering in tan and black, iconic plaid check pattern background texture, heritage English luxury fashion, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"newera",e:"🧢",n:"New Era",d:"フラッグ×スポーツ",p:(n)=>`The text "${n}" in the style of New Era cap brand, bold athletic block lettering in navy and red with silver, classic baseball heritage typography, urban streetwear meets sports culture, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"mitchellness",e:"🏆",n:"Mitchell & Ness",d:"レトロ×スポーツ",p:(n)=>`The text "${n}" in the style of Mitchell and Ness throwback sportswear, vintage collegiate athletic lettering, bold retro block script in team colors, classic American sports heritage, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"tupac",e:"✌️",n:"Tupac",d:"ウェストコースト×黒金",p:(n)=>`The text "${n}" in the style of Tupac Shakur branding, bold West Coast hip-hop lettering in gold and black, Makaveli outlaw energy, California gangsta rap aesthetic with crown motif influence, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"biggie",e:"👑",n:"Biggie",d:"クラウン×ニューヨーク",p:(n)=>`The text "${n}" in the style of The Notorious B.I.G. branding, bold East Coast New York hip-hop lettering, crown motif in gold and black, Brooklyn street royalty aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"eminem",e:"⚡",n:"Eminem",d:"スリム×シェイディ",p:(n)=>`The text "${n}" in the style of Eminem Slim Shady branding, aggressive bold graffiti-influenced lettering in white and yellow on black, Detroit rap energy, bleached hair alter-ego aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"sprite",e:"🍋",n:"Sprite",d:"緑×白 シトラス",p:(n)=>`The text "${n}" in the style of Sprite soda, bold dynamic lettering in bright lime green and white with yellow accents, refreshing citrus energy, iconic lemon-lime beverage brand, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`},{id:"cookiessf",e:"🍪",n:"Cookies SF",d:"カンナビス×青白",p:(n)=>`The text "${n}" in the style of Cookies SF cannabis brand by Berner, bold clean block lettering in royal blue and white with cookie motif, California cannabis culture premium aesthetic, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`}];
 
 const NEG=`realistic photo, 3D render, blurry, low contrast, watermark, drop shadow on background, complex background, cluttered layout, multiple text elements, illegible letters, distorted characters`;
 
-// ═══════════════════════════════════
-// COLOR SYSTEM
-// ═══════════════════════════════════
 const MAX_C=5;
-const cardColors=[[],[],[]];
+const cardColors=[[],[],[],[]];
 const RAND_POOLS=[['lime green','yellow','orange'],['electric blue','cyan','white'],['hot pink','purple','magenta'],['crimson red','gold','black'],['neon green','dark green','yellow'],['deep purple','violet','pink'],['orange','red','amber'],['sky blue','navy','silver'],['turquoise','teal','white'],['red','yellow','green']];
-const BLEND_PROMPTS={'gradient-lr':(c)=>`smooth left-to-right gradient blending ${c} flowing seamlessly across all letters as one unified color wash`,'gradient-radial':(c)=>`radial burst gradient ${c} exploding outward from center of the letters, colors radiating in all directions`,'swirl':(c)=>`swirling vortex color mix of ${c} spiraling and twisting throughout all the letters`,'scattered':(c)=>`scattered splatter mix of ${c} randomly distributed across all letters like paint splashes`,'solid':(c)=>`solid flat color fill using ${c.split(',')[0].trim()}, clean and uniform`};
+const BLEND_PROMPTS={'gradient-lr':(c)=>`smooth left-to-right gradient blending ${c} flowing seamlessly across all letters as one unified color wash`,'gradient-radial':(c)=>`radial burst gradient ${c} exploding outward from center of the letters, colors radiating in all directions`,'swirl':(c)=>`swirling vortex color mix of ${c} spiraling and twisting throughout all the letters`,'scattered':(c)=>`scattered splatter mix of ${c} randomly distributed across all letters like paint splashes`,'solid':(c)=>`solid flat color fill using ${c.split(',')[0].trim()}, clean and uniform`,'diagonal':(c)=>`sharp diagonal gradient slashing ${c} from top-left corner to bottom-right corner across all letters`,'chrome':(c)=>`mirror-like chrome metallic finish with ${c} reflective surface, bright white specular highlight streak across top, deep shadow at bottom, highly polished liquid metal look`,'fire':(c)=>`fire fade color effect with ${c} blazing hot bright at the top transitioning to deep dark ember tones at the bottom, flame-like organic color bleeding between letters`,'neon-glow':(c)=>`vivid neon ${c} fill with intense outer glow and inner luminance, letters appear to emit light like a glowing neon sign, electric bloom effect`,'camo':(c)=>`military camouflage pattern fill using ${c} in irregular organic blotch shapes, urban camo texture painted across all letters`,'galaxy':(c)=>`deep space galaxy fill with ${c} swirling nebula clouds, scattered star speckles, and cosmic dust, each letter contains a universe`};
 
 function getBlendStr(vi){
   const colors=cardColors[vi];
@@ -778,11 +808,26 @@ function buildDots(vi){
   }
   if(badge){badge.textContent=cardColors[vi].length===0?'RND':cardColors[vi].length+'CLR';badge.className=cardColors[vi].length===0?'rand-b':'set-b';}
 }
-function initDots(){[0,1,2].forEach(vi=>buildDots(vi));}
 
-// ═══════════════════════════════════
-// BACKGROUND SYSTEM
-// ═══════════════════════════════════
+function handleUpload(e,vi){
+  const file=e.target.files[0];
+  if(!file)return;
+  if(!file.type.startsWith('image/')){showToast('// IMAGE FILES ONLY');return;}
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const dataUrl=ev.target.result;
+    cardBgImages[vi]={id:'upload_'+vi,thumb:dataUrl,url:dataUrl,prompt:'custom uploaded photo background, high quality photographic texture',credit:'My Photo'};
+    cardBgs[vi]='lib-image';
+    buildBgOpts(vi);renderLibThumb(vi);updateAll();
+    showToast('// 📷 PHOTO SET AS BACKGROUND');
+    // reset input so same file can be re-selected
+    e.target.value='';
+  };
+  reader.readAsDataURL(file);
+}
+
+function initDots(){[0,1,2,3].forEach(vi=>buildDots(vi));}
+
 const BACKGROUNDS=[
   {id:'transparent',label:'CLEAR',color:'',prompt:'transparent background, isolated design with no background, PNG-ready cutout'},
   {id:'white',label:'WHT',color:'#ffffff',prompt:'clean white background'},
@@ -795,9 +840,9 @@ const BACKGROUNDS=[
   {id:'fire',label:'FIR',color:'#8b1a00',prompt:'dramatic fire and flames background, blazing orange and red inferno'},
   {id:'galaxy',label:'GLX',color:'#0a0a2a',prompt:'deep space galaxy background, stars and nebula purple-blue cosmic'}
 ];
-const cardBgs=['transparent','transparent','transparent'];
-const cardBgCustom=['#ffffff','#ffffff','#ffffff'];
-const cardBgImages=[null,null,null];
+const cardBgs=['transparent','transparent','transparent','transparent'];
+const cardBgCustom=['#ffffff','#ffffff','#ffffff','#ffffff'];
+const cardBgImages=[null,null,null,null];
 
 function getBgStr(vi){
   if(cardBgImages[vi]&&cardBgs[vi]==='lib-image')return cardBgImages[vi].prompt;
@@ -825,38 +870,36 @@ function buildBgOpts(vi){
   cinp.addEventListener('change',function(){cardBgCustom[vi]=this.value;cardBgs[vi]='custom';buildBgOpts(vi);updateAll();});
   cw.appendChild(prev);cw.appendChild(cinp);el.appendChild(cw);
 }
-function initBgOpts(){[0,1,2].forEach(vi=>buildBgOpts(vi));}
+function initBgOpts(){[0,1,2,3].forEach(vi=>buildBgOpts(vi));}
 
-// ═══════════════════════════════════
-// STATE
-// ═══════════════════════════════════
 let selected=[],customList=[],activeCustom=null,activeBrand=null;
-window._p=['','',''];window._bp='';
+window._p=['','','',''];window._bp='';
 function getText(){return activeCustom||selected.join(', ');}
 
-// ═══════════════════════════════════
-// PROMPTS
-// ═══════════════════════════════════
-function bV1(n,blend,bg){return`The text "${n}" in authentic hand-painted graffiti wildstyle lettering, complex interlocking angular letterforms with pointed arrow extensions and sharp serifs shooting outward, letters overlapping and connecting each other, ${blend}, deep 3D bevel with dark shadow, thick white inner outline and heavy black outer outline, paint drips and spray splatter texture, urban wall mural aesthetic, ${bg}, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, NOT a digital font, hand-drawn graffiti art`;}
-function bV2(n,blend,bg){return`The text "${n}" in bold ornate blackletter gothic calligraphy style, thick medieval-inspired letterforms with dramatic hairline serifs and decorative flourishes, ${blend} on the letters, aged parchment or distressed texture, thick white stroke outline, heavy black drop shadow, classic tattoo lettering aesthetic, ${bg}, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready, high contrast`;}
-function bV3(n,blend,bg){return`The text "${n}" in futuristic racing typography, geometric sans-serif letterforms with sharp diagonal cut-ins and notches sliced into the letters, each letter has angular cutaway sections like speed slashes, ${blend}, thick black outer outline, perfectly horizontal flat baseline with NO upward slant, letters all aligned on the same horizontal level, speed line accent marks extending from left side, ${bg}, sticker design, horizontal 3:1 ratio (60mm x 20mm), UVDTF print ready, vector-clean, NO graffiti, NO drips, NO upward diagonal baseline`;}
+function bV1(n,blend,bg){return`The word "${n}" in classic graffiti blockbuster alphabet style, each letter is a bold thick rectangular block shape with sharp angular corners and slight curves at terminals, letters have internal negative space cutouts and inner shadow lines etched inside each letterform like a hand-drawn graffiti alphabet chart, ${blend} painted flat inside the letters, clean consistent thick black outer outline on every letter, solid black 3D block extrusion shadow pushed uniformly to the bottom-right giving depth, letters are all caps and clearly readable standing side by side, NO wildstyle NO interlocking NO drips, white background, clean flat sticker design, professional graffiti font style, horizontal 3:1 ratio (60mm x 20mm), UVDTF print ready`;}
+function bV2(n,blend,bg){return`The word "${n}" in mirror-polished CHROME graffiti lettering, highly reflective metallic silver surface with dramatic white specular streak across top of letters, dark grey shadow reflection on bottom half, letters have sharp angular wildstyle forms with arrow tips, bright environment reflections visible in the chrome surface, thin black outline, bold black 3D extrusion shadow to bottom-left, black background with subtle blue-grey ambient light, small sparkle glints on chrome highlights, NO color fill only chrome metal, horizontal sticker 3:1 ratio (60mm x 20mm), UVDTF print ready`;}
+function bV3(n,blend,bg){return`The word "${n}" written in loose flowing graffiti HANDSTYLE marker lettering, casual one-stroke connected script like a real writer's tag but oversized and stylized, each letter flows naturally into the next with fluid curves and loops, NO block letters NO bubble letters, ${blend} painted smoothly across the script, thin white highlight line tracing the top edge of each stroke, medium black outer outline, elongated underline swoosh extending beyond the word on both sides, minimal clean ink splatter dots around the edges, two or three paint drips from the baseline, white background, wide horizontal sticker shape 3:1 ratio (60mm x 20mm), UVDTF print ready, handwritten street style`;}
+
+function bV4(n,blend,bg){return`The word "${n}" as a full WILDSTYLE graffiti PIECE on a wall, letters split into two stacked rows if long, maximum complexity with every letter morphed beyond recognition, arrows shooting in all directions piercing through neighboring letters, hidden letter connections, background fill color behind the letters, ${blend} on letter fills, thin white outline then thick black outline then colored 3D brick-like extrusion going bottom-right, the whole piece surrounded by a cloud-shaped background fill in dark color, small illegible throw-up signature tags in bottom corners, paint drips at very bottom, this looks like a real wall piece painted by a veteran graffiti artist, dark wall background texture, horizontal mural composition 3:1 ratio (60mm x 20mm), UVDTF print ready, NOT readable, true complexity`;}
 
 function updateAll(){
   const n=getText();
   if(!n){
     document.getElementById('pb0').innerHTML='<span class="pc-dash">// SELECT STRAIN TO GENERATE PROMPT</span>';
-    ['pb1','pb2'].forEach(id=>document.getElementById(id).innerHTML='<span class="pc-dash">—</span>');
+    ['pb1','pb2','pb3'].forEach(id=>document.getElementById(id).innerHTML='<span class="pc-dash">—</span>');
     document.getElementById('negEl').textContent='—';
     document.getElementById('brandOut').style.display='none';
-    window._p=['','',''];window._bp='';updateSelBox();return;
+    window._p=['','','',''];window._bp='';updateSelBox();return;
   }
   const p0=bV1(n,getBlendStr(0),getBgStr(0));
   const p1=bV2(n,getBlendStr(1),getBgStr(1));
   const p2=bV3(n,getBlendStr(2),getBgStr(2));
-  window._p=[p0,p1,p2];
+  const p3=bV4(n,getBlendStr(3),getBgStr(3));
+  window._p=[p0,p1,p2,p3];
   document.getElementById('pb0').textContent=p0;
   document.getElementById('pb1').textContent=p1;
   document.getElementById('pb2').textContent=p2;
+  document.getElementById('pb3').textContent=p3;
   document.getElementById('negEl').textContent=NEG;
   if(activeBrand){
     const b=BRANDS.find(x=>x.id===activeBrand);
@@ -866,9 +909,6 @@ function updateAll(){
   saveToHistory(n,p0);
 }
 
-// ═══════════════════════════════════
-// COPY
-// ═══════════════════════════════════
 function showLeo(id){const l=document.getElementById(id);if(l)l.classList.add('show');}
 function copyVar(i){
   const t=window._p[i];if(!t)return;
@@ -890,26 +930,22 @@ function copyBrand(){
 }
 function copyAll(){
   const ps=window._p;if(!ps[0])return;
-  let t=`=== GRAFFITI WILDSTYLE ===\n${ps[0]}\n\n=== BLACKLETTER GOTHIC ===\n${ps[1]}\n\n=== FUTURISTIC SPEED CUT ===\n${ps[2]}`;
+  let t=`=== BLOCK THROWUP ===\n${ps[0]}\n\n=== CHROME WILD ===\n${ps[1]}\n\n=== HANDSTYLE TAG ===\n${ps[2]}\n\n=== WALL PIECE ===\n${ps[3]}`;
   if(window._bp)t+=`\n\n=== BRAND STYLE ===\n${window._bp}`;
   t+=`\n\n=== NEGATIVE PROMPT ===\n${NEG}`;
   navigator.clipboard.writeText(t);
-  ['leo0','leo1','leo2','leoB'].forEach(id=>showLeo(id));
+  ['leo0','leo1','leo2','leo3','leoB'].forEach(id=>showLeo(id));
   const btn=document.getElementById('copyAllBtn');
   btn.innerHTML='✓ ALL COPIED';btn.classList.add('ok');
   setTimeout(()=>{btn.innerHTML='📋 COPY ALL PROMPTS';btn.classList.remove('ok');},2000);
   showToast('// ALL PROMPTS COPIED');
 }
 
-// ═══════════════════════════════════
-// FEATURE 1: HISTORY & FAVORITES
-// ═══════════════════════════════════
 const MAX_HIST=50;
 function loadHist(){try{return JSON.parse(localStorage.getItem('sp_hist')||'[]');}catch(e){return[];}}
 function loadFavs(){try{return JSON.parse(localStorage.getItem('sp_favs')||'[]');}catch(e){return[];}}
 function saveHist(arr){try{localStorage.setItem('sp_hist',JSON.stringify(arr));}catch(e){}}
 function saveFavs(arr){try{localStorage.setItem('sp_favs',JSON.stringify(arr));}catch(e){}}
-
 function saveToHistory(strain,prompt){
   if(!strain||!prompt)return;
   const hist=loadHist();
@@ -918,12 +954,11 @@ function saveToHistory(strain,prompt){
   if(hist.length>MAX_HIST)hist.pop();
   saveHist(hist);
 }
-
-let favStar=[false,false,false];
+let favStar=[false,false,false,false];
 function toggleFav(vi){
   const t=window._p[vi];if(!t)return;
   const n=getText();if(!n)return;
-  const styles=['Graffiti Wildstyle','Blackletter Gothic','Futuristic Speed Cut'];
+  const styles=['Block Throwup','Chrome Wild','Handstyle Tag','Wall Piece'];
   const favs=loadFavs();
   const key=n+'__'+vi;
   const idx=favs.findIndex(f=>f.key===key);
@@ -939,7 +974,6 @@ function toggleFav(vi){
   }
   saveFavs(favs);
 }
-
 function switchHistTab(id,btn){
   document.querySelectorAll('.hist-tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.hist-pane').forEach(p=>p.classList.remove('on'));
@@ -947,7 +981,6 @@ function switchHistTab(id,btn){
   document.getElementById('histPane-'+id).classList.add('on');
   if(id==='fav')renderFavs();else renderHistList();
 }
-
 function renderFavs(){
   const pane=document.getElementById('histPane-fav');
   const favs=loadFavs();
@@ -975,51 +1008,46 @@ function deleteFav(key){const favs=loadFavs().filter(f=>f.key!==key);saveFavs(fa
 function deleteHist(id){const hist=loadHist().filter(h=>h.id!==id);saveHist(hist);renderHistList();}
 function reloadFromHist(p){navigator.clipboard.writeText(p+'\n\n[Negative]\n'+NEG);closeModal('hist');showToast('// COPIED — PASTE IN LEONARDO AI');}
 
-// ═══════════════════════════════════
-// FEATURE 2: BATCH EXPORT
-// ═══════════════════════════════════
 function openBatch(){
   if(!selected.length&&!activeCustom){showToast('// SELECT STRAINS FIRST');return;}
   openModal('batch');
 }
-
 function runBatch(fmt){
   const targets=activeCustom?[activeCustom]:selected;
   if(!targets.length){showToast('// SELECT STRAINS FIRST');return;}
   const doV1=document.getElementById('batchV1').checked;
   const doV2=document.getElementById('batchV2').checked;
   const doV3=document.getElementById('batchV3').checked;
+  const doV4=document.getElementById('batchV4').checked;
   const doNeg=document.getElementById('batchNeg').checked;
-
   const prog=document.getElementById('batchProgress');
   const bar=document.getElementById('batchBar');
   const status=document.getElementById('batchStatus');
   prog.classList.add('show');
-
   let lines=[];
   targets.forEach((name,i)=>{
     bar.style.width=Math.round((i/targets.length)*100)+'%';
     status.textContent=`// GENERATING ${i+1}/${targets.length}: ${name}`;
     if(fmt==='csv'){
       if(i===0)lines.push('Strain,Style,Prompt');
-      if(doV1)lines.push(`"${name}","Graffiti Wildstyle","${bV1(name,getBlendStr(0),getBgStr(0)).replace(/"/g,'""')}"`);
-      if(doV2)lines.push(`"${name}","Blackletter Gothic","${bV2(name,getBlendStr(1),getBgStr(1)).replace(/"/g,'""')}"`);
-      if(doV3)lines.push(`"${name}","Futuristic Speed Cut","${bV3(name,getBlendStr(2),getBgStr(2)).replace(/"/g,'""')}"`);
+      if(doV1)lines.push(`"${name}","Block Throwup","${bV1(name,getBlendStr(0),getBgStr(0)).replace(/"/g,'""')}"`);
+      if(doV2)lines.push(`"${name}","Chrome Wild","${bV2(name,getBlendStr(1),getBgStr(1)).replace(/"/g,'""')}"`);
+      if(doV3)lines.push(`"${name}","Handstyle Tag","${bV3(name,getBlendStr(2),getBgStr(2)).replace(/"/g,'""')}"`);
+      if(doV4)lines.push(`"${name}","Wall Piece","${bV4(name,getBlendStr(3),getBgStr(3)).replace(/"/g,'""')}"`);
       if(doNeg)lines.push(`"${name}","NEGATIVE","${NEG.replace(/"/g,'""')}"`);
     }else{
       lines.push(`${'='.repeat(40)}`);
       lines.push(`STRAIN: ${name}`);
       lines.push(`${'='.repeat(40)}`);
-      if(doV1)lines.push(`[GRAFFITI WILDSTYLE]\n${bV1(name,getBlendStr(0),getBgStr(0))}\n`);
-      if(doV2)lines.push(`[BLACKLETTER GOTHIC]\n${bV2(name,getBlendStr(1),getBgStr(1))}\n`);
-      if(doV3)lines.push(`[FUTURISTIC SPEED CUT]\n${bV3(name,getBlendStr(2),getBgStr(2))}\n`);
+      if(doV1)lines.push(`[BLOCK THROWUP]\n${bV1(name,getBlendStr(0),getBgStr(0))}\n`);
+      if(doV2)lines.push(`[CHROME WILD]\n${bV2(name,getBlendStr(1),getBgStr(1))}\n`);
+      if(doV3)lines.push(`[HANDSTYLE TAG]\n${bV3(name,getBlendStr(2),getBgStr(2))}\n`);
+      if(doV4)lines.push(`[WALL PIECE]\n${bV4(name,getBlendStr(3),getBgStr(3))}\n`);
       if(doNeg)lines.push(`[NEGATIVE PROMPT]\n${NEG}\n`);
     }
   });
-
   bar.style.width='100%';
   status.textContent=`// COMPLETE — ${targets.length} STRAINS`;
-
   const blob=new Blob([lines.join('\n')],{type:fmt==='csv'?'text/csv;charset=utf-8':'text/plain;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=`strain-prompts-${Date.now()}.${fmt}`;a.click();
@@ -1028,9 +1056,6 @@ function runBatch(fmt){
   showToast(`// ${targets.length} STRAINS EXPORTED AS ${fmt.toUpperCase()}`);
 }
 
-// ═══════════════════════════════════
-// FEATURE 3: QR CODE
-// ═══════════════════════════════════
 function openQR(){
   const n=getText();
   const p=window._p[0];
@@ -1044,7 +1069,6 @@ function openQR(){
     info.innerHTML=`// STRAIN: ${n}<br>// QRをスキャンするとプロンプトが表示されます<br>// (先頭200文字)`;
   }catch(e){
     box.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:10px;color:#666;padding:20px;text-align:center">QR生成エラー<br>ライブラリ読み込み中...</div>';
-    info.textContent='// QRCode.js loading...';
   }
 }
 function downloadQR(){
@@ -1054,9 +1078,6 @@ function downloadQR(){
   showToast('// QR DOWNLOADED');
 }
 
-// ═══════════════════════════════════
-// FEATURE 4: AI COLOR SUGGEST
-// ═══════════════════════════════════
 let aiTargetVi='all';
 function openAiColor(vi){
   aiTargetVi=vi;
@@ -1067,7 +1088,6 @@ function openAiColor(vi){
   document.getElementById('aiSpin').style.display='none';
   openModal('aiclr');
 }
-
 async function fetchAiColors(vi){
   const n=getText();
   if(!n){showToast('// SELECT STRAIN FIRST');return;}
@@ -1078,10 +1098,8 @@ async function fetchAiColors(vi){
   spin.style.display='inline-block';
   statusTxt.textContent='// CLAUDE IS ANALYZING THE STRAIN...';
   palettesEl.innerHTML='';
-
-  const styleNames=['Graffiti Wildstyle','Blackletter Gothic','Futuristic Speed Cut'];
-  const styleName=vi==='all'?'all 3 styles (Graffiti Wildstyle, Blackletter Gothic, Futuristic Speed Cut)':styleNames[vi];
-
+  const styleNames=['Block Throwup','Chrome Wild','Handstyle Tag','Wall Piece'];
+  const styleName=vi==='all'?'all 4 styles (Block Throwup, Chrome Wild, Handstyle Tag, Wall Piece)':styleNames[vi];
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
@@ -1090,22 +1108,11 @@ async function fetchAiColors(vi){
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
         messages:[{role:'user',content:`You are a creative color designer for cannabis strain sticker art (UVDTF printing on BIC lighters).
-
 Strain name: "${n}"
 Style: ${styleName}
-
 Suggest 3 color palettes for this strain that match its vibe, flavor profile, and aesthetics. Each palette should have 3-5 hex color codes.
-
 Respond ONLY with valid JSON, no markdown, no explanation:
-{
-  "palettes": [
-    {
-      "name": "PALETTE NAME IN CAPS",
-      "vibe": "one line description of the mood/vibe",
-      "colors": ["#hexcode1","#hexcode2","#hexcode3"]
-    }
-  ]
-}`}]
+{"palettes":[{"name":"PALETTE NAME IN CAPS","vibe":"one line description","colors":["#hexcode1","#hexcode2","#hexcode3"]}]}`}]
       })
     });
     const data=await res.json();
@@ -1114,32 +1121,26 @@ Respond ONLY with valid JSON, no markdown, no explanation:
     const clean=txt.replace(/```json|```/g,'').trim();
     const parsed=JSON.parse(clean);
     statusTxt.textContent=`// ${parsed.palettes.length} PALETTES SUGGESTED FOR "${n}"`;
-    parsed.palettes.forEach((pal,pi)=>{
+    parsed.palettes.forEach((pal)=>{
       const div=document.createElement('div');div.className='ai-palette';
       const swatchesHtml=pal.colors.map(c=>`<div class="ai-swatch" style="background:${c}" title="${c}"></div>`).join('');
-      const applyTargets=vi==='all'?[0,1,2]:[vi];
-      const btnHtml=applyTargets.map(t=>`<button class="ai-apply-btn" onclick="applyAiPalette(${JSON.stringify(pal.colors)},${t})">${vi==='all'?['🌀','⛪','🏎️'][t]+' STYLE '+(t+1):'APPLY'}</button>`).join('');
+      const applyTargets=vi==='all'?[0,1,2,3]:[vi];
+      const btnHtml=applyTargets.map(t=>`<button class="ai-apply-btn" onclick="applyAiPalette(${JSON.stringify(pal.colors)},${t})">${vi==='all'?['🌀','⛪','🏎️','🔥'][t]+' STYLE '+(t+1):'APPLY'}</button>`).join('');
       div.innerHTML=`<div class="ai-swatches">${swatchesHtml}</div><div class="ai-palette-body"><div class="ai-palette-name">${pal.name}</div><div class="ai-palette-vibe">// ${pal.vibe}</div><div class="ai-palette-btns">${btnHtml}</div></div>`;
       palettesEl.appendChild(div);
     });
   }catch(e){
     spin.style.display='none';
     statusTxt.textContent='// ERROR — TRY AGAIN';
-    console.error(e);
   }
 }
-
 function applyAiPalette(colors,vi){
   cardColors[vi]=colors.slice(0,MAX_C);
   buildDots(vi);updateAll();
   showToast(`// AI PALETTE APPLIED TO STYLE ${vi+1}`);
 }
 
-// ═══════════════════════════════════
-// FEATURE 5: PROMPT PREVIEW
-// ═══════════════════════════════════
-const previewState=[false,false,false];
-
+const previewState=[false,false,false,false];
 function togglePreview(vi){
   const n=getText();
   const p=window._p[vi];
@@ -1156,36 +1157,54 @@ function togglePreview(vi){
     btn.classList.remove('active');
   }
 }
-
 function toggleAllPreviews(){
   const n=getText();
   if(!n){showToast('// SELECT STRAIN FIRST');return;}
-  [0,1,2].forEach(vi=>{
+  [0,1,2,3].forEach(vi=>{
     if(!previewState[vi]&&window._p[vi])togglePreview(vi);
   });
 }
-
 async function generatePreview(vi,prompt){
   const spinner=document.getElementById('prevSpinner'+vi);
   const img=document.getElementById('prevImg'+vi);
   spinner.classList.remove('hidden');
+  spinner.textContent='// GENERATING PREVIEW...';
   img.classList.remove('loaded');
+  img.src='';
 
-  // Pollinations AI — free, no key needed
-  const encoded=encodeURIComponent(prompt.substring(0,400));
-  const url=`https://image.pollinations.ai/prompt/${encoded}?width=600&height=200&model=flux&nologo=true&seed=${Math.floor(Math.random()*9999)}`;
+  const encoded=encodeURIComponent(prompt.substring(0,350));
+  const seed=Math.floor(Math.random()*99999);
 
-  img.onload=()=>{spinner.classList.add('hidden');img.classList.add('loaded');};
-  img.onerror=()=>{spinner.textContent='// PREVIEW ERROR — TRY AGAIN';};
-  img.src=url;
+  // Try multiple endpoints with fallback
+  const urls=[
+    `https://image.pollinations.ai/prompt/${encoded}?width=600&height=200&nologo=true&seed=${seed}`,
+    `https://image.pollinations.ai/prompt/${encoded}?width=600&height=200&model=turbo&nologo=true&seed=${seed}`,
+    `https://image.pollinations.ai/prompt/${encoded}?width=512&height=170&nologo=true&seed=${seed+1}`,
+  ];
+
+  let tried=0;
+  function tryNext(){
+    if(tried>=urls.length){
+      spinner.textContent='// PREVIEW UNAVAILABLE — COPY PROMPT & USE LEONARDO AI';
+      return;
+    }
+    const url=urls[tried++];
+    const testImg=new Image();
+    const timeout=setTimeout(()=>{testImg.src='';tryNext();},12000);
+    testImg.onload=()=>{
+      clearTimeout(timeout);
+      img.src=testImg.src;
+      spinner.classList.add('hidden');
+      img.classList.add('loaded');
+    };
+    testImg.onerror=()=>{clearTimeout(timeout);tryNext();};
+    testImg.src=url;
+  }
+  tryNext();
 }
 
-// ═══════════════════════════════════
-// LIBRARY
-// ═══════════════════════════════════
 let libTargetVi=0;
 const UNSPLASH_KEY='dOIxckm6IFi0GJFLVMDw_gA1D7F3Mne1Kfhh_ygSl0';
-
 async function searchLib(query){
   const inp=document.getElementById('libSearchInp');
   if(query)inp.value=query;
@@ -1219,14 +1238,12 @@ async function searchLib(query){
     });
   }catch(e){loading.style.display='none';grid.innerHTML='<div class="lib-empty">// ERROR LOADING</div>';}
 }
-
 function openLibModal(vi){
   libTargetVi=vi;
   document.getElementById('libModalTitle').textContent=`// BG LIBRARY — STYLE ${vi+1}`;
   document.getElementById('libSelInfo').textContent='';
   openModal('lib');
 }
-
 function renderLibThumb(vi){
   const wrap=document.getElementById('libThumb'+vi);if(!wrap)return;
   wrap.innerHTML='';
@@ -1238,9 +1255,6 @@ function renderLibThumb(vi){
   wrap.appendChild(thumb);wrap.appendChild(x);
 }
 
-// ═══════════════════════════════════
-// SEL BOX
-// ═══════════════════════════════════
 function updateSelBox(){
   const box=document.getElementById('selBox');box.innerHTML='';
   document.getElementById('selN').textContent=selected.length+(activeCustom?' + CUSTOM':'');
@@ -1254,9 +1268,6 @@ function updateSelBox(){
   });
 }
 
-// ═══════════════════════════════════
-// STRAINS & BRANDS
-// ═══════════════════════════════════
 function buildStrains(){
   const el=document.getElementById('strainsEl');
   for(const[cat,list]of Object.entries(STRAINS)){
@@ -1281,9 +1292,6 @@ function buildBrands(){
   });
 }
 
-// ═══════════════════════════════════
-// CUSTOM TEXT
-// ═══════════════════════════════════
 function addCustom(){const inp=document.getElementById('customInp');const v=inp.value.trim();if(!v)return;if(!customList.includes(v))customList.push(v);setActiveCustom(v);inp.value='';}
 function setActiveCustom(v){activeCustom=activeCustom===v?null:v;renderCtags();updateAll();}
 function removeCustom(v){customList=customList.filter(t=>t!==v);if(activeCustom===v){activeCustom=null;updateAll();}renderCtags();}
@@ -1292,9 +1300,6 @@ function renderCtags(){
   customList.forEach(v=>{const t=document.createElement('div');t.className='ctag'+(activeCustom===v?' on':'');const ve=v.replace(/'/g,"\\'");t.innerHTML=`<span onclick="setActiveCustom('${ve}')">${v}</span><span class="cx" onclick="removeCustom('${ve}')">×</span>`;el.appendChild(t);});
 }
 
-// ═══════════════════════════════════
-// TABS & CLEAR
-// ═══════════════════════════════════
 function switchTab(id,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));btn.classList.add('on');document.getElementById('tp-'+id).classList.add('on');}
 function clearAll(){
   selected=[];activeBrand=null;activeCustom=null;
@@ -1305,13 +1310,10 @@ function clearAll(){
   document.querySelectorAll('.preview-area').forEach(a=>a.classList.remove('show'));
   document.querySelectorAll('.prev-btn').forEach(b=>b.classList.remove('active'));
   previewState.fill(false);favStar.fill(false);
-  [0,1,2].forEach(i=>document.getElementById('favBtn'+i).textContent='🤍');
+  [0,1,2,3].forEach(i=>document.getElementById('favBtn'+i).textContent='🤍');
   updateAll();showToast('// CLEARED');
 }
 
-// ═══════════════════════════════════
-// UTILS
-// ═══════════════════════════════════
 function openModal(id){
   document.getElementById('modal-'+id).classList.add('open');
   if(id==='hist'){renderFavs();}
@@ -1320,9 +1322,6 @@ function closeModal(id){document.getElementById('modal-'+id).classList.remove('o
 function shareApp(){navigator.clipboard.writeText(location.href);showToast('// URL COPIED');}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
 
-// ═══════════════════════════════════
-// INIT
-// ═══════════════════════════════════
 document.addEventListener('DOMContentLoaded',function(){
   initDots();initBgOpts();buildStrains();buildBrands();
   document.getElementById('customInp').addEventListener('keydown',e=>{if(e.key==='Enter')addCustom();});
